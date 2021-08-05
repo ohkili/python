@@ -415,3 +415,7 @@ option_value = "//option[@value='" +str(cnt_select) +  "']"
 driver.find_element(By.XPATH, option_value).click()
 
 # 다음단계 선택해서 4.배송선택/주문자확인으로 넘어가야 함
+driver.switch_to.default_content()
+driver.find_element(By.XPATH, "//p[@id='SmallNextBtn']/a[@id='SmallNextBtnLink']/img").click()
+
+#step4 배송 선택/주문자 확인
