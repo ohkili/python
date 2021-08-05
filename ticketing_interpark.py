@@ -11,7 +11,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.alert import Alert
 from bs4 import BeautifulSoup
 
-# driver 초기화 하고 url 들어가는 함수
+# driver 초기화 하고 url 들어가는 함수, os가 윈도우인지, mac인지 구분하고 chrome driver가 저장된 위치를 명시하였으므로 개인 환경에 맞게 적절히 셋팅 필요
 def driverAct(url, option ='win'):
     os = {'mac': 'mac',
           'win': 'windows'}
@@ -162,24 +162,20 @@ goodsCode = 21004791
 driver.get('http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=' + str(goodsCode))
 
 
-
-
 # 예매하기 버튼 클릭기
 # pop up  창 확인하여 닫아주기
 print(driver.window_handles)
-lack(2)
-# 팝업창 1개 일때
-# driver.switch_to.window(driver.window_handles[1])
-# driver.close()
-# 팝업창이 여러개 일때 사용하는데 210801 현재 팝업 인지도 안되고 팝업 제거도 안됨, driver.window_handles는 인터넷 tab을 인지함 , 팝업이 tab으로 인식되지 않음
 
-
+# lack(1)
 
 # 예매안내 팝업 뜸 코로나 어쩌구 저쩌, 팝업 제거 안되면 예매하기 클릭 안됨
-driver.find_element(By.XPATH, "//div[@class='popupWrap']/div[@class='popupFooter']/button[@class='popupCloseBtn is-bottomBtn']").click()
+# driver.find_element(By.XPATH, "//div[@class='popupWrap']/div[@class='popupFooter']/button[@class='popupCloseBtn is-bottomBtn']").click()
 
-
-lack(2)
+# 다음버튼 클릭
+next = WebDriverWait(driver, 30).until(
+                EC.presence_of_all_elements_located((By.XPATH,"//div[@class='popupWrap']/div[@class='popupFooter']/button[@class='popupCloseBtn is-bottomBtn']"))
+            )
+next[0].click()
 
 
 driver.page_source
@@ -192,7 +188,7 @@ f = open('E:/work/reserv_first_txt.txt','w', encoding='UTF-8')
 f.write(reserv_first_txt)
 f.close()
 
-lack(2)
+
 
 # poticket.interpark.com 내용 제목으로 팝업 뜸, 관람일 전일 오후 어쩌구 저쩌구 취소/변경/환불 불가하다고 팝업 뜸 예매 진행하시겠습니까?
 # 라고 팝업 뜸
@@ -251,7 +247,7 @@ driver.find_element(By.XPATH, "//div[@class='sideBtnWrap']/a").click() # 클릭�
 # content = f.read()
 # print(content)
 
-lack(2)
+
 
 
 driver.window_handles
@@ -268,10 +264,14 @@ driver.switch_to.window(driver.window_handles[1])
 
 
  # 예매안내 만 13세 어쩌구 저쩌구  팝업 속성은 아래와 같으며 close 버튼 찾아서 눌러줌
-driver.find_element(By.XPATH, "//div[(@class='bookNoticeLayer')]/div[@class='layerWrap']/div[@class='titleArea']/a[@class='closeBtn']").click()
+# driver.find_element(By.XPATH, "//div[(@class='bookNoticeLayer')]/div[@class='layerWrap']/div[@class='titleArea']/a[@class='closeBtn']").click()
+# 다음버튼 클릭
+next1 = WebDriverWait(driver, 30).until(
+                EC.presence_of_all_elements_located((By.XPATH,"//div[(@class='bookNoticeLayer')]/div[@class='layerWrap']/div[@class='titleArea']/a[@class='closeBtn']"))
+            )
+next1[0].click()
 
 
-lack(2)
 
 driver.page_source
 soup_second = BeautifulSoup(driver.page_source,'html.parser') # 새로 생긴 티켓예매 탭의 html을 파싱했음
@@ -289,8 +289,7 @@ interparkTicketting_move_step1(driver)
 
 # 
 # 시간 클릭 전 활성화 대기
-# 태그가 만들어 질 때 까지 30초간 기다림
-# 30초전 태그가 활성화 되면 바로 실행
+# 태그가 만들어 질 때 까지 30초간 기다림 , 30초전 태그가 활성화 되면 바로 실행
 
 # iframe의 부모 프레임으로 돌아가기
 driver.switch_to.default_content()
@@ -303,3 +302,116 @@ next[0].click()
 # 자동예매 방지 문자열입력이 떠있는지 확인
 driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@id='divBookSeat']/iframe[@id='ifrmSeat']"))
 capchaLayer_check = check_exists_by_element(By.XPATH, "//div[@id='divRecaptcha']")
+# 자동예매 방지 문자열 입력창이 있다면 5초 대기
+# 공연에 따라 자동 예매 방지 문자열 입력을 하라고 팝업창이 나올 수가 있습니다.
+# 이건....  자동으로 입력이 불가능해서 사용자가 입력할 시간을 기다려 준 후 움직이게 해 줍니다.
+# 대기시간을 5초는 입력하는 시간보다 많이 길 수 있어서 원하는 대로 줄여도 무방합니다.
+if capchaLayer_check:
+    time.sleep(5)
+
+
+# 좌석 선택 iframe, 해당 ifram의 parent node를 선택하면 됨, parent의parent까지 찾아갈 필요 없음
+driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='seatL']/iframe[@id='ifrmSeatDetail']"))
+# 활성화 되어 있는 좌석의 class 속성 stySeat
+seat_check = driver.find_elements(By.CSS_SELECTOR, "img.stySeat")
+seat_title = [s.get_attribute('title') for s in seat_check]
+seat_ls = [s.split('-') for s in seat_title]
+# 좌석 선택하는 태그의 title 속성의 포멧
+# [VIP석] 1층-A구역18열-11
+# [VIP석] 1층-B구역 11열-1
+# [VIP석] 1층-D열-99
+# [VIP석] 1층-11열-11
+# [VIP석] 1층-A블럭8열-10
+
+'-'.join(seat_ls[0]) # list 내부 문자열을 join 으로 합치기
+# 좌석 이름 규치, 등급(R,S,),층(1,2),열(A~Z),좌석(1~1000)
+# seatLevel = seat_ls[0][0].split(' ')[0].replace('[','').replace(']','').replace('석','')
+# seatFloor = seat_ls[0][0].split(' ')[1].replace('층','')
+# seatCol = seat_ls[0][1].replace('열','')
+# seatNo = seat_ls[0][2]
+
+def seat_info(seat_ls):
+    result = []
+    for i in range(len(seat_ls)):
+        seatLevel = seat_ls[i][0].split(' ')[0].replace('[', '').replace(']', '').replace('석', '')
+        seatFloor = seat_ls[i][0].split(' ')[1].replace('층', '')
+        seatCol = seat_ls[i][1].replace('열', '')
+        seatNo = seat_ls[i][2]
+        result.append([[seatLevel, seatFloor, seatCol, seatNo], '-'.join(seat_ls[i])])
+    return result
+#
+#
+# result = []
+# for i in range(len(seat_ls)):
+#     seatLevel = seat_ls[i][0].split(' ')[0].replace('[', '').replace(']', '').replace('석', '')
+#     seatFloor = seat_ls[i][0].split(' ')[1].replace('층', '')
+#     seatCol = seat_ls[i][1].replace('열', '')
+#     seatNo = seat_ls[i][2]
+#     result.append([ [seatLevel, seatFloor, seatCol, seatNo], '-'.join(seat_ls[i]) ])
+
+seat_info = seat_info(seat_ls)
+
+# 선택 유형 고르면 좌석 번호는 작은 순번으로 고르기로 함
+choice_level = ['R','S']
+choice_floor = ['1','2']
+choice_col = ['C','D','E','F','G']
+choice_no = ['10','11','12','13','20']
+# seat_info[0][1]
+
+choice_ls =[]
+for l in choice_level:
+    for f in choice_floor:
+        for c in choice_col:
+            for n in choice_no:
+                temp = []
+                temp.append(l)
+                temp.append(f)
+                temp.append(c)
+                temp.append(n)
+                choice_ls.append(temp)
+
+
+
+seat_matched =[]
+for s in seat_info:
+    for l in choice_ls:
+        if s[0] ==  l:
+            print('seat catched :', s[1])
+            seat_matched.append(s[1])
+        else:
+            print('no seat ', s[1])
+
+seat_matched
+
+# seat_selected =  "//img[ @class='stySeat' and @title=" + "'" + seat_matched[0] + "']"
+# seat_selected1 =  "//img[ @class='stySeat' and @title=" + "'" + seat_matched[1] + "']"
+
+# driver.find_elements(By.CSS_SELECTOR, "img.stySeat" )
+# driver.find_element(By.XPATH, "//img[ @class='stySeat'  and  @title='[R석] 1층-D열-20']").click()
+# driver.find_element(By.XPATH,seat_selected).click()
+# driver.find_element(By.XPATH,seat_selected1).click()
+
+# 좌석 선택 매수 선택
+cnt_select =2
+
+for i in range(cnt_select):
+    seat_selected = "//img[ @class='stySeat' and @title=" + "'" + seat_matched[i] + "']"
+    driver.find_element(By.XPATH, seat_selected).click()
+
+# 원래 팝업 프레임으로 돌아가기
+driver.switch_to.default_content()
+driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@id='divBookSeat']/iframe[@id='ifrmSeat']"))
+# 다음 버튼 클릭
+driver.find_element(By.XPATH, "//div[@class='seatR']/div[@class='inner']/div[@class='btnWrap']/a/img").click()
+# 좌석 선택을 할 때 내가 원하는 좌석을 지정해서 선택을 하고 싶어서 title속성에 좌석 좌표를 이용해서 원하는 좌석을 선택할 수 있게 해 줍니다.
+
+# step 3 가격/할인 선택 메누로 이동
+
+# 기본가로 선택하기로 함
+driver.switch_to.default_content()  # 좌석 선택 ifram에서 빠져 나옴
+driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='contL']/iframe[@id='ifrmBookStep']"))
+driver.find_element(By.XPATH, "//tr[@id='PriceRow002']/td[@class='taL']/select[@name='SeatCount']")
+option_value = "//option[@value='" +str(cnt_select) +  "']"
+driver.find_element(By.XPATH, option_value).click()
+
+# 다음단계 선택해서 4.배송선택/주문자확인으로 넘어가야 함

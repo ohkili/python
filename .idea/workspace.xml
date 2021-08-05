@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/teckect_reserv_move_step1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketing_interpark_for_macos.py" beforeDir="false" afterPath="$PROJECT_DIR$/ticketing_interpark_for_macos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reserv_first_txt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reserv_first_txt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reserv_second_txt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reserv_second_txt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketing_interpark_for_macos.py" beforeDir="false" afterPath="$PROJECT_DIR$/ticketing_interpark.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +24,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ticketing_interpark_for_macos.py">
+        <entry file="file://$PROJECT_DIR$/ticketing_interpark.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="305" lean-forward="true" selection-start-line="305" selection-end-line="305" />
+            <state relative-caret-position="480">
+              <caret line="417" lean-forward="true" selection-start-line="417" selection-end-line="417" />
               <folding>
                 <element signature="n#!!doc" />
                 <element signature="e#33#44#0" expanded="true" />
@@ -97,9 +98,11 @@
       <find>예매</find>
       <find>step_flag -= 1</find>
       <find>check_exists_by_element</find>
+      <find>seat_raw</find>
     </findStrings>
     <replaceStrings>
       <replace>step_dic</replace>
+      <replace>seat_ls</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -110,6 +113,7 @@
       <list>
         <option value="$PROJECT_DIR$/teckect_reserv_move_step1.py" />
         <option value="$PROJECT_DIR$/ticketing_interpark_for_macos.py" />
+        <option value="$PROJECT_DIR$/ticketing_interpark.py" />
       </list>
     </option>
   </component>
@@ -192,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628008943916</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음">
+      <created>1628058424422</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628058424422</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -263,10 +274,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ticketing_interpark_for_macos.py">
+    <entry file="file://$PROJECT_DIR$/ticketing_interpark.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="305" lean-forward="true" selection-start-line="305" selection-end-line="305" />
+        <state relative-caret-position="480">
+          <caret line="417" lean-forward="true" selection-start-line="417" selection-end-line="417" />
           <folding>
             <element signature="n#!!doc" />
             <element signature="e#33#44#0" expanded="true" />
