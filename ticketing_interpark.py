@@ -58,6 +58,7 @@ def interparkTicketting_move_step1(driver):
         driver.switch_to.default_content()
         driver.switch_to.frame(driver.find_element(By.XPATH, step_dic['step_5'][0]))
         driver.find_element(By.XPATH, step_dic['step_5'][1])
+        print('Maybe your present step is step', step_flag)
         #return step_4
         driver.switch_to.default_content()   # iframe 밖에 이전단계 버틑이 있어 iframe 밖으로 나와야 함
         driver.find_element(By.XPATH, step_dic['step_5'][2]).click()
@@ -71,6 +72,7 @@ def interparkTicketting_move_step1(driver):
         driver.switch_to.default_content()
         driver.switch_to.frame(driver.find_element(By.XPATH, step_dic['step_4'][0]))
         driver.find_element(By.XPATH, step_dic['step_4'][1])
+        print('Maybe your present step is step', step_flag)
         # retrun step_3
         driver.switch_to.default_content()  # iframe 밖에 이전단계 버틑이 있어 iframe 밖으로 나와야 함
         driver.find_element(By.XPATH, step_dic['step_4'][2]).click()
@@ -83,6 +85,7 @@ def interparkTicketting_move_step1(driver):
         driver.switch_to.default_content()
         driver.switch_to.frame(driver.find_element(By.XPATH, step_dic['step_3'][0]))
         driver.find_element(By.XPATH, step_dic['step_3'][1])
+        print('Maybe your present step is step', step_flag)
         # return step2
         driver.switch_to.default_content()  # iframe 밖에 이전단계 버틑이 있어 iframe 밖으로 나와야 함
         driver.find_element(By.XPATH, step_dic['step_3'][2]).click()
@@ -96,6 +99,7 @@ def interparkTicketting_move_step1(driver):
         driver.switch_to.default_content()
         driver.switch_to.frame(driver.find_element(By.XPATH, step_dic['step_2'][0]))
         driver.find_element(By.XPATH, step_dic['step_2'][1])
+        print('Maybe your present step is step', step_flag)
         # return step_1
         driver.find_element(By.XPATH, step_dic['step_2'][2]).click()  # iframe 안에서 실행하기 때문에 iframe 밖으로 나올 필요가 없다.
     except NoSuchElementException:
@@ -108,10 +112,11 @@ def interparkTicketting_move_step1(driver):
         driver.switch_to.default_content()
         driver.switch_to.frame(driver.find_element(By.XPATH, step_dic['step_1'][0]))
         driver.find_element(By.XPATH, step_dic['step_1'][1])  # 1 관람일/회차선택 메뉴 선택, 에러나면 해당 메뉴가 아니고 다른 메뉴임
+        print('Maybe your present step is step', step_flag)
     except NoSuchElementException:
         print('NoSuchElementException')
         print('Maybe your step is before step', step_flag)
-    step_flag -=1
+
 
     if step_flag<1:
         print('Check your interpark reservation window, there is no match!')
@@ -139,7 +144,7 @@ wantHour = '18'
 wantMin = '00'
 
 url = 'https://ticket.interpark.com/Gate/TPLogin.asp'
-driver = driverAct(url)
+driver = driverAct(url,option='mac')
 
 # driver.close()
 # 사이즈조절
@@ -158,9 +163,9 @@ userPwd = driver.find_element(By.ID, 'userPwd')
 userPwd.send_keys('Int!1203')  # 로그인 할 계정의 패스워드
 userPwd.send_keys(Keys.ENTER)
 goodsCode = 21004791
-# 예매할 상품코드 가져오
 driver.get('http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GoodsCode=' + str(goodsCode))
 
+# 예매할 상품코드 가져오
 
 # 예매하기 버튼 클릭기
 # pop up  창 확인하여 닫아주기
@@ -178,15 +183,15 @@ next = WebDriverWait(driver, 30).until(
 next[0].click()
 
 
-driver.page_source
-soup_first = BeautifulSoup(driver.page_source,'html.parser') # 새로 생긴 티켓예매 탭의 html을 파싱했음
-
-reserv_first_txt = str(soup_first)
+# driver.page_source
+# soup_first = BeautifulSoup(driver.page_source,'html.parser') # 새로 생긴 티켓예매 탭의 html을 파싱했음
+#
+# reserv_first_txt = str(soup_first)
 
 # 파일 쓰기
-f = open('E:/work/reserv_first_txt.txt','w', encoding='UTF-8')
-f.write(reserv_first_txt)
-f.close()
+# f = open('E:/work/reserv_first_txt.txt','w', encoding='UTF-8')
+# f.write(reserv_first_txt)
+# f.close()
 
 
 
@@ -249,7 +254,6 @@ driver.find_element(By.XPATH, "//div[@class='sideBtnWrap']/a").click() # 클릭�
 
 
 
-
 driver.window_handles
 driver.switch_to.window(driver.window_handles[1])
 
@@ -273,33 +277,34 @@ next1[0].click()
 
 
 
-driver.page_source
-soup_second = BeautifulSoup(driver.page_source,'html.parser') # 새로 생긴 티켓예매 탭의 html을 파싱했음
-
-reserv_second_txt = str(soup_second)
+# driver.page_source
+# soup_second = BeautifulSoup(driver.page_source,'html.parser') # 새로 생긴 티켓예매 탭의 html을 파싱했음
+#
+# reserv_second_txt = str(soup_second)
 
 # 파일 쓰기
-f = open('E:/work/reserv_second_txt.txt','w', encoding='UTF-8')
-f.write(reserv_second_txt)
-f.close()
+# f = open('E:/work/reserv_second_txt.txt','w', encoding='UTF-8')
+# f.write(reserv_second_txt)
+# f.close()
 
 # 날짜는 예매하기 누르기 전에 선택하였으니 좌석 선택으로 넘어가자
 # step1로 이동하는 함수 어디에 위치해 있든 step1로 이동
-interparkTicketting_move_step1(driver)
+# interparkTicketting_move_step1(driver) 메인에서 날짜 및 시간을 선택하고 왔기 때문에 step2부터 시작해도 되어 기능 사용 중
 
 # 
 # 시간 클릭 전 활성화 대기
 # 태그가 만들어 질 때 까지 30초간 기다림 , 30초전 태그가 활성화 되면 바로 실행
 
 # iframe의 부모 프레임으로 돌아가기
-driver.switch_to.default_content()
-# 다음버튼 클릭
-next = WebDriverWait(driver, 30).until(
-                EC.presence_of_all_elements_located((By.XPATH, "//div[@class='contR']/div[@class='buy_info']/p[@id='LargeNextBtn']/a/img"))
-            )
-next[0].click()
+# driver.switch_to.default_content() # step1으로 이동한 경우에 사용하려는 기능이었으나 step2 부터 시작하므로 기능 사용 중지
+# 다음버튼 클릭 # step1으로 이동한 경우에 사용하려는 기능이었으나 step2 부터 시작하므로 기능 사용 중지
+# next = WebDriverWait(driver, 30).until(
+#                 EC.presence_of_all_elements_located((By.XPATH, "//div[@class='contR']/div[@class='buy_info']/p[@id='LargeNextBtn']/a/img"))
+#             )
+# next[0].click()
 
 # 자동예매 방지 문자열입력이 떠있는지 확인
+driver.switch_to.default_content()
 driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@id='divBookSeat']/iframe[@id='ifrmSeat']"))
 capchaLayer_check = check_exists_by_element(By.XPATH, "//div[@id='divRecaptcha']")
 # 자동예매 방지 문자열 입력창이 있다면 5초 대기
@@ -310,20 +315,21 @@ if capchaLayer_check:
     time.sleep(5)
 
 
-# 좌석 선택 iframe, 해당 ifram의 parent node를 선택하면 됨, parent의parent까지 찾아갈 필요 없음
+# 좌석 선택 iframe, 해당 ifram의 parent node를 선택하면 됨, 이미 좌석 선택 iframe이 선택되어 있고 그 안에서 iframe을 더 찾아야
+lack(2) # 이유는 알수 없으나 잠시 지연을 시켜줘야 함
 driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='seatL']/iframe[@id='ifrmSeatDetail']"))
 # 활성화 되어 있는 좌석의 class 속성 stySeat
 seat_check = driver.find_elements(By.CSS_SELECTOR, "img.stySeat")
 seat_title = [s.get_attribute('title') for s in seat_check]
 seat_ls = [s.split('-') for s in seat_title]
-# 좌석 선택하는 태그의 title 속성의 포멧
+# 좌석 선택하는 태그의 title 속성의 포멧함
 # [VIP석] 1층-A구역18열-11
 # [VIP석] 1층-B구역 11열-1
 # [VIP석] 1층-D열-99
 # [VIP석] 1층-11열-11
 # [VIP석] 1층-A블럭8열-10
 
-'-'.join(seat_ls[0]) # list 내부 문자열을 join 으로 합치기
+# '-'.join(seat_ls[0]) # list 내부 문자열을 join 으로 합치기
 # 좌석 이름 규치, 등급(R,S,),층(1,2),열(A~Z),좌석(1~1000)
 # seatLevel = seat_ls[0][0].split(' ')[0].replace('[','').replace(']','').replace('석','')
 # seatFloor = seat_ls[0][0].split(' ')[1].replace('층','')
@@ -354,7 +360,7 @@ seat_info = seat_info(seat_ls)
 # 선택 유형 고르면 좌석 번호는 작은 순번으로 고르기로 함
 choice_level = ['R','S']
 choice_floor = ['1','2']
-choice_col = ['C','D','E','F','G']
+choice_col = ['F','G']
 choice_no = ['10','11','12','13','20']
 # seat_info[0][1]
 
@@ -408,7 +414,7 @@ driver.find_element(By.XPATH, "//div[@class='seatR']/div[@class='inner']/div[@cl
 # step 3 가격/할인 선택 메누로 이동
 
 # 기본가로 선택하기로 함
-driver.switch_to.default_content()  # 좌석 선택 ifram에서 빠져 나옴
+driver.switch_to.default_content()  #ifram에서 빠져 나옴
 driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='contL']/iframe[@id='ifrmBookStep']"))
 driver.find_element(By.XPATH, "//tr[@id='PriceRow002']/td[@class='taL']/select[@name='SeatCount']")
 option_value = "//option[@value='" +str(cnt_select) +  "']"
@@ -418,4 +424,46 @@ driver.find_element(By.XPATH, option_value).click()
 driver.switch_to.default_content()
 driver.find_element(By.XPATH, "//p[@id='SmallNextBtn']/a[@id='SmallNextBtnLink']/img").click()
 
-#step4 배송 선택/주문자 확인
+#step4 배송 선택/주문자 확인, 일리아드는 현장 수령만 가능하여 디플트
+driver.switch_to.default_content()  # 좌석 선택 ifram에서 빠져 나옴
+driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='contL']/iframe[@id='ifrmBookStep']"))
+driver.find_element(By.XPATH, "//form[@id='formDelivery']")
+lack(2)
+driver.find_element(By.XPATH, "//tr[@id='Delivery_24000']/td").click()
+yymmdd = driver.find_element(By.XPATH, "//input[@id='YYMMDD']")
+yymmdd.send_keys('790604')  # 생년월일 입력
+
+driver.switch_to.default_content()  # 좌석 선택 ifram에서 빠져 나옴
+driver.find_element(By.XPATH, "//p[@id='SmallNextBtn']/a[@id='SmallNextBtnLink']/img").click() # 다음단계
+
+# step 5
+# 무통장 입금으로 진행 시도
+driver.switch_to.default_content()  # 좌석 선택 ifram에서 빠져 나옴
+driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='contL']/iframe[@id='ifrmBookStep']"))
+# 무통장 선택
+driver.find_element(By.XPATH, "//tr[@id='Payment_22004']/td/input").click()
+# 무통장에 해당하는 입력창 선택
+driver.find_element(By.XPATH, "//select[@id='BankCode']/option[@value='38054']").click()
+
+driver.switch_to.default_content()  # 좌석 선택 ifram에서 빠져 나옴
+driver.find_element(By.XPATH, "//p[@id='SmallNextBtn']/a[@id='SmallNextBtnLink']/img").click() # 다음단계
+
+# 개인정보 동의
+driver.switch_to.default_content()  #  ifram에서 빠져 나옴
+driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='contL']/iframe[@id='ifrmBookStep']"))
+# 개인정보제공 동의
+lack(2)
+# 모두 동의합니다. 이거 누르면 모두 선택 됨
+driver.find_element(By.XPATH, "//div[@class='inner']/div[@class='agree_check']/ul/li/input[@id='checkAll']").click()
+# 취소수수료/기한 확인하였다 선택
+# driver.find_element(By.XPATH, "//div[@class='inner']/div[@class='agree_check']/ul/li/input[@id='CancelAgree']").click()
+# 제3자 정보 동의 제공
+# driver.find_element(By.XPATH, "//div[@class='inner']/div[@class='agree_check']/ul/li/input[@id='CancelAgree2']").click()
+
+# 결재하기 버튼 클릭
+driver.switch_to.default_content()  #ifram에서 빠져 나옴
+driver.find_element(By.XPATH, "//p[@id='LargeNextBtn']/a[@id='LargeNextBtnLink']/img").click()
+# 예매확인 내역 누르기
+driver.switch_to.default_content()
+driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@id='divBookEnd']/iframe[@id='ifrmBookEnd']"))
+driver.find_element(By.XPATH, "//p[@class='btn02']/a/img").click()
