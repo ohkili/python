@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="설정값에 의해 자동으로 좌석 선택후 무통장 입급 선택하여 예매 확인까지 완료함. 세부 선태 조건등은 업그레이드 하면 된다.&#10;단 셀레니움에서 동작시 기다려줘야 하는 상황이 많은 것 같은데 어떻게 극복할지는 확인을 해봐야겠다">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/work.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/gittest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lotto_auto_purchasing.py" beforeDir="false" afterPath="$PROJECT_DIR$/lotto_auto_purchasing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticketing_interpark.py" beforeDir="false" afterPath="$PROJECT_DIR$/ticketing_interpark.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +92,28 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.lotto_auto_purchasing">
+    <configuration name="lotto_auto_purchasing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lotto_auto_purchasing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ticketing_interpark" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -114,6 +137,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lotto_auto_purchasing" />
         <item itemvalue="Python.ticketing_interpark" />
       </list>
     </recent_temporary>
@@ -151,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628058424422</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="설정값에 의해 자동으로 좌석 선택후 무통장 입급 선택하여 예매 확인까지 완료함. 세부 선태 조건등은 업그레이드 하면 된다.&#10;단 셀레니움에서 동작시 기다려줘야 하는 상황이 많은 것 같은데 어떻게 극복할지는 확인을 해봐야겠다">
+      <created>1630713866591</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1630713866591</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -192,7 +223,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ticket code update" />
     <MESSAGE value="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음" />
-    <option name="LAST_COMMIT_MESSAGE" value="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음" />
+    <MESSAGE value="설정값에 의해 자동으로 좌석 선택후 무통장 입급 선택하여 예매 확인까지 완료함. 세부 선태 조건등은 업그레이드 하면 된다.&#10;단 셀레니움에서 동작시 기다려줘야 하는 상황이 많은 것 같은데 어떻게 극복할지는 확인을 해봐야겠다" />
+    <option name="LAST_COMMIT_MESSAGE" value="설정값에 의해 자동으로 좌석 선택후 무통장 입급 선택하여 예매 확인까지 완료함. 세부 선태 조건등은 업그레이드 하면 된다.&#10;단 셀레니움에서 동작시 기다려줘야 하는 상황이 많은 것 같은데 어떻게 극복할지는 확인을 해봐야겠다" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/gittest.py">

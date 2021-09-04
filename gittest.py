@@ -4,6 +4,8 @@ print('I check local commit task2')
 print('I check local commit task3')
 print('I check local commit task4')
 
+x = 0
+
 bool(0)
 bool((None))
 bool([0])

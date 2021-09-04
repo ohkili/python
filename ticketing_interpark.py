@@ -314,7 +314,6 @@ capchaLayer_check = check_exists_by_element(By.XPATH, "//div[@id='divRecaptcha']
 if capchaLayer_check:
     time.sleep(5)
 
-
 # 좌석 선택 iframe, 해당 ifram의 parent node를 선택하면 됨, 이미 좌석 선택 iframe이 선택되어 있고 그 안에서 iframe을 더 찾아야
 lack(2) # 이유는 알수 없으나 잠시 지연을 시켜줘야 함
 driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='seatL']/iframe[@id='ifrmSeatDetail']"))
