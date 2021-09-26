@@ -139,7 +139,7 @@ def work():
 
 # Task scheduling
 # After every 10mins geeks() is called.
-schedule.every(2/60).minutes.do(good_luck)
+schedule.every(30/60).minutes.do(good_luck)
 
 # After every hour geeks() is called.
 # schedule.every().hour.do(geeks)
