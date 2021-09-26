@@ -118,11 +118,12 @@ def lotto_purchase():
     lotto_result = pd.DataFrame([[lotto_type,lotto_round,lotto_issue,lotto_draw,lotto_paylimit,lotto_purchaseNo]],
                                 columns =['lotto_type','lotto_round','lotto_issue','lotto_draw','lotto_paylimit','lotto_purchaseNo'])
     # lotto_log = pd.DataFrame()
-    # lotto_log = pd.read_pickle('E:/work/lotto_log.pkl')
+    # lotto_log = pd.read_pickle('/Users/gwon-yonghwan/pythonProject/lotto_log.pkl')
     lack(t)
-    lotto_log = pd.read_pickle('E:/work/lotto_log.pkl') # 개인 컴퓨터에 저장한 log path
+    # '/Users/gwon-yonghwan/pythonProject/lotto_log.pkl'
+    lotto_log = pd.read_pickle('/Users/gwon-yonghwan/pythonProject/lotto_log.pkl') # 개인 컴퓨터에 저장한 log path
     lotto_log = pd.concat([lotto_log,lotto_result])
-    lotto_log.to_pickle('E:/work/lotto_log.pkl') # 개인 컴퓨터에 저장한 log path
+    lotto_log.to_pickle('/Users/gwon-yonghwan/pythonProject/lotto_log.pkl') # 개인 컴퓨터에 저장한 log path
     print('Log was written!')
     print(lotto_log)
     lack(t)
