@@ -13,6 +13,10 @@ from selenium.webdriver.common.alert import Alert
 from bs4 import BeautifulSoup
 import schedule
 import time
+import os
+import json
+import requests
+
 
 # driver 초기화 하고 url 들어가는 함수, os가 윈도우인지, mac인지 구분하고 chrome driver가 저장된 위치를 명시하였으므로 개인 환경에 맞게 적절히 셋팅 필요
 def driverAct(url, option ='mac'):
@@ -117,6 +121,7 @@ def lotto_purchase():
 
     lotto_result = pd.DataFrame([[lotto_type,lotto_round,lotto_issue,lotto_draw,lotto_paylimit,lotto_purchaseNo]],
                                 columns =['lotto_type','lotto_round','lotto_issue','lotto_draw','lotto_paylimit','lotto_purchaseNo'])
+    kakao_message(lotto_result) # 카카오톡으로 메세지 보내기
     # lotto_log = pd.DataFrame()
     # lotto_log = pd.read_pickle('/Users/gwon-yonghwan/pythonProject/lotto_log.pkl')
     lack(t)
@@ -134,19 +139,48 @@ def lotto_purchase():
 def good_luck():
       print("Good Luck for Test")
       print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+      kakao_message('message test '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
+
 def work():
       print("Study and work hard")
       print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
+
+def kakao_message(data):
+    url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
+    KAKAO_TOKEN = 'pnvTjrwWOlNoRrFHo5IEfDco_Mi9Kf7R-vC_TQorDNMAAAF8IfKFow'  # tokens['access_token']
+
+    # 사용자 토큰
+    headers = {
+        "Authorization": "Bearer " + KAKAO_TOKEN}
+
+    data = {
+        "template_object": json.dumps({"object_type": "text",
+                                       "text": str(data),
+                                       "link": {
+                                           "web_url": "www.naver.com"
+                                       }
+                                       })
+    }
+
+    response = requests.post(url, headers=headers, data=data)
+    print(response.status_code)
+    if response.json().get('result_code') == 0:
+        print('메시지를 성공적으로 보냈습니다.')
+    else:
+        print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
+
+
 # Task scheduling
 # After every 10mins geeks() is called.
-schedule.every(30/60).minutes.do(good_luck)
+# schedule.every(30/60).minutes.do(good_luck)
 
 # After every hour geeks() is called.
 # schedule.every().hour.do(geeks)
 
 # Every day at 12am or 00:00 time bedtime() is called.
 schedule.every().day.at("18:30").do(good_luck)
+schedule.every().day.at("06:30").do(good_luck)
 
 # After every 5 to 10mins in between run work()
 # schedule.every(5).to(10).minutes.do(work)
@@ -164,4 +198,5 @@ while True:
 	# Checks whether a scheduled task
 	# is pending to run or not
 	schedule.run_pending()
+
 	time.sleep(1)
