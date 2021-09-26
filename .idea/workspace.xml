@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음&#10;mac mini용으로 구분 짓기 위해 새로 저장">
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gittest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lotto_auto_purchasing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="133" column="77" lean-forward="true" selection-start-line="133" selection-start-column="77" selection-end-line="133" selection-end-column="77" />
+              <folding>
+                <element signature="n#!!doc" />
+                <element signature="e#593#1321#0" />
+                <element signature="e#598#640#0" />
+                <element signature="e#840#1121#0" />
+                <element signature="e#1341#1391#0" />
+                <element signature="e#1436#1550#0" />
+                <element signature="e#1675#6028#0" />
+                <element signature="e#2416#2419#0" />
+                <element signature="e#3438#3828#0" />
+                <element signature="e#5353#5381#0" />
+                <element signature="e#5932#5974#0" />
+                <element signature="e#6056#6161#0" />
+                <element signature="e#6084#6101#0" />
+                <element signature="e#6310#6357#0" />
+                <element signature="e#6653#6757#0" />
+                <element signature="e#6653#6687#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,6 +69,7 @@
       <find>step_flag -= 1</find>
       <find>check_exists_by_element</find>
       <find>seat_raw</find>
+      <find>check_exist</find>
     </findStrings>
     <replaceStrings>
       <replace>step_dic</replace>
@@ -39,6 +77,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -54,8 +93,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="341" />
-    <option name="y" value="-28" />
+    <option name="x" value="44" />
+    <option name="y" value="17" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -92,19 +131,31 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.lotto_auto_purchasing">
-    <configuration name="lotto_auto_purchasing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lotto_auto_purchasing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/pythonProject/bin/python" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lotto_auto_purchasing.py" />
@@ -144,7 +195,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -177,14 +228,35 @@
       <option name="project" value="LOCAL" />
       <updated>1628058424422</updated>
     </task>
-    <task id="LOCAL-00004" summary="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음&#10;mac mini용으로 구분 짓기 위해 새로 저장">
-      <created>1632648263050</created>
+    <task id="LOCAL-00004" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함">
+      <created>1629472447008</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1632648263050</updated>
+      <updated>1629472447008</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함">
+      <created>1629472619520</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1629472619520</updated>
+    </task>
+    <task id="LOCAL-00006" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함">
+      <created>1632631810870</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1632631810870</updated>
+    </task>
+    <task id="LOCAL-00007" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함">
+      <created>1632638968981</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1632638968982</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -196,15 +268,15 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947146" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947146" weight="0.3288889" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947146" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947146" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005285" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.3373102" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.335141" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -215,7 +287,22 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -234,13 +321,16 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/github/test" />
+    </ignored-roots>
     <MESSAGE value="ticket code update" />
     <MESSAGE value="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음" />
-    <MESSAGE value="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음&#10;mac mini용으로 구분 짓기 위해 새로 저장" />
-    <option name="LAST_COMMIT_MESSAGE" value="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음&#10;mac mini용으로 구분 짓기 위해 새로 저장" />
+    <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함" />
+    <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함" />
+    <option name="LAST_COMMIT_MESSAGE" value="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/soup_txt.txt">
@@ -261,20 +351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/synoloy_schedule_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gittest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -337,33 +413,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/synoloy_schedule_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lotto_auto_purchasing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="21" column="60" lean-forward="true" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
+        <state relative-caret-position="323">
+          <caret line="133" column="77" lean-forward="true" selection-start-line="133" selection-start-column="77" selection-end-line="133" selection-end-column="77" />
           <folding>
             <element signature="n#!!doc" />
-            <element signature="e#33#44#0" expanded="true" />
-            <element signature="e#578#620#0" />
-            <element signature="e#820#1101#0" />
-            <element signature="e#1418#6354#0" />
-            <element signature="e#1516#3288#0" />
-            <element signature="e#1527#1644#0" />
-            <element signature="e#1672#1919#0" />
-            <element signature="e#1947#2372#0" />
-            <element signature="e#2400#2817#0" />
-            <element signature="e#2845#3270#0" />
-            <element signature="e#3362#3802#0" />
-            <element signature="e#3847#3936#0" />
-            <element signature="e#3973#4414#0" />
-            <element signature="e#4458#4548#0" />
-            <element signature="e#4585#5025#0" />
-            <element signature="e#5069#5159#0" />
-            <element signature="e#5196#5597#0" />
-            <element signature="e#5641#5731#0" />
-            <element signature="e#5769#6076#0" />
-            <element signature="e#6120#6210#0" />
-            <element signature="e#6373#6423#0" />
+            <element signature="e#593#1321#0" />
+            <element signature="e#598#640#0" />
+            <element signature="e#840#1121#0" />
+            <element signature="e#1341#1391#0" />
+            <element signature="e#1436#1550#0" />
+            <element signature="e#1675#6028#0" />
+            <element signature="e#2416#2419#0" />
+            <element signature="e#3438#3828#0" />
+            <element signature="e#5353#5381#0" />
+            <element signature="e#5932#5974#0" />
+            <element signature="e#6056#6161#0" />
+            <element signature="e#6084#6101#0" />
+            <element signature="e#6310#6357#0" />
+            <element signature="e#6653#6757#0" />
+            <element signature="e#6653#6687#0" />
           </folding>
         </state>
       </provider>
