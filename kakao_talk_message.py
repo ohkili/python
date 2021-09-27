@@ -11,7 +11,7 @@ import requests
 REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
 # 카카오톡 메시지 API에서 code를 생성하기 위하여 1회만 시행, 다시 시도하면 에러 남, 위에 to get code_ 재시행 필요
 initial_time = 0
-if initial_time == 0:
+if initial_time == 1:
 
     url = "https://kauth.kakao.com/oauth/token"
     Redirect_URI = "https://localhost:3000"
