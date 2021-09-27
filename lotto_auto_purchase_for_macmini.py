@@ -17,6 +17,50 @@ import os
 import json
 import requests
 
+# REST_API_KEY and refresh_token is borrow
+REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
+refresh_token = 'zIkN8jgb2ITalVnnyIQ56_4ym20mRA6almpDHAo9dNsAAAF8KA4bGA'
+
+# 카카오톡 메시지 API
+# rest api key와 refresth token을 이용하여 access token 갱신
+def access_token_mkr(REST_API_KEY, refresh_token):
+    url = "https://kauth.kakao.com/oauth/token"
+
+    data = {
+        "grant_type": "refresh_token",
+        "client_id": REST_API_KEY,
+        "refresh_token": refresh_token
+    }
+    response = requests.post(url, data=data)
+    tokens2 = response.json()
+    print(tokens2)
+
+    access_token = tokens2['access_token']
+    return access_token
+
+def kakao_message(data, access_token):
+    url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
+    # access_token = 'pnvTjrwWOlNoRrFHo5IEfDco_Mi9Kf7R-vC_TQorDNMAAAF8IfKFow'  # tokens['access_token']
+
+    # 사용자 토큰
+    headers = {
+        "Authorization": "Bearer " + access_token}
+
+    data = {
+        "template_object": json.dumps({"object_type": "text",
+                                   "text": str(data),
+                                       "link": {
+                                           "web_url": "www.naver.com"
+                                       }
+                                       })
+    }
+
+    response = requests.post(url, headers=headers, data=data)
+    print(response.status_code)
+    if response.json().get('result_code') == 0:
+        print('메시지를 성공적으로 보냈습니다.')
+    else:
+        print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
 
 # driver 초기화 하고 url 들어가는 함수, os가 윈도우인지, mac인지 구분하고 chrome driver가 저장된 위치를 명시하였으므로 개인 환경에 맞게 적절히 셋팅 필요
 def driverAct(url, option ='mac'):
@@ -121,7 +165,9 @@ def lotto_purchase():
 
     lotto_result = pd.DataFrame([[lotto_type,lotto_round,lotto_issue,lotto_draw,lotto_paylimit,lotto_purchaseNo]],
                                 columns =['lotto_type','lotto_round','lotto_issue','lotto_draw','lotto_paylimit','lotto_purchaseNo'])
-    kakao_message(lotto_result) # 카카오톡으로 메세지 보내기
+    access_token = access_token_mkr(REST_API_KEY, refresh_token)
+    kakao_message(lotto_result, access_token)
+
     # lotto_log = pd.DataFrame()
     # lotto_log = pd.read_pickle('/Users/gwon-yonghwan/pythonProject/lotto_log.pkl')
     lack(t)
@@ -133,47 +179,24 @@ def lotto_purchase():
     print(lotto_log)
     lack(t)
     driver.find_element(By.XPATH, "//div[@id='popReceipt']/div[@class='btns']/input[@id='closeLayer'] ").click()
-
+    driver.quit()
+    return lotto_result
 # Functions setup
 
 def good_luck():
       print("Good Luck for Test")
       print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-      kakao_message('message test '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
+      access_token = access_token_mkr(REST_API_KEY,refresh_token)
+      kakao_message('message test '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
 
 def work():
       print("Study and work hard")
       print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
-
-def kakao_message(data):
-    url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
-    KAKAO_TOKEN = 'pnvTjrwWOlNoRrFHo5IEfDco_Mi9Kf7R-vC_TQorDNMAAAF8IfKFow'  # tokens['access_token']
-
-    # 사용자 토큰
-    headers = {
-        "Authorization": "Bearer " + KAKAO_TOKEN}
-
-    data = {
-        "template_object": json.dumps({"object_type": "text",
-                                       "text": str(data),
-                                       "link": {
-                                           "web_url": "www.naver.com"
-                                       }
-                                       })
-    }
-
-    response = requests.post(url, headers=headers, data=data)
-    print(response.status_code)
-    if response.json().get('result_code') == 0:
-        print('메시지를 성공적으로 보냈습니다.')
-    else:
-        print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
-
-
+good_luck()
 # Task scheduling
-# After every 10mins geeks() is called.
-# schedule.every(30/60).minutes.do(good_luck)
+# After every 10 mins geeks() is called.
+# schedule.every(10/60).minutes.do(good_luck)
 
 # After every hour geeks() is called.
 # schedule.every().hour.do(geeks)
