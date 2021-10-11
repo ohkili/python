@@ -81,18 +81,18 @@ userPwd.send_keys(Keys.ENTER)
 reservation_open = driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")
 driver.execute_script("arguments[0].click();",reservation_open)
 # 아래 블럭 처리한 내용은 element에서 click을 하고 시행되지 않으면 execute_script를 쓰라는 문구인데 시간을 아끼기 위해 바로 excecute_sript를 사용하였다.
- """   try:
-        print("Element is visible? " + str(reservation_open.is_displayed()))  # elemnet visible check
-        reservation_open.click()
-        # 에러메시지가 아래와 같이 나오면 엘리먼트가 보이지 않은것이다.
-        # " selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable   (Session info: chrome=94.0.4606.61) "
-    
-        print("Element is visible? " + str(reservation_open.is_displayed())) # elemnet visible check
-        except:
-    
-             # 그러면 아래와 같이 명령을 쓰면 해결이 된다.
-            driver.execute_script("arguments[0].click();",reservation_open) 
-"""
+#  """   try:
+#         print("Element is visible? " + str(reservation_open.is_displayed()))  # elemnet visible check
+#         reservation_open.click()
+#         # 에러메시지가 아래와 같이 나오면 엘리먼트가 보이지 않은것이다.
+#         # " selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable   (Session info: chrome=94.0.4606.61) "
+#
+#         print("Element is visible? " + str(reservation_open.is_displayed())) # elemnet visible check
+#         except:
+#
+#              # 그러면 아래와 같이 명령을 쓰면 해결이 된다.
+#             driver.execute_script("arguments[0].click();",reservation_open)
+# """
 
 
 
