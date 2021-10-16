@@ -15,85 +15,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chromedriver_autoinstall.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="11" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reservation_golf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="204" column="115" selection-start-line="204" selection-start-column="115" selection-end-line="204" selection-end-column="115" />
+            <state relative-caret-position="304">
+              <caret line="437" column="38" lean-forward="true" selection-start-line="437" selection-start-column="38" selection-end-line="437" selection-end-column="38" />
               <folding>
-                <element signature="e#549#899#0" />
-                <element signature="e#739#849#0" />
-                <element signature="e#933#949#0" />
-                <element signature="e#1992#2058#0" />
-                <element signature="e#2812#3383#1" />
-                <element signature="e#3387#3403#0" />
-                <element signature="e#3414#5291#1" />
-                <element signature="e#5979#6034#0" />
-                <element signature="e#6466#6716#0" />
-                <element signature="e#7487#7506#0" />
+                <element signature="e#1#34#0" expanded="true" />
+                <element signature="e#539#889#0" />
+                <element signature="e#729#839#0" />
+                <element signature="e#1057#1071#0" />
+                <element signature="e#1180#1518#0" />
+                <element signature="e#1236#1356#0" />
+                <element signature="e#1563#2405#0" />
+                <element signature="e#1628#1727#0" />
+                <element signature="e#1756#1808#0" />
+                <element signature="e#1821#2146#0" />
+                <element signature="e#1861#2139#0" />
+                <element signature="e#1986#2098#0" />
+                <element signature="e#2475#2767#0" />
+                <element signature="e#2892#16933#0" />
+                <element signature="e#3474#3527#0" />
+                <element signature="e#4067#4134#0" />
+                <element signature="e#4651#4757#0" />
+                <element signature="e#5447#7452#1" />
+                <element signature="e#22811#22905#0" />
+                <element signature="e#10015#10108#0" />
+                <element signature="e#23510#23565#0" />
+                <element signature="e#23795#23935#0" />
+                <element signature="e#24017#24316#0" />
+                <element signature="e#25243#25638#0" />
+                <element signature="e#10739#13609#0" />
+                <element signature="e#25443#25462#0" />
+                <element signature="e#12296#12675#0" />
+                <element signature="e#12782#13249#0" />
+                <element signature="e#16505#16783#0" />
+                <element signature="e#16957#17200#0" />
+                <element signature="e#17156#17197#0" />
+                <element signature="e#17469#17479#0" />
+                <element signature="e#12882#13071#0" />
+                <element signature="e#13966#14102#0" />
+                <element signature="e#14471#14572#0" />
+                <element signature="e#14471#14504#0" />
+                <element signature="e#13664#13678#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ticketing_interpark.py">
+        <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="398" column="13" lean-forward="true" selection-start-line="398" selection-start-column="13" selection-end-line="398" selection-end-column="13" />
+            <state relative-caret-position="223">
+              <caret line="189" column="105" selection-start-line="189" selection-start-column="37" selection-end-line="189" selection-end-column="105" />
               <folding>
-                <element signature="n#!!doc" />
                 <element signature="e#33#44#0" expanded="true" />
-                <element signature="e#578#620#0" />
-                <element signature="e#820#1101#0" />
-                <element signature="e#1418#6354#0" />
-                <element signature="e#1516#3288#0" />
-                <element signature="e#1527#1644#0" />
-                <element signature="e#1672#1919#0" />
-                <element signature="e#1947#2372#0" />
-                <element signature="e#2400#2817#0" />
-                <element signature="e#2845#3270#0" />
-                <element signature="e#3362#3802#0" />
-                <element signature="e#3847#3936#0" />
-                <element signature="e#3973#4414#0" />
-                <element signature="e#4458#4548#0" />
-                <element signature="e#4585#5025#0" />
-                <element signature="e#5069#5159#0" />
-                <element signature="e#5196#5597#0" />
-                <element signature="e#5641#5731#0" />
-                <element signature="e#5769#6076#0" />
-                <element signature="e#6120#6210#0" />
-                <element signature="e#6373#6423#0" />
-                <element signature="e#6468#6582#0" />
-                <element signature="e#6767#6783#0" />
-                <element signature="e#6910#6926#0" />
-                <element signature="e#7572#7586#0" />
-                <element signature="e#7654#7663#0" />
-                <element signature="e#8094#8114#0" />
-                <element signature="e#9068#9119#0" />
-                <element signature="e#9089#9119#0" />
-                <element signature="e#9136#9187#0" />
-                <element signature="e#9157#9187#0" />
-                <element signature="e#9334#9416#0" />
-                <element signature="e#9368#9394#0" />
-                <element signature="e#9556#9612#0" />
-                <element signature="e#9588#9612#0" />
-                <element signature="e#9775#9782#0" />
-                <element signature="e#9957#10046#0" />
-                <element signature="e#10615#10635#0" />
-                <element signature="e#11772#11800#0" />
               </folding>
             </state>
           </provider>
@@ -125,10 +101,20 @@
       <find>click</find>
       <find>WebDriverWait</find>
       <find>and</find>
+      <find>hour_option</find>
+      <find>d</find>
+      <find>wish_year</find>
+      <find>try_flag</find>
+      <find>reserve_cnt</find>
+      <find>reserve_type</find>
+      <find>book_try_cnt</find>
+      <find>able_ls</find>
     </findStrings>
     <replaceStrings>
       <replace>step_dic</replace>
       <replace>seat_ls</replace>
+      <replace>dt</replace>
+      <replace>reserve_cnt</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -337,7 +323,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633364115667</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="골프 자동 예약 메크로">
+      <created>1633970481296</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1633970481296</updated>
+    </task>
+    <task id="LOCAL-00013" summary="골프 자동 예약 메크로">
+      <created>1633970592285</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1633970592285</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -353,8 +353,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" visible="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -365,8 +365,8 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947146" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947146" weight="0.3286334" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005285" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.3329718" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.3329718" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" visible="true" weight="0.3329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -413,7 +413,8 @@
     <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함" />
     <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함" />
     <MESSAGE value="chrome driver를 자동으로 설치하여 사용할 수 있게 해주는 lib" />
-    <option name="LAST_COMMIT_MESSAGE" value="chrome driver를 자동으로 설치하여 사용할 수 있게 해주는 lib" />
+    <MESSAGE value="골프 자동 예약 메크로" />
+    <option name="LAST_COMMIT_MESSAGE" value="골프 자동 예약 메크로" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -456,31 +457,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/synoloy_schedule_test.py" />
-    <entry file="file://$PROJECT_DIR$/lotto_auto_purchasing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="133" column="77" lean-forward="true" selection-start-line="133" selection-start-column="77" selection-end-line="133" selection-end-column="77" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#593#1321#0" />
-            <element signature="e#598#640#0" />
-            <element signature="e#840#1121#0" />
-            <element signature="e#1341#1391#0" />
-            <element signature="e#1436#1550#0" />
-            <element signature="e#1675#6028#0" />
-            <element signature="e#2416#2419#0" />
-            <element signature="e#3438#3828#0" />
-            <element signature="e#5353#5381#0" />
-            <element signature="e#5932#5974#0" />
-            <element signature="e#6056#6161#0" />
-            <element signature="e#6084#6101#0" />
-            <element signature="e#6310#6357#0" />
-            <element signature="e#6653#6757#0" />
-            <element signature="e#6653#6687#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ddd.py" />
     <entry file="file://$PROJECT_DIR$/gittest.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -490,10 +466,32 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kakao_talk_message.py" />
-    <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/selenium/webdriver/common/by.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="100" column="8" lean-forward="true" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+        <state relative-caret-position="475">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lotto_auto_purchasing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="147" column="46" lean-forward="true" selection-start-line="147" selection-start-column="46" selection-end-line="147" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!doc" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kakao_message.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="11" />
+          <folding>
+            <element signature="e#578#1107#0" />
+            <element signature="e#1397#1735#0" />
+            <element signature="e#1780#2622#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -507,24 +505,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kakao_message.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/selenium/webdriver/common/by.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ticketing_interpark.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="398" column="13" lean-forward="true" selection-start-line="398" selection-start-column="13" selection-end-line="398" selection-end-column="13" />
+          <caret line="398" column="13" selection-start-line="398" selection-start-column="13" selection-end-line="398" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" />
             <element signature="e#33#44#0" expanded="true" />
@@ -570,21 +554,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="189" column="105" selection-start-line="189" selection-start-column="37" selection-end-line="189" selection-end-column="105" />
+          <folding>
+            <element signature="e#33#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/reservation_golf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="204" column="115" selection-start-line="204" selection-start-column="115" selection-end-line="204" selection-end-column="115" />
+        <state relative-caret-position="304">
+          <caret line="437" column="38" lean-forward="true" selection-start-line="437" selection-start-column="38" selection-end-line="437" selection-end-column="38" />
           <folding>
-            <element signature="e#549#899#0" />
-            <element signature="e#739#849#0" />
-            <element signature="e#933#949#0" />
-            <element signature="e#1992#2058#0" />
-            <element signature="e#2812#3383#1" />
-            <element signature="e#3387#3403#0" />
-            <element signature="e#3414#5291#1" />
-            <element signature="e#5979#6034#0" />
-            <element signature="e#6466#6716#0" />
-            <element signature="e#7487#7506#0" />
+            <element signature="e#1#34#0" expanded="true" />
+            <element signature="e#539#889#0" />
+            <element signature="e#729#839#0" />
+            <element signature="e#1057#1071#0" />
+            <element signature="e#1180#1518#0" />
+            <element signature="e#1236#1356#0" />
+            <element signature="e#1563#2405#0" />
+            <element signature="e#1628#1727#0" />
+            <element signature="e#1756#1808#0" />
+            <element signature="e#1821#2146#0" />
+            <element signature="e#1861#2139#0" />
+            <element signature="e#1986#2098#0" />
+            <element signature="e#2475#2767#0" />
+            <element signature="e#2892#16933#0" />
+            <element signature="e#3474#3527#0" />
+            <element signature="e#4067#4134#0" />
+            <element signature="e#4651#4757#0" />
+            <element signature="e#5447#7452#1" />
+            <element signature="e#22811#22905#0" />
+            <element signature="e#10015#10108#0" />
+            <element signature="e#23510#23565#0" />
+            <element signature="e#23795#23935#0" />
+            <element signature="e#24017#24316#0" />
+            <element signature="e#25243#25638#0" />
+            <element signature="e#10739#13609#0" />
+            <element signature="e#25443#25462#0" />
+            <element signature="e#12296#12675#0" />
+            <element signature="e#12782#13249#0" />
+            <element signature="e#16505#16783#0" />
+            <element signature="e#16957#17200#0" />
+            <element signature="e#17156#17197#0" />
+            <element signature="e#17469#17479#0" />
+            <element signature="e#12882#13071#0" />
+            <element signature="e#13966#14102#0" />
+            <element signature="e#14471#14572#0" />
+            <element signature="e#14471#14504#0" />
+            <element signature="e#13664#13678#0" />
           </folding>
         </state>
       </provider>
