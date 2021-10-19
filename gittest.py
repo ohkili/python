@@ -27,3 +27,14 @@ age =1
 g = (4,5,4,6)
 h ={4,5,6,4}
 g.append(66)
+
+# 시스템 확인 하는 문구
+from sys import platform
+platform
+platform
+if platform == "linux" or platform == "linux2":
+    print('linux')
+elif platform == "darwin":
+    print('osx') # mac
+elif platform == "win32":
+    print('windows')

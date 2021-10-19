@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/gittest.py" afterDir="false" />
     </list>
     <ignored path="E:\python\.idea\shelf/" />
     <ignored path="$PROJECT_DIR$/venv/" />
@@ -15,49 +16,122 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reservation_golf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="437" column="38" lean-forward="true" selection-start-line="437" selection-start-column="38" selection-end-line="437" selection-end-column="38" />
+            <state relative-caret-position="190">
+              <caret line="428" column="35" lean-forward="true" selection-start-line="428" selection-start-column="35" selection-end-line="428" selection-end-column="35" />
               <folding>
                 <element signature="e#1#34#0" expanded="true" />
-                <element signature="e#539#889#0" />
-                <element signature="e#729#839#0" />
-                <element signature="e#1057#1071#0" />
-                <element signature="e#1180#1518#0" />
-                <element signature="e#1236#1356#0" />
-                <element signature="e#1563#2405#0" />
-                <element signature="e#1628#1727#0" />
-                <element signature="e#1756#1808#0" />
-                <element signature="e#1821#2146#0" />
-                <element signature="e#1861#2139#0" />
-                <element signature="e#1986#2098#0" />
-                <element signature="e#2475#2767#0" />
-                <element signature="e#2892#16933#0" />
-                <element signature="e#3474#3527#0" />
-                <element signature="e#4067#4134#0" />
-                <element signature="e#4651#4757#0" />
-                <element signature="e#5447#7452#1" />
-                <element signature="e#22811#22905#0" />
-                <element signature="e#10015#10108#0" />
-                <element signature="e#23510#23565#0" />
-                <element signature="e#23795#23935#0" />
-                <element signature="e#24017#24316#0" />
-                <element signature="e#25243#25638#0" />
-                <element signature="e#10739#13609#0" />
-                <element signature="e#25443#25462#0" />
-                <element signature="e#12296#12675#0" />
-                <element signature="e#12782#13249#0" />
-                <element signature="e#16505#16783#0" />
-                <element signature="e#16957#17200#0" />
-                <element signature="e#17156#17197#0" />
-                <element signature="e#17469#17479#0" />
-                <element signature="e#12882#13071#0" />
-                <element signature="e#13966#14102#0" />
-                <element signature="e#14471#14572#0" />
-                <element signature="e#14471#14504#0" />
-                <element signature="e#13664#13678#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="736" column="45" lean-forward="true" selection-start-line="736" selection-start-column="45" selection-end-line="736" selection-end-column="45" />
+              <folding>
+                <element signature="e#625#975#0" />
+                <element signature="e#815#925#0" />
+                <element signature="e#1015#1744#0" />
+                <element signature="e#1020#1062#0" />
+                <element signature="e#1263#1544#0" />
+                <element signature="e#1143#1157#0" />
+                <element signature="e#1266#1604#0" />
+                <element signature="e#1322#1442#0" />
+                <element signature="e#1649#2491#0" />
+                <element signature="e#1714#1813#0" />
+                <element signature="e#1842#1894#0" />
+                <element signature="e#1907#2232#0" />
+                <element signature="e#1947#2225#0" />
+                <element signature="e#2072#2184#0" />
+                <element signature="e#2516#2808#0" />
+                <element signature="e#2906#16999#0" />
+                <element signature="e#2906#2960#0" />
+                <element signature="e#3524#3577#0" />
+                <element signature="e#4117#4184#0" />
+                <element signature="e#4701#4807#0" />
+                <element signature="e#5497#7502#1" />
+                <element signature="e#7569#16610#0" />
+                <element signature="e#7602#16508#0" />
+                <element signature="e#7623#9377#0" />
+                <element signature="e#7974#9328#0" />
+                <element signature="e#8758#9328#0" />
+                <element signature="e#8892#9042#0" />
+                <element signature="e#9415#9694#0" />
+                <element signature="e#9729#16191#0" />
+                <element signature="e#10057#10113#0" />
+                <element signature="e#10317#10411#0" />
+                <element signature="e#11224#11280#0" />
+                <element signature="e#11738#11793#0" />
+                <element signature="e#12023#12163#0" />
+                <element signature="e#12245#12544#0" />
+                <element signature="e#12801#13207#0" />
+                <element signature="e#13329#16191#0" />
+                <element signature="e#13865#13884#0" />
+                <element signature="e#14862#15238#0" />
+                <element signature="e#15341#15808#0" />
+                <element signature="e#16230#16508#0" />
+                <element signature="e#16658#16861#0" />
+                <element signature="e#17867#31960#0" />
+                <element signature="e#17867#17921#0" />
+                <element signature="e#18485#18538#0" />
+                <element signature="e#19078#19145#0" />
+                <element signature="e#19662#19768#0" />
+                <element signature="e#20458#22463#1" />
+                <element signature="e#22530#31571#0" />
+                <element signature="e#22563#31469#0" />
+                <element signature="e#22584#24338#0" />
+                <element signature="e#22935#24289#0" />
+                <element signature="e#23719#24289#0" />
+                <element signature="e#23853#24003#0" />
+                <element signature="e#24376#24655#0" />
+                <element signature="e#24690#31152#0" />
+                <element signature="e#25018#25074#0" />
+                <element signature="e#25278#25372#0" />
+                <element signature="e#26185#26241#0" />
+                <element signature="e#26699#26754#0" />
+                <element signature="e#26984#27124#0" />
+                <element signature="e#27206#27505#0" />
+                <element signature="e#27762#28168#0" />
+                <element signature="e#28290#31152#0" />
+                <element signature="e#28826#28845#0" />
+                <element signature="e#29823#30199#0" />
+                <element signature="e#30302#30769#0" />
+                <element signature="e#31191#31469#0" />
+                <element signature="e#31619#31822#0" />
+                <element signature="e#17118#17253#0" />
+                <element signature="e#17441#17482#0" />
+                <element signature="e#17610#17751#0" />
+                <element signature="e#17754#17764#0" />
+                <element signature="e#18052#18241#0" />
+                <element signature="e#18891#18992#0" />
+                <element signature="e#18891#18924#0" />
+                <element signature="e#18995#19009#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gittest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chromedriver_autoinstall.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,10 +140,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="189" column="105" selection-start-line="189" selection-start-column="37" selection-end-line="189" selection-end-column="105" />
+            <state relative-caret-position="146">
+              <caret line="65" selection-start-line="65" selection-end-line="84" />
               <folding>
                 <element signature="e#33#44#0" expanded="true" />
+                <element signature="e#1190#2032#0" />
+                <element signature="e#2175#2904#0" />
               </folding>
             </state>
           </provider>
@@ -127,12 +203,14 @@
         <option value="$PROJECT_DIR$/teckect_reserv_move_step1.py" />
         <option value="$PROJECT_DIR$/ticketing_interpark_for_macos.py" />
         <option value="$PROJECT_DIR$/ticketing_interpark.py" />
-        <option value="$PROJECT_DIR$/gittest.py" />
         <option value="$PROJECT_DIR$/sysnoloy_schedule_test.py" />
         <option value="$PROJECT_DIR$/lotto_auto_purchasing.py" />
         <option value="$PROJECT_DIR$/ddd.py" />
         <option value="$PROJECT_DIR$/chromedriver_autoinstall.py" />
         <option value="$PROJECT_DIR$/reservation_golf.py" />
+        <option value="$PROJECT_DIR$/gittest.py" />
+        <option value="$PROJECT_DIR$/chromedriver_autoinstall_raw.py" />
+        <option value="$PROJECT_DIR$/reservation_golf_for_macmini.py" />
       </list>
     </option>
   </component>
@@ -149,6 +227,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,7 +239,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -171,6 +249,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\python" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -337,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633970592285</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="site 변경 여부 test 기능 추가">
+      <created>1634407072288</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1634407072288</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -353,8 +443,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" sideWeight="0.500813" side_tool="true" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49593496" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.50406504" side_tool="true" visible="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -366,7 +456,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947146" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947146" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.3329718" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" visible="true" weight="0.3329718" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" visible="true" weight="0.3329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -414,7 +504,8 @@
     <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함" />
     <MESSAGE value="chrome driver를 자동으로 설치하여 사용할 수 있게 해주는 lib" />
     <MESSAGE value="골프 자동 예약 메크로" />
-    <option name="LAST_COMMIT_MESSAGE" value="골프 자동 예약 메크로" />
+    <MESSAGE value="site 변경 여부 test 기능 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="site 변경 여부 test 기능 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -458,13 +549,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/synoloy_schedule_test.py" />
     <entry file="file://$PROJECT_DIR$/ddd.py" />
-    <entry file="file://$PROJECT_DIR$/gittest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kakao_talk_message.py" />
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/selenium/webdriver/common/by.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -491,16 +575,6 @@
             <element signature="e#578#1107#0" />
             <element signature="e#1397#1735#0" />
             <element signature="e#1780#2622#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chromedriver_autoinstall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -554,58 +628,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
+    <entry file="file://$PROJECT_DIR$/gittest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="189" column="105" selection-start-line="189" selection-start-column="37" selection-end-line="189" selection-end-column="105" />
+        <state relative-caret-position="337">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chromedriver_autoinstall_raw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="242" column="25" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
           <folding>
-            <element signature="e#33#44#0" expanded="true" />
+            <element signature="e#77#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chromedriver_autoinstall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reservation_golf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="437" column="38" lean-forward="true" selection-start-line="437" selection-start-column="38" selection-end-line="437" selection-end-column="38" />
+        <state relative-caret-position="190">
+          <caret line="428" column="35" lean-forward="true" selection-start-line="428" selection-start-column="35" selection-end-line="428" selection-end-column="35" />
           <folding>
             <element signature="e#1#34#0" expanded="true" />
-            <element signature="e#539#889#0" />
-            <element signature="e#729#839#0" />
-            <element signature="e#1057#1071#0" />
-            <element signature="e#1180#1518#0" />
-            <element signature="e#1236#1356#0" />
-            <element signature="e#1563#2405#0" />
-            <element signature="e#1628#1727#0" />
-            <element signature="e#1756#1808#0" />
-            <element signature="e#1821#2146#0" />
-            <element signature="e#1861#2139#0" />
-            <element signature="e#1986#2098#0" />
-            <element signature="e#2475#2767#0" />
-            <element signature="e#2892#16933#0" />
-            <element signature="e#3474#3527#0" />
-            <element signature="e#4067#4134#0" />
-            <element signature="e#4651#4757#0" />
-            <element signature="e#5447#7452#1" />
-            <element signature="e#22811#22905#0" />
-            <element signature="e#10015#10108#0" />
-            <element signature="e#23510#23565#0" />
-            <element signature="e#23795#23935#0" />
-            <element signature="e#24017#24316#0" />
-            <element signature="e#25243#25638#0" />
-            <element signature="e#10739#13609#0" />
-            <element signature="e#25443#25462#0" />
-            <element signature="e#12296#12675#0" />
-            <element signature="e#12782#13249#0" />
-            <element signature="e#16505#16783#0" />
-            <element signature="e#16957#17200#0" />
-            <element signature="e#17156#17197#0" />
-            <element signature="e#17469#17479#0" />
-            <element signature="e#12882#13071#0" />
-            <element signature="e#13966#14102#0" />
-            <element signature="e#14471#14572#0" />
-            <element signature="e#14471#14504#0" />
-            <element signature="e#13664#13678#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="65" selection-start-line="65" selection-end-line="84" />
+          <folding>
+            <element signature="e#33#44#0" expanded="true" />
+            <element signature="e#1190#2032#0" />
+            <element signature="e#2175#2904#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="736" column="45" lean-forward="true" selection-start-line="736" selection-start-column="45" selection-end-line="736" selection-end-column="45" />
+          <folding>
+            <element signature="e#625#975#0" />
+            <element signature="e#815#925#0" />
+            <element signature="e#1015#1744#0" />
+            <element signature="e#1020#1062#0" />
+            <element signature="e#1263#1544#0" />
+            <element signature="e#1143#1157#0" />
+            <element signature="e#1266#1604#0" />
+            <element signature="e#1322#1442#0" />
+            <element signature="e#1649#2491#0" />
+            <element signature="e#1714#1813#0" />
+            <element signature="e#1842#1894#0" />
+            <element signature="e#1907#2232#0" />
+            <element signature="e#1947#2225#0" />
+            <element signature="e#2072#2184#0" />
+            <element signature="e#2516#2808#0" />
+            <element signature="e#2906#16999#0" />
+            <element signature="e#2906#2960#0" />
+            <element signature="e#3524#3577#0" />
+            <element signature="e#4117#4184#0" />
+            <element signature="e#4701#4807#0" />
+            <element signature="e#5497#7502#1" />
+            <element signature="e#7569#16610#0" />
+            <element signature="e#7602#16508#0" />
+            <element signature="e#7623#9377#0" />
+            <element signature="e#7974#9328#0" />
+            <element signature="e#8758#9328#0" />
+            <element signature="e#8892#9042#0" />
+            <element signature="e#9415#9694#0" />
+            <element signature="e#9729#16191#0" />
+            <element signature="e#10057#10113#0" />
+            <element signature="e#10317#10411#0" />
+            <element signature="e#11224#11280#0" />
+            <element signature="e#11738#11793#0" />
+            <element signature="e#12023#12163#0" />
+            <element signature="e#12245#12544#0" />
+            <element signature="e#12801#13207#0" />
+            <element signature="e#13329#16191#0" />
+            <element signature="e#13865#13884#0" />
+            <element signature="e#14862#15238#0" />
+            <element signature="e#15341#15808#0" />
+            <element signature="e#16230#16508#0" />
+            <element signature="e#16658#16861#0" />
+            <element signature="e#17867#31960#0" />
+            <element signature="e#17867#17921#0" />
+            <element signature="e#18485#18538#0" />
+            <element signature="e#19078#19145#0" />
+            <element signature="e#19662#19768#0" />
+            <element signature="e#20458#22463#1" />
+            <element signature="e#22530#31571#0" />
+            <element signature="e#22563#31469#0" />
+            <element signature="e#22584#24338#0" />
+            <element signature="e#22935#24289#0" />
+            <element signature="e#23719#24289#0" />
+            <element signature="e#23853#24003#0" />
+            <element signature="e#24376#24655#0" />
+            <element signature="e#24690#31152#0" />
+            <element signature="e#25018#25074#0" />
+            <element signature="e#25278#25372#0" />
+            <element signature="e#26185#26241#0" />
+            <element signature="e#26699#26754#0" />
+            <element signature="e#26984#27124#0" />
+            <element signature="e#27206#27505#0" />
+            <element signature="e#27762#28168#0" />
+            <element signature="e#28290#31152#0" />
+            <element signature="e#28826#28845#0" />
+            <element signature="e#29823#30199#0" />
+            <element signature="e#30302#30769#0" />
+            <element signature="e#31191#31469#0" />
+            <element signature="e#31619#31822#0" />
+            <element signature="e#17118#17253#0" />
+            <element signature="e#17441#17482#0" />
+            <element signature="e#17610#17751#0" />
+            <element signature="e#17754#17764#0" />
+            <element signature="e#18052#18241#0" />
+            <element signature="e#18891#18992#0" />
+            <element signature="e#18891#18924#0" />
+            <element signature="e#18995#19009#0" />
           </folding>
         </state>
       </provider>
