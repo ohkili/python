@@ -100,7 +100,7 @@ def good_luck():
       print("Good Luck for Test")
       print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
       access_token = access_token_mkr(REST_API_KEY,refresh_token)
-      kakao_message('message test '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
+      kakao_message('message test from macmini with golf '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
 def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False):
     # info_rivera = {'url': 'https://www.shinangolf.com/',
     #                'loginPage': 'https://www.shinangolf.com/member/login',
@@ -394,14 +394,14 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     print('wish_date',wish_date)
     driver.close()
 def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False):
-    # info_rivera = {'url': 'https://www.shinangolf.com/',
-    #                'loginPage': 'https://www.shinangolf.com/member/login',
-    #                'id': 'ohkili',
-    #                'pw': 'Sin!1203'
-    #                }
-    # loginfo = info_rivera
-    # info_date = info_date_test
-    #
+    info_rivera = {'url': 'https://www.shinangolf.com/',
+                   'loginPage': 'https://www.shinangolf.com/member/login',
+                   'id': 'ohkili',
+                   'pw': 'Sin!1203'
+                   }
+    loginfo = info_rivera
+    info_date = info_date_test
+
 
     url = loginfo['url']
     loginpage = loginfo['loginPage']
@@ -493,7 +493,7 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                                            <button conclick> 예약 선택 버튼 """
     date_count = len(wish_date)
     for dt in wish_date:
-
+        dt = wish_date[0]
         if date_count >0 :
 
 
@@ -511,13 +511,13 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                     status_year  = driver.find_element(By.XPATH, "//div[@class='month_wrap']/span[@class ='year']").text[:4]
                     status_month = driver.find_element(By.XPATH, "//div[@class='month_wrap']/span[@class ='month']").text[:2]
                     if wish_year > status_year or wish_month > status_month :
-                        driver.find_element(By.XPATH, "//div[@class='month_wrap]/button[@class='next']").click()
+                        driver.find_element(By.XPATH, "//div[@class='month_wrap']/button[@class='next']").click()
                     else:
                         pass
                     calendar_week = driver.find_elements(By.XPATH,
                                                          "//div[@class='reservation_table calendar_table']/table/tbody/tr")
                     for i in range(len(calendar_week[0].find_elements(By.XPATH, "//td"))):
-
+                        i = 9
                         s = (calendar_week[0].find_elements(By.XPATH, "//td")[i].text)
                         if s.find('\n')>0:
                             s = s.split('\n')[0]
@@ -701,16 +701,21 @@ def info_date_test():
                       'hour_option': 'first'
                       }
     return info_date_test
+time_ls =[]
+tm = time.time()
+for t in range(30):
+    d = tm + t* 86400
+    temp_tm = time.localtime(d)
+    string = time.strftime('%Y%m%d', temp_tm)
+    time_ls.append(string)
+info_date_test = {'wish_date': time_ls,
+                'wish_hour': ['05~23'],
+                'hour_option': 'first'   }
 
-# info_date_test = {'wish_date': time_ls,
-#                   'wish_hour': ['05~23'],
-#                   'hour_option': 'first'
-#                   }
-
-info_date_test = {'wish_date': ['20211016','20211017'],
-                  'wish_hour': ['05~23'],
-                  'hour_option': 'first'
-                  }
+# info_date_test = {'wish_date': ['20211016','20211017'],
+#                  'wish_hour': ['05~23'],
+#                  'hour_option': 'first'
+#                  }
 
 
 # 날짜 계산 연습
@@ -730,23 +735,24 @@ info_rivera = {'url': 'https://www.shinangolf.com/',
                'loginPage': 'https://www.shinangolf.com/member/login',
                'id': 'ohkili',
                'pw': 'Sin!1203'
+
                }
 
 # 날짜 고르기
-info_date = {'wish_date': ['20211023', '20211028'],
-             'wish_hour': ['14~16', '18~19'],
-             'hour_option': 'first'
-             }
-info_date_test = info_date_test()
-reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
+# info_date = {'wish_date': ['20211023', '20211028'],
+#            'wish_hour': ['14~16', '18~19'],
+#            'hour_option': 'first'
+#            }
+good_luck()
+reserve_rivera_macmini(info_rivera, info_date_test, reserve_cnt=1, reserve_type='test', multi_date=False)
 # test
-reserve_rivera(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
+# reserve_rivera(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 
 # Every day at 12am or 00:00 time bedtime() is called.
 schedule.every().day.at("19:30").do(good_luck)
 schedule.every().day.at("07:30").do(good_luck)
 # str(random.randrange(9,14)).zfill(2)
-schedule.every().day.at("12:30").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test(),reserve_cnt=1,reserve_type='test', multi_date = False) )
+schedule.every().day.at("12:30").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test,reserve_cnt=1,reserve_type='test', multi_date = False) )
 while True:
 
 	# Checks whether a scheduled task

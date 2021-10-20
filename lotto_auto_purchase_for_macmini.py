@@ -187,7 +187,7 @@ def good_luck():
       print("Good Luck for Test")
       print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
       access_token = access_token_mkr(REST_API_KEY,refresh_token)
-      kakao_message('message test '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
+      kakao_message('message test from macmini with lotto'+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
 
 def work():
       print("Study and work hard")

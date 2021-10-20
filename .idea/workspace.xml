@@ -1,157 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="token making update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/gittest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
     </list>
-    <ignored path="E:\python\.idea\shelf/" />
-    <ignored path="$PROJECT_DIR$/venv/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reservation_golf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="428" column="35" lean-forward="true" selection-start-line="428" selection-start-column="35" selection-end-line="428" selection-end-column="35" />
-              <folding>
-                <element signature="e#1#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="736" column="45" lean-forward="true" selection-start-line="736" selection-start-column="45" selection-end-line="736" selection-end-column="45" />
-              <folding>
-                <element signature="e#625#975#0" />
-                <element signature="e#815#925#0" />
-                <element signature="e#1015#1744#0" />
-                <element signature="e#1020#1062#0" />
-                <element signature="e#1263#1544#0" />
-                <element signature="e#1143#1157#0" />
-                <element signature="e#1266#1604#0" />
-                <element signature="e#1322#1442#0" />
-                <element signature="e#1649#2491#0" />
-                <element signature="e#1714#1813#0" />
-                <element signature="e#1842#1894#0" />
-                <element signature="e#1907#2232#0" />
-                <element signature="e#1947#2225#0" />
-                <element signature="e#2072#2184#0" />
-                <element signature="e#2516#2808#0" />
-                <element signature="e#2906#16999#0" />
-                <element signature="e#2906#2960#0" />
-                <element signature="e#3524#3577#0" />
-                <element signature="e#4117#4184#0" />
-                <element signature="e#4701#4807#0" />
-                <element signature="e#5497#7502#1" />
-                <element signature="e#7569#16610#0" />
-                <element signature="e#7602#16508#0" />
-                <element signature="e#7623#9377#0" />
-                <element signature="e#7974#9328#0" />
-                <element signature="e#8758#9328#0" />
-                <element signature="e#8892#9042#0" />
-                <element signature="e#9415#9694#0" />
-                <element signature="e#9729#16191#0" />
-                <element signature="e#10057#10113#0" />
-                <element signature="e#10317#10411#0" />
-                <element signature="e#11224#11280#0" />
-                <element signature="e#11738#11793#0" />
-                <element signature="e#12023#12163#0" />
-                <element signature="e#12245#12544#0" />
-                <element signature="e#12801#13207#0" />
-                <element signature="e#13329#16191#0" />
-                <element signature="e#13865#13884#0" />
-                <element signature="e#14862#15238#0" />
-                <element signature="e#15341#15808#0" />
-                <element signature="e#16230#16508#0" />
-                <element signature="e#16658#16861#0" />
-                <element signature="e#17867#31960#0" />
-                <element signature="e#17867#17921#0" />
-                <element signature="e#18485#18538#0" />
-                <element signature="e#19078#19145#0" />
-                <element signature="e#19662#19768#0" />
-                <element signature="e#20458#22463#1" />
-                <element signature="e#22530#31571#0" />
-                <element signature="e#22563#31469#0" />
-                <element signature="e#22584#24338#0" />
-                <element signature="e#22935#24289#0" />
-                <element signature="e#23719#24289#0" />
-                <element signature="e#23853#24003#0" />
-                <element signature="e#24376#24655#0" />
-                <element signature="e#24690#31152#0" />
-                <element signature="e#25018#25074#0" />
-                <element signature="e#25278#25372#0" />
-                <element signature="e#26185#26241#0" />
-                <element signature="e#26699#26754#0" />
-                <element signature="e#26984#27124#0" />
-                <element signature="e#27206#27505#0" />
-                <element signature="e#27762#28168#0" />
-                <element signature="e#28290#31152#0" />
-                <element signature="e#28826#28845#0" />
-                <element signature="e#29823#30199#0" />
-                <element signature="e#30302#30769#0" />
-                <element signature="e#31191#31469#0" />
-                <element signature="e#31619#31822#0" />
-                <element signature="e#17118#17253#0" />
-                <element signature="e#17441#17482#0" />
-                <element signature="e#17610#17751#0" />
-                <element signature="e#17754#17764#0" />
-                <element signature="e#18052#18241#0" />
-                <element signature="e#18891#18992#0" />
-                <element signature="e#18891#18924#0" />
-                <element signature="e#18995#19009#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gittest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chromedriver_autoinstall.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="65" selection-start-line="65" selection-end-line="84" />
-              <folding>
-                <element signature="e#33#44#0" expanded="true" />
-                <element signature="e#1190#2032#0" />
-                <element signature="e#2175#2904#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -248,26 +106,35 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\python" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.lotto_auto_purchasing">
+  <component name="RunManager" selected="Python.lotto_auto_purchase_for_macmini">
+    <configuration name="lotto_auto_purchase_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="lotto_auto_purchasing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -281,6 +148,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lotto_auto_purchasing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="reservation_golf_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reservation_golf_for_macmini.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -310,14 +198,22 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.lotto_auto_purchasing" />
+      <item itemvalue="Python.ticketing_interpark" />
+      <item itemvalue="Python.reservation_golf_for_macmini" />
+      <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
+        <item itemvalue="Python.reservation_golf_for_macmini" />
         <item itemvalue="Python.lotto_auto_purchasing" />
         <item itemvalue="Python.ticketing_interpark" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -467,14 +363,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -493,6 +382,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
