@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/work.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chromedriver_autoinstall.py" beforeDir="false" afterPath="$PROJECT_DIR$/chromedriver_autoinstall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,14 +107,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lotto_auto_purchase_for_macmini">
+  <component name="RunManager" selected="Python.reservation_golf_for_macmini">
     <configuration name="lotto_auto_purchase_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -165,9 +164,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reservation_golf_for_macmini.py" />
@@ -208,8 +207,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
         <item itemvalue="Python.reservation_golf_for_macmini" />
+        <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
         <item itemvalue="Python.lotto_auto_purchasing" />
         <item itemvalue="Python.ticketing_interpark" />
       </list>

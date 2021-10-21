@@ -39,7 +39,8 @@ def driverAct(url, option ='mac'):
 
     os_option = os[option]
     if os_option == 'mac':
-        executable_path =  '/Users/home/PycharmProjects/chromedriver'                  # '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
+        executable_path =  '/Users/gwon-yonghwan/PycharmProjects/chromedriver'
+        #'/Users/home/PycharmProjects/chromedriver'                  # '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
 
     elif os_option == 'windows':
         # executable_path = "C:\\Users\ohkil\\PycharmProjects\\chromedriver_win32\\chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
