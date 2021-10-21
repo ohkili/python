@@ -17,6 +17,7 @@ from selenium.webdriver.common.alert import Alert
 from bs4 import BeautifulSoup
 
 import schedule
+import ssl
 
 # chrome driver auto install and driver activation
 def chromedriver_autorun():
@@ -26,6 +27,7 @@ def chromedriver_autorun():
     try:
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
     except:
+
         chromedriver_autoinstaller.install(True)
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
 
@@ -37,7 +39,7 @@ def driverAct(url, option ='mac'):
 
     os_option = os[option]
     if os_option == 'mac':
-        executable_path = '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
+        executable_path =  '/Users/home/PycharmProjects/chromedriver'                  # '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
 
     elif os_option == 'windows':
         # executable_path = "C:\\Users\ohkil\\PycharmProjects\\chromedriver_win32\\chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
@@ -394,14 +396,9 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     print('wish_date',wish_date)
     driver.close()
 def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False):
-    info_rivera = {'url': 'https://www.shinangolf.com/',
-                   'loginPage': 'https://www.shinangolf.com/member/login',
-                   'id': 'ohkili',
-                   'pw': 'Sin!1203'
-                   }
-    loginfo = info_rivera
-    info_date = info_date_test
-
+    # driver.close()
+    # loginfo = info_rivera
+    # info_date = info_date_test
 
     url = loginfo['url']
     loginpage = loginfo['loginPage']
@@ -493,7 +490,7 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                                            <button conclick> 예약 선택 버튼 """
     date_count = len(wish_date)
     for dt in wish_date:
-        dt = wish_date[0]
+        # dt = wish_date[0]
         if date_count >0 :
 
 
@@ -515,9 +512,11 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                     else:
                         pass
                     calendar_week = driver.find_elements(By.XPATH,
-                                                         "//div[@class='reservation_table calendar_table']/table/tbody/tr")
+                                                       "//div[@class='reservation_table calendar_table']/table/tbody/tr")
+
+
                     for i in range(len(calendar_week[0].find_elements(By.XPATH, "//td"))):
-                        i = 9
+
                         s = (calendar_week[0].find_elements(By.XPATH, "//td")[i].text)
                         if s.find('\n')>0:
                             s = s.split('\n')[0]
@@ -545,12 +544,13 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                     pass
                 elif reserve_type == 'test' and len(able_ls) >0 :
                     dt = able_ls[0]
+
                 elif reserve_type == 'test' and len(able_ls) ==0 and  book_try_cnt == len(wish_date):
 
-                    continue
+                    pass
                 else:
                     print('Check book_try_cnt')
-                    continue
+
 
 
                 date_selected_1 = "//tr/td/a[@class='open'  and @id =" + "'" + dt + "']"
@@ -558,15 +558,22 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                 # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open'  and @id ='20211028']")
                 # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open active'  and @id ='20211028']")
                 # calendar.find_element(By.XPATH, date_selected).text 에 예약이 가능하면 팀수가 나옴 없으면 예약 불가능하므로 예약 시도 cancel
+                try:
+                    date_check1 = calendar.find_element(By.XPATH, date_selected_1).text.find('팀')
+                except:
+                    date_check1 = -1
 
-                if calendar.find_element(By.XPATH, date_selected_1).text.find('팀') >= 0:
+                try:
+                    date_check2 =  calendar.find_element(By.XPATH, date_selected_2).text.find('팀')
+                except:
+                    date_check2 = -1
+
+                if date_check1 >= 0:
                     calendar_selected = calendar.find_element(By.XPATH, date_selected_1)
-                elif calendar.find_element(By.XPATH, date_selected_2).text.find('팀') >= 0:
+                elif date_check2 >= 0:
                     calendar_selected = calendar.find_element(By.XPATH, date_selected_2)
-                elif calendar.find_element(By.XPATH, date_selected_1).text.find('팀') == -1 and calendar.find_element(By.XPATH, date_selected_2).text.find('팀') == -1:   # 예약일이 없으면 바로 빠져 나와서 처리 속도를 높여줌
+                elif date_check1 == -1 and date_check2 == -1:   # 예약일이 없으면 바로 빠져 나와서 처리 속도를 높여줌
                     print('There is no book', dt)
-
-                    break
 
                 else :
                     print('Check Calendar')
@@ -574,11 +581,17 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
 
 
 
-                calendar_selected.click()     # 원하는 날짜에 해당하는 달력 check
+                 # calendar_selected.click()     # 원하는 날짜에 해당하는 달력 check
+                driver.execute_script("arguments[0].click();", calendar_selected)
                 # calendar.find_element(By.XPATH, date_selected).text
-
-                reservation_time = driver.find_element(By.XPATH, "//div[@class = 'reservation_table time_table']")
-                reservation_time_list = reservation_time.find_elements(By.XPATH, "//table/tbody/tr/td/button")
+                reservation_time = WebDriverWait(driver, 30).until(
+                    EC.presence_of_all_elements_located((By.XPATH, "//div[@class = 'reservation_table time_table']"))
+                )
+                # reservation_time = driver.find_element(By.XPATH, "//div[@class = 'reservation_table time_table']")
+                reservation_time_list = WebDriverWait(driver, 30).until(
+                    EC.presence_of_all_elements_located((By.XPATH, "//table/tbody/tr/td/button"))
+                )
+                # reservation_time_list = reservation_time.find_elements(By.XPATH, "//table/tbody/tr/td/button")
 
 
                 # s = reservation_time_list[0].get_attribute('onclick')
@@ -611,6 +624,13 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                     timeTable_masked = pd.concat([timeTable_masked, timeTable_sorted])
 
                 timeTable_masked.reset_index(inplace=True)
+            except:
+                print('macro fail:  making reserve table')
+                access_token = access_token_mkr(REST_API_KEY, refresh_token)
+                kakao_message('rivera macro fail:  making reserve table \n' + str(
+                    time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+            try:
+
                 while(reserve_cnt > 0):
 
                     if hour_option == 'first':
@@ -636,21 +656,21 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                     popup_text = driver.find_element(By.XPATH,
                                                      "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']").text
                     print(popup_text)
-                    reserve_text = driver.find_element(By.XPATH,
-                                                       "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").text
+                    reserve_button = driver.find_element(By.XPATH,
+                                        "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button")
+                    reserve_text = reserve_button.text
                     print(reserve_text)
+                    reserve_close_button =  driver.find_element(By.XPATH, "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a")
 
                     if reserve_type == 'real':
-                        driver.find_element(By.XPATH,
-                                        "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
+                        reserve_button.click()
                         # 이렇게 하면 바로 예약 됨
                         popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
                         kakao_message(popup_text, access_token)
 
                     elif   reserve_type == 'test' and reserve_text =='예약하기':
                         # 카카오 문자 보내기
-                        driver.find_element(By.XPATH,
-                                            "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
+                        reserve_close_button.click()
                         access_token = access_token_mkr(REST_API_KEY, refresh_token)
                         popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n'+ popup_text
                         kakao_message(popup_text, access_token)
@@ -667,12 +687,12 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
 
 
             except:
-                print('macro fail:  targetting reserve')
+                print('macro fail:  targetting reserve while sentence! ')
                 access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail:  targetting reserve  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                kakao_message('rivera macro fail:  targetting reserve while sentence!  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
 
         elif date_count == 0:
-            break
+            pass
         else :
             print('Check date_count')
     if book_try_cnt == len(wish_date):
@@ -701,16 +721,17 @@ def info_date_test():
                       'hour_option': 'first'
                       }
     return info_date_test
-time_ls =[]
-tm = time.time()
-for t in range(30):
-    d = tm + t* 86400
-    temp_tm = time.localtime(d)
-    string = time.strftime('%Y%m%d', temp_tm)
-    time_ls.append(string)
-info_date_test = {'wish_date': time_ls,
-                'wish_hour': ['05~23'],
-                'hour_option': 'first'   }
+# a = info_date_test()
+# time_ls =[]
+# tm = time.time()
+# for t in range(2):
+#     d = tm + t* 86400
+#     temp_tm = time.localtime(d)
+#     string = time.strftime('%Y%m%d', temp_tm)
+#     time_ls.append(string)
+# info_date_test = {'wish_date': time_ls,
+#                 'wish_hour': ['05~23'],
+#                 'hour_option': 'first'   }
 
 # info_date_test = {'wish_date': ['20211016','20211017'],
 #                  'wish_hour': ['05~23'],
@@ -739,12 +760,12 @@ info_rivera = {'url': 'https://www.shinangolf.com/',
                }
 
 # 날짜 고르기
-# info_date = {'wish_date': ['20211023', '20211028'],
-#            'wish_hour': ['14~16', '18~19'],
-#            'hour_option': 'first'
-#            }
+info_date = {'wish_date': ['20211023', '20211028'],
+           'wish_hour': ['14~16', '18~19'],
+           'hour_option': 'first'
+           }
 good_luck()
-reserve_rivera_macmini(info_rivera, info_date_test, reserve_cnt=1, reserve_type='test', multi_date=False)
+reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 # test
 # reserve_rivera(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 
