@@ -397,7 +397,7 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     print('book_try_cnt',book_try_cnt)
     print('wish_date',wish_date)
     driver.close()
-def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False):
+def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False,osopt='macmini'):
     # driver.close()
     # loginfo = info_rivera
     # info_date = info_date_test
@@ -413,7 +413,7 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
 
     book_try_cnt = 0
     able_ls = []
-    driver = driverAct(url, option ='mac')
+    driver = driverAct(url,osopt)
     driver.get(loginpage)
     # if reserve_cnt is True ,then reservation don't stop
     # if reserve_cnt is False ,then reservation 1 time and stop
@@ -775,7 +775,7 @@ reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_typ
 schedule.every().day.at("19:30").do(good_luck)
 schedule.every().day.at("07:30").do(good_luck)
 # str(random.randrange(9,14)).zfill(2)
-schedule.every().day.at("12:30").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test,reserve_cnt=1,reserve_type='test', multi_date = False) )
+schedule.every().day.at("12:30").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test,reserve_cnt=1,reserve_type='test', multi_date = False,osopt='macmini') )
 while True:
 
 	# Checks whether a scheduled task
