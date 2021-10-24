@@ -63,14 +63,16 @@ def kakao_message(data, access_token):
         print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
 
 # driver 초기화 하고 url 들어가는 함수, os가 윈도우인지, mac인지 구분하고 chrome driver가 저장된 위치를 명시하였으므로 개인 환경에 맞게 적절히 셋팅 필요
-def driverAct(url, option ='mac'):
+def driverAct(url, option ='macmini'):
     os = {'mac': 'mac',
           'win': 'windows'}
 
     os_option = os[option]
-    if os_option == 'mac':
-        executable_path = '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
-
+    if os_option == 'macmini':
+        executable_path =  '/Users/gwon-yonghwan/PycharmProjects/chromedriver'
+        #'/Users/home/PycharmProjects/chromedriver'   # '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
+    elif os_option == 'macpro':
+        executable_path = '/Users/home/PycharmProjects/chromedriver'
     elif os_option == 'windows':
         # executable_path = "C:\\Users\ohkil\\PycharmProjects\\chromedriver_win32\\chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
         executable_path = "C:/Users\ohkil/PycharmProjects/chromedriver_win32/chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다

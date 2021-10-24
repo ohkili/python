@@ -38,3 +38,26 @@ elif platform == "darwin":
     print('osx') # mac
 elif platform == "win32":
     print('windows')
+
+# mac file finding and copying
+
+import os
+os.getcwd()
+# os.listdir(path): return a list of then entries in the directory given by path
+os.listdir(os.getcwd())
+
+os.path.isfile('/Users/home/PycharmProjects/chromedriver')
+os.path.isfile('')
+
+'/Users/gwon-yonghwan/PycharmProjects/chromedriver'
+'/Users/home/Downlodads'
+
+import shutil
+src_dir = '/Users/home/Downloads'
+src_fname = 'chromedriver'
+dst_dir = '/Users/home/PycharmProjects'
+dst_fname = 'chromedriver2'
+src = os.path.join(src_dir, src_fname)
+dst = os.path.join(dst_dir, dst_fname)
+shutil.copy(src, dst)
+executable_path = '/Users/home/PycharmProjects/chromedriver2'
