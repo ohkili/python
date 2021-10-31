@@ -19,7 +19,7 @@ import requests
 
 # REST_API_KEY and refresh_token is borrow
 REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
-refresh_token = 'zIkN8jgb2ITalVnnyIQ56_4ym20mRA6almpDHAo9dNsAAAF8KA4bGA'
+refresh_token = '2hZcRLD01s1Rl0qEA0BhnenFH1om0rtTNimYSgo9cuoAAAF81jvBOA'
 
 # 카카오톡 메시지 API
 # rest api key와 refresth token을 이용하여 access token 갱신

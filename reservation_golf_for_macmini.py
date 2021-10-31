@@ -57,8 +57,10 @@ def driverAct(url, option ='macmini'):
 
 # REST_API_KEY and refresh_token is borrow
 REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
-refresh_token = 'zIkN8jgb2ITalVnnyIQ56_4ym20mRA6almpDHAo9dNsAAAF8KA4bGA'
+refresh_token = '2hZcRLD01s1Rl0qEA0BhnenFH1om0rtTNimYSgo9cuoAAAF81jvBOA'
 
+# https://kauth.kakao.com/oauth/authorize?client_id={REST API 키}&redirect_uri=https://localhost:3000&response_type=code&scope=talk_message
+# https://kauth.kakao.com/oauth/authorize?client_id=22644bd965c28d381ea875a9dde9e2d1&redirect_uri=https://localhost:3000&response_type=code&scope=talk_message
 # 카카오톡 메시지 API
 # rest api key와 refresth token을 이용하여 access token 갱신
 def access_token_mkr(REST_API_KEY, refresh_token):

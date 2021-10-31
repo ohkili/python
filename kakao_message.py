@@ -6,6 +6,16 @@ import os
 import json
 import requests
 # to get code_
+#
+# 위 참고 사이트를 보면 REST API를 사용하여 엑세스 토큰을 발급 받기 위해선 사용자 코드(code)를
+# 먼저 얻어야한다. code를 발급받는 방법은 다음과 같다.
+# 1. 브라우저를 통해 developers.kakao.com에 로그인
+# 2. 아래 URL을 자신에 맞게 수정 후, 브라우저에 URL 입력
+# kauth.kakao.com / oauth / authorize?client_id = {RESTAPIKEY} & redirect_uri = {Redirecturl} & response_type = code
+# 3. 위 URL을 입력하여 연결된 페이지의 URL을 확인해보면, ~~~~~code = xxxxxxxxxxxxxxxxxxxxxxxxxx 와 같이 나옴.
+#    code 뒤의 값을 복사하여 사용하면 됨. 다음 코드는 REST API를 사용하여 Access Token을 발급받는다.
+# (아래 코드에서 사용되는 code값은 위 과정에서 얻은 code값을 아래 코드에 적용하여 코드를 완성)
+
 # https://kauth.kakao.com/oauth/authorize?client_id=22644bd965c28d381ea875a9dde9e2d1&redirect_uri=https://localhost:3000&response_type=code&scope=talk_message
 # https://localhost:3000/?code=TqTfv_rWYM2XJvMHJZPfjWrPgCvUNIEUrMare5oJzX_UtNARO67IlfHJaW4HKSCdnl6O3Ao9c5sAAAF8KA1TEw
 REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
@@ -15,7 +25,7 @@ if initial_time == 1:
 
     url = "https://kauth.kakao.com/oauth/token"
     Redirect_URI = "https://localhost:3000"
-    code_ = 'TqTfv_rWYM2XJvMHJZPfjWrPgCvUNIEUrMare5oJzX_UtNARO67IlfHJaW4HKSCdnl6O3Ao9c5sAAAF8KA1TEw'
+    code_ = 'MiLGUgPQwy34PYv5z5IOc2o2vyn0Mj92lvKDkq_iwywicmJubX0PTCVY7cP6Vb5Lz9xOHgo9dBEAAAF81jp7Yw'
     data = {
         "grant_type" : "authorization_code",
         "client_id" : REST_API_KEY,
@@ -31,7 +41,7 @@ if initial_time == 1:
 elif initial_time != 0:
     print('find refresh token')
 # refresh_token is borrow
-refresh_token = 'zIkN8jgb2ITalVnnyIQ56_4ym20mRA6almpDHAo9dNsAAAF8KA4bGA'
+refresh_token = '2hZcRLD01s1Rl0qEA0BhnenFH1om0rtTNimYSgo9cuoAAAF81jvBOA'
 #==========
 # 카카오톡 메시지 API
 # rest api key와 refresth token을 이용하여 access token 갱신
