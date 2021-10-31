@@ -64,7 +64,8 @@ def kakao_message(data, access_token):
 
 # driver 초기화 하고 url 들어가는 함수, os가 윈도우인지, mac인지 구분하고 chrome driver가 저장된 위치를 명시하였으므로 개인 환경에 맞게 적절히 셋팅 필요
 def driverAct(url, option ='macmini'):
-    os = {'mac': 'mac',
+    os = {'macmini': 'macmini',
+          'macpro' : 'macpro',
           'win': 'windows'}
 
     os_option = os[option]
