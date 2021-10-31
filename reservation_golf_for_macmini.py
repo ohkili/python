@@ -34,7 +34,8 @@ def chromedriver_autorun():
     driver.implicitly_wait(10)
     return driver
 def driverAct(url, option ='macmini'):
-    os = {'mac': 'mac',
+    os = {'macmini': 'macmini',
+          'macpro' : 'macpro',
           'win': 'windows'}
 
     os_option = os[option]
