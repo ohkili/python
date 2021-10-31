@@ -1,5 +1,5 @@
 
-import chromedriver_autoinstaller
+# import chromedriver_autoinstaller
 import time
 # from  datetime import  *
 import pandas as pd
