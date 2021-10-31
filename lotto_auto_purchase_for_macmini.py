@@ -214,7 +214,7 @@ schedule.every().day.at("06:30").do(good_luck)
 # schedule.every().monday.do(good_luck)
 
 # Every tuesday at 18:00 sudo_placement() is called
-schedule.every().sunday.at("22:30").do(lotto_purchase)
+schedule.every().sunday.at("12:30").do(lotto_purchase)
 
 # Loop so that the scheduling task
 # keeps on running all time.
