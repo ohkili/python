@@ -102,7 +102,7 @@ def lotto_purchase():
     print('hello world')
     t= 1
     url = 'https://dhlottery.co.kr/common.do?method=main'
-    driver = driverAct(url,option='mac')
+    driver = driverAct(url,option='macmini')
     driver.set_window_size(1400, 1000)  # (가로, 세로)
 
     #로그인
