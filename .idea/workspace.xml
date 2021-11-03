@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="lotto puchase driveract fix">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/work.iml" afterDir="false" />
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram_message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" afterDir="false" />
     </list>
     <ignored path="E:\python\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="863" lean-forward="true" selection-start-line="863" selection-end-line="863" />
+            <state relative-caret-position="221">
+              <caret line="149" lean-forward="true" selection-start-line="105" selection-end-line="149" />
               <folding>
                 <element signature="e#37#48#0" expanded="true" />
                 <element signature="e#554#604#0" />
@@ -104,13 +101,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="331">
+              <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
               <folding>
                 <element signature="e#33#44#0" expanded="true" />
+                <element signature="e#2132#4044#0" />
+                <element signature="e#2318#3090#1" />
               </folding>
             </state>
           </provider>
@@ -195,6 +194,7 @@
         <option value="$PROJECT_DIR$/chromedriver_autoinstall_raw.py" />
         <option value="$PROJECT_DIR$/telegram_message.py" />
         <option value="$PROJECT_DIR$/reservation_golf_for_macmini.py" />
+        <option value="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" />
       </list>
     </option>
   </component>
@@ -520,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635689774369</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="telegram messate로 메세지 보내기 기능 update">
+      <created>1635908480544</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1635908480544</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -601,14 +608,15 @@
     <MESSAGE value="macpro macmini 구분 개선" />
     <MESSAGE value="macpro macmini 구분 개선 osopt에 macpro or macmini 구분" />
     <MESSAGE value="bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+    <MESSAGE value="telegram messate로 메세지 보내기 기능 update" />
+    <option name="LAST_COMMIT_MESSAGE" value="telegram messate로 메세지 보내기 기능 update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py</url>
-          <line>54</line>
+          <line>55</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -752,16 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="e#33#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/telegram_message.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
@@ -776,8 +774,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="863" lean-forward="true" selection-start-line="863" selection-end-line="863" />
+        <state relative-caret-position="221">
+          <caret line="149" lean-forward="true" selection-start-line="105" selection-end-line="149" />
           <folding>
             <element signature="e#37#48#0" expanded="true" />
             <element signature="e#554#604#0" />
@@ -843,6 +841,18 @@
             <element signature="e#34483#34673#0" />
             <element signature="e#34696#34826#0" />
             <element signature="e#34947#34953#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+          <folding>
+            <element signature="e#33#44#0" expanded="true" />
+            <element signature="e#2132#4044#0" />
+            <element signature="e#2318#3090#1" />
           </folding>
         </state>
       </provider>

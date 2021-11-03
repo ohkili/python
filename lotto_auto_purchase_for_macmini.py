@@ -16,6 +16,7 @@ import time
 import os
 import json
 import requests
+import telegram
 
 # REST_API_KEY and refresh_token is borrow
 REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
@@ -61,6 +62,50 @@ def kakao_message(data, access_token):
         print('메시지를 성공적으로 보냈습니다.')
     else:
         print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
+
+
+def telegram_message(content='Hello world', content_type='text', description='description'):
+    telegram_token = "2062294044:AAEzrGGPlV7C2C-9ZQ9Ji9QbTm7DoG8NgWw"
+    telegram_chat_id = 1926421781
+    bot = telegram.Bot(token=telegram_token)
+
+    # Bottom is telegram bot manual
+    """ 
+    # text 보내기
+    bot.sendMessage(chat_id=telegram_chat_id, text='hello world')
+    # image 보내기 image url
+    photo_url = "https://telegram.org/img/t_logo.png"
+    bot.sendPhoto(chat_id=telegram_chat_id, photo=photo_url, caption='telegrm logo')
+    # hyperlink 보내기
+    # 미리보기 기능 off ==>  disable_web_page_preview= True
+    # []안에 문자는 제목으로 전송되고, ()안에 hyperlink 넣어주면 됨
+    bot.send_message(chat_id=telegram_chat_id, text="[naver 증권](https://finance.naver.com)", parse_mode='Markdown',
+                     disable_web_page_preview=False)
+
+    # image 보내기 image file
+    # os.getcwd()
+    # glob.glob('E:\\python\\' + '*.jpg')
+    photo_file = 'E:\\python\\주행기록.jpg'
+    bot.sendPhoto(chat_id=telegram_chat_id, photo=open(photo_file, 'rb'), caption='카니발 주행기록') 
+    """
+
+    if content_type == 'text':
+        # example is 'hello world'
+        bot.sendMessage(chat_id=telegram_chat_id, text=content)
+    elif content_type == 'imgUrl':
+        # example is  "https://telegram.org/img/t_logo.png"
+        bot.sendPhoto(chat_id=telegram_chat_id, photo=content, caption=description)
+    elif content_type == 'imgFile':
+        # example is 'E:\\python\\주행기록.jpg'
+        bot.sendPhoto(chat_id=telegram_chat_id, photo=open(content, 'rb'), caption=description)
+    elif content_type == 'hyperlink':
+        # []안에 문자는 제목으로 전송되고, ()안에 hyperlink 넣어주면 됨
+        #  example is "[naver 증권](https://finance.naver.com)"
+        content_hyperlink = "[" + description + "](" + content + ")"
+        bot.send_message(chat_id=telegram_chat_id, text=content_hyperlink, parse_mode='Markdown',
+                         disable_web_page_preview=False)
+    else:
+        print('You must choice content_type as text, imgUrl, imgFile, hyperlink')
 
 # driver 초기화 하고 url 들어가는 함수, os가 윈도우인지, mac인지 구분하고 chrome driver가 저장된 위치를 명시하였으므로 개인 환경에 맞게 적절히 셋팅 필요
 def driverAct(url, option ='macmini'):
@@ -168,8 +213,9 @@ def lotto_purchase():
 
     lotto_result = pd.DataFrame([[lotto_type,lotto_round,lotto_issue,lotto_draw,lotto_paylimit,lotto_purchaseNo]],
                                 columns =['lotto_type','lotto_round','lotto_issue','lotto_draw','lotto_paylimit','lotto_purchaseNo'])
-    access_token = access_token_mkr(REST_API_KEY, refresh_token)
-    kakao_message(lotto_result, access_token)
+    # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+    # kakao_message(lotto_result, access_token)
+    telegram_message(content=lotto_result, content_type='text', description='description')
 
     # lotto_log = pd.DataFrame()
     # lotto_log = pd.read_pickle('/Users/gwon-yonghwan/pythonProject/lotto_log.pkl')
@@ -189,8 +235,10 @@ def lotto_purchase():
 def good_luck():
       print("Good Luck for Test")
       print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-      access_token = access_token_mkr(REST_API_KEY,refresh_token)
-      kakao_message('message test from macmini with lotto'+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
+      # access_token = access_token_mkr(REST_API_KEY,refresh_token)
+      # kakao_message('message test from macmini with lotto'+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
+      telegram_message(content='message test from macmini with lotto'+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), content_type='text', description='description')
+
 
 def work():
       print("Study and work hard")
