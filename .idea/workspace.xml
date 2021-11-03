@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" afterDir="false" />
     </list>
     <ignored path="E:\python\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,12 +103,46 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+            <state relative-caret-position="400">
+              <caret line="276" lean-forward="true" selection-start-line="276" selection-end-line="276" />
               <folding>
-                <element signature="e#33#44#0" expanded="true" />
+                <element signature="n#!!doc" />
+                <element signature="e#684#698#0" />
+                <element signature="e#807#1145#0" />
+                <element signature="e#863#983#0" />
+                <element signature="e#1190#2032#0" />
+                <element signature="e#1255#1354#0" />
+                <element signature="e#1383#1435#0" />
+                <element signature="e#1448#1773#0" />
+                <element signature="e#1488#1766#0" />
+                <element signature="e#1613#1725#0" />
                 <element signature="e#2132#4044#0" />
                 <element signature="e#2318#3090#1" />
+                <element signature="e#3131#3221#0" />
+                <element signature="e#3265#3400#0" />
+                <element signature="e#3445#3576#0" />
+                <element signature="e#3623#3952#0" />
+                <element signature="e#3623#3666#0" />
+                <element signature="e#2179#3160#0" />
+                <element signature="e#2184#2265#0" />
+                <element signature="e#2333#2536#0" />
+                <element signature="e#2679#2960#0" />
+                <element signature="e#3180#3230#0" />
+                <element signature="e#3275#3389#0" />
+                <element signature="e#3486#7937#0" />
+                <element signature="e#4231#4234#0" />
+                <element signature="e#5183#5184#0" />
+                <element signature="e#5253#5643#0" />
+                <element signature="e#9196#9258#0" />
+                <element signature="e#7280#7308#0" />
+                <element signature="e#10103#10511#0" />
+                <element signature="e#10215#10276#0" />
+                <element signature="e#8315#8420#0" />
+                <element signature="e#8434#8451#0" />
+                <element signature="e#8763#8810#0" />
+                <element signature="e#9042#9076#0" />
+                <element signature="e#9120#9221#0" />
+                <element signature="e#9120#9153#0" />
               </folding>
             </state>
           </provider>
@@ -527,7 +560,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635908480544</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="telegram messate로 메세지 보내기 기능 update">
+      <created>1635911804366</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1635911804366</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -847,12 +887,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+        <state relative-caret-position="400">
+          <caret line="276" lean-forward="true" selection-start-line="276" selection-end-line="276" />
           <folding>
-            <element signature="e#33#44#0" expanded="true" />
+            <element signature="n#!!doc" />
+            <element signature="e#684#698#0" />
+            <element signature="e#807#1145#0" />
+            <element signature="e#863#983#0" />
+            <element signature="e#1190#2032#0" />
+            <element signature="e#1255#1354#0" />
+            <element signature="e#1383#1435#0" />
+            <element signature="e#1448#1773#0" />
+            <element signature="e#1488#1766#0" />
+            <element signature="e#1613#1725#0" />
             <element signature="e#2132#4044#0" />
             <element signature="e#2318#3090#1" />
+            <element signature="e#3131#3221#0" />
+            <element signature="e#3265#3400#0" />
+            <element signature="e#3445#3576#0" />
+            <element signature="e#3623#3952#0" />
+            <element signature="e#3623#3666#0" />
+            <element signature="e#2179#3160#0" />
+            <element signature="e#2184#2265#0" />
+            <element signature="e#2333#2536#0" />
+            <element signature="e#2679#2960#0" />
+            <element signature="e#3180#3230#0" />
+            <element signature="e#3275#3389#0" />
+            <element signature="e#3486#7937#0" />
+            <element signature="e#4231#4234#0" />
+            <element signature="e#5183#5184#0" />
+            <element signature="e#5253#5643#0" />
+            <element signature="e#9196#9258#0" />
+            <element signature="e#7280#7308#0" />
+            <element signature="e#10103#10511#0" />
+            <element signature="e#10215#10276#0" />
+            <element signature="e#8315#8420#0" />
+            <element signature="e#8434#8451#0" />
+            <element signature="e#8763#8810#0" />
+            <element signature="e#9042#9076#0" />
+            <element signature="e#9120#9221#0" />
+            <element signature="e#9120#9153#0" />
           </folding>
         </state>
       </provider>
