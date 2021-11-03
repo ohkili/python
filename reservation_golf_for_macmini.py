@@ -844,7 +844,7 @@ info_date = {'wish_date': ['20211023', '20211028'],
            'hour_option': 'first'
            }
 good_luck()
-reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
+reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False, osopt = 'macpro')
 # test
 # reserve_rivera(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 
@@ -852,7 +852,7 @@ reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_typ
 schedule.every().day.at("19:30").do(good_luck)
 schedule.every().day.at("07:30").do(good_luck)
 # str(random.randrange(9,14)).zfill(2)
-schedule.every().day.at("12:30").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test,reserve_cnt=1,reserve_type='test', multi_date = False,osopt='macmini') )
+schedule.every().day.at("12:30").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test(),reserve_cnt=1,reserve_type='test', multi_date = False,osopt='macmini') )
 while True:
 
 	# Checks whether a scheduled task
