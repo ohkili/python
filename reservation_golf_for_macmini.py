@@ -18,6 +18,7 @@ from bs4 import BeautifulSoup
 
 import schedule
 import ssl
+import telegram
 
 # chrome driver auto install and driver activation
 # def chromedriver_autorun():
@@ -103,11 +104,63 @@ def kakao_message(data, access_token):
     else:
         print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
 
-def good_luck():
+
+def telegram_message(content='Hello world', content_type='text', description='description'):
+    telegram_token = "2062294044:AAEzrGGPlV7C2C-9ZQ9Ji9QbTm7DoG8NgWw"
+    telegram_chat_id = 1926421781
+    bot = telegram.Bot(token=telegram_token)
+
+    # Bottom is telegram bot manual
+    """ 
+    # text 보내기
+    bot.sendMessage(chat_id=telegram_chat_id, text='hello world')
+    # image 보내기 image url
+    photo_url = "https://telegram.org/img/t_logo.png"
+    bot.sendPhoto(chat_id=telegram_chat_id, photo=photo_url, caption='telegrm logo')
+    # hyperlink 보내기
+    # 미리보기 기능 off ==>  disable_web_page_preview= True
+    # []안에 문자는 제목으로 전송되고, ()안에 hyperlink 넣어주면 됨
+    bot.send_message(chat_id=telegram_chat_id, text="[naver 증권](https://finance.naver.com)", parse_mode='Markdown',
+                     disable_web_page_preview=False)
+
+    # image 보내기 image file
+    # os.getcwd()
+    # glob.glob('E:\\python\\' + '*.jpg')
+    photo_file = 'E:\\python\\주행기록.jpg'
+    bot.sendPhoto(chat_id=telegram_chat_id, photo=open(photo_file, 'rb'), caption='카니발 주행기록') 
+    """
+
+    if content_type == 'text':
+        # example is 'hello world'
+        bot.sendMessage(chat_id=telegram_chat_id, text=content)
+    elif content_type == 'imgUrl':
+        # example is  "https://telegram.org/img/t_logo.png"
+        bot.sendPhoto(chat_id=telegram_chat_id, photo=content, caption=description)
+    elif content_type == 'imgFile':
+        # example is 'E:\\python\\주행기록.jpg'
+        bot.sendPhoto(chat_id=telegram_chat_id, photo=open(content, 'rb'), caption=description)
+    elif content_type == 'hyperlink':
+        # []안에 문자는 제목으로 전송되고, ()안에 hyperlink 넣어주면 됨
+        #  example is "[naver 증권](https://finance.naver.com)"
+        content_hyperlink = "[" + description + "](" + content + ")"
+        bot.send_message(chat_id=telegram_chat_id, text=content_hyperlink, parse_mode='Markdown',
+                         disable_web_page_preview=False)
+    else:
+        print('You must choice content_type as text, imgUrl, imgFile, hyperlink')
+
+
+def good_luck_kakao():
       print("Good Luck for Test")
       print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
       access_token = access_token_mkr(REST_API_KEY,refresh_token)
       kakao_message('message test from macmini with golf '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
+
+
+def good_luck():
+    print("Good Luck for Test")
+    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    content_new =  'message test from macmini with golf ' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    telegram_message(content = content_new, content_type='text', description= 'etc' )
 def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False):
     # info_rivera = {'url': 'https://www.shinangolf.com/',
     #                'loginPage': 'https://www.shinangolf.com/member/login',
@@ -253,8 +306,11 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
 
             except:
                 print('macro fail : date simple check')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))) , access_token)
+                # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+                # kakao_message('rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))) , access_token)
+
+                telegram_message(content='rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+                                 , content_type='text', description='description')
 
             try:
                 if reserve_type == 'real':
@@ -361,7 +417,9 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                                         "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
                         # 이렇게 하면 바로 예약 됨
                         popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
-                        kakao_message(popup_text, access_token)
+                        # kakao_message(popup_text, access_token)
+
+                        telegram_message(content=popup_text , content_type='text', description='description')
 
                     elif   reserve_type == 'test' and reserve_text =='예약하기':
                         # 카카오 문자 보내기
@@ -369,7 +427,8 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                                             "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
                         access_token = access_token_mkr(REST_API_KEY, refresh_token)
                         popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n'+ popup_text
-                        kakao_message(popup_text, access_token)
+                        # kakao_message(popup_text, access_token)
+                        telegram_message(content=popup_text, content_type='text', description='description')
 
                     else:
                         print('Check reserve count')
@@ -384,16 +443,20 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
 
             except:
                 print('macro fail:  targetting reserve')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail:  targetting reserve  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+                # kakao_message('rivera macro fail:  targetting reserve  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                telegram_message(content='rivera macro fail:  targetting reserve  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),
+                                 content_type='text', description='description')
 
         elif date_count == 0:
             break
         else :
             print('Check date_count')
     if book_try_cnt == len(wish_date):
-        access_token = access_token_mkr(REST_API_KEY, refresh_token)
-        kakao_message('There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+        # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+        # kakao_message('There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+        telegram_message(content='There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),
+                         content_type='text', description='description')
     else:
         print('Check book_try_cnt')
 
@@ -541,8 +604,11 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
 
             except:
                 print('macro fail : date simple check')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))) , access_token)
+                # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+                # kakao_message('rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))) , access_token)
+                telegram_message(content='rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),
+                                 content_type='text', description='description')
+
 
             try:
                 if reserve_type == 'real':
@@ -631,9 +697,11 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                 timeTable_masked.reset_index(inplace=True)
             except:
                 print('macro fail:  making reserve table')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail:  making reserve table \n' + str(
-                    time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+                # kakao_message('rivera macro fail:  making reserve table \n' + str(
+                #     time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                telegram_message(content='rivera macro fail:  making reserve table \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),
+                                 content_type='text', description='description')
             try:
 
                 while(reserve_cnt > 0):
@@ -670,15 +738,17 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                     if reserve_type == 'real':
                         reserve_button.click()
                         # 이렇게 하면 바로 예약 됨
-                        popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
-                        kakao_message(popup_text, access_token)
+                        # popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
+                        # kakao_message(popup_text, access_token)
+                        telegram_message(content=popup_text,content_type='text', description='description')
 
                     elif   reserve_type == 'test' and reserve_text =='예약하기':
                         # 카카오 문자 보내기
                         reserve_close_button.click()
-                        access_token = access_token_mkr(REST_API_KEY, refresh_token)
+                        # access_token = access_token_mkr(REST_API_KEY, refresh_token)
                         popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n'+ popup_text
-                        kakao_message(popup_text, access_token)
+                        # kakao_message(popup_text, access_token)
+                        telegram_message(content=popup_text, content_type='text', description='description')
 
                     else:
                         print('Check reserve count')
@@ -693,16 +763,20 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
 
             except:
                 print('macro fail:  targetting reserve while sentence! ')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail:  targetting reserve while sentence!  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+                # kakao_message('rivera macro fail:  targetting reserve while sentence!  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                telegram_message(content='rivera macro fail:  targetting reserve while sentence!  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),
+                                 content_type='text', description='description')
 
         elif date_count == 0:
             pass
         else :
             print('Check date_count')
     if book_try_cnt == len(wish_date):
-        access_token = access_token_mkr(REST_API_KEY, refresh_token)
-        kakao_message('There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+        # access_token = access_token_mkr(REST_API_KEY, refresh_token)
+        # kakao_message('There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+        telegram_message(content='There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),
+                         content_type='text', description='description')
     else:
         print('Check book_try_cnt')
 
