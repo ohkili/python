@@ -132,7 +132,7 @@
       <recent name="E:\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.reservation_golf_for_macmini">
+  <component name="RunManager" selected="Python.lotto_auto_purchasing">
     <configuration name="lotto_auto_purchase_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -247,10 +247,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lotto_auto_purchasing" />
         <item itemvalue="Python.reservation_golf_for_macmini" />
         <item itemvalue="Python.telegram_message" />
         <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
-        <item itemvalue="Python.lotto_auto_purchasing" />
         <item itemvalue="Python.ticketing_interpark" />
       </list>
     </recent_temporary>
