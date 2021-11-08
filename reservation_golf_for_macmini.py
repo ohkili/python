@@ -104,11 +104,11 @@ def kakao_message(data, access_token):
     else:
         print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
 
-
 def telegram_message(content='Hello world', content_type='text', description='description'):
     telegram_token = "2062294044:AAEzrGGPlV7C2C-9ZQ9Ji9QbTm7DoG8NgWw"
     telegram_chat_id = 1926421781
     bot = telegram.Bot(token=telegram_token)
+
 
     # Bottom is telegram bot manual
     """ 
@@ -844,7 +844,7 @@ info_date = {'wish_date': ['20211023', '20211028'],
            'hour_option': 'first'
            }
 good_luck()
-reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False, osopt = 'macpro')
+# reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 # test
 # reserve_rivera(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 
@@ -852,7 +852,7 @@ reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_typ
 schedule.every().day.at("19:30").do(good_luck)
 schedule.every().day.at("07:30").do(good_luck)
 # str(random.randrange(9,14)).zfill(2)
-schedule.every().day.at("12:30").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test(),reserve_cnt=1,reserve_type='test', multi_date = False,osopt='macmini') )
+schedule.every().day.at("16:15").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test(),reserve_cnt=1,reserve_type='test', multi_date = False,osopt='macmini') )
 while True:
 
 	# Checks whether a scheduled task

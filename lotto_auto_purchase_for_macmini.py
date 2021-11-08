@@ -215,7 +215,8 @@ def lotto_purchase():
                                 columns =['lotto_type','lotto_round','lotto_issue','lotto_draw','lotto_paylimit','lotto_purchaseNo'])
     # access_token = access_token_mkr(REST_API_KEY, refresh_token)
     # kakao_message(lotto_result, access_token)
-    telegram_message(content=lotto_result, content_type='text', description='description')
+    l= str(lotto_result)
+    telegram_message(content=l, content_type='text', description='description')
 
     # lotto_log = pd.DataFrame()
     # lotto_log = pd.read_pickle('/Users/gwon-yonghwan/pythonProject/lotto_log.pkl')
@@ -244,7 +245,7 @@ def work():
       print("Study and work hard")
       print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
-good_luck()
+# good_luck()
 # Task scheduling
 # After every 10 mins geeks() is called.
 # schedule.every(10/60).minutes.do(good_luck)
