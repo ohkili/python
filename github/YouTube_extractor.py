@@ -1,4 +1,4 @@
-#파이썬 소스코드
+# 파이썬 소스코드
 from pytube import YouTube
 import moviepy.editor as mp
 import requests
@@ -17,7 +17,7 @@ import requests
 # 5 1개 파일에 여러 음악이 들어있을때 음원을 분리하여 저장
 
 #ssl  문제 해결 코드
-url = 'https://www.youtube.com/watch?v=66NcefzUc4U&list=PLYFdi5vBTTV0SupEev67RqX6GRecfMxXR&index=20'
+url = 'https://www.youtube.com/watch?v=aBnElreQPfk'
 requests.get(url)
 
 ssl._create_default_https_context = ssl._create_unverified_context
