@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="github file extend key convert to .py">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/github/YouTube_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/github/YouTube_extractor.py" afterDir="false" />
-    </list>
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="telegram token update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -443,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636377398611</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="telegram token update">
+      <created>1638708857502</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1638708857503</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -520,7 +524,8 @@
     <MESSAGE value="bug fix" />
     <MESSAGE value="telegram messate로 메세지 보내기 기능 update" />
     <MESSAGE value="github file extend key convert to .py" />
-    <option name="LAST_COMMIT_MESSAGE" value="github file extend key convert to .py" />
+    <MESSAGE value="telegram token update" />
+    <option name="LAST_COMMIT_MESSAGE" value="telegram token update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
