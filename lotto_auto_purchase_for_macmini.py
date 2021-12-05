@@ -65,9 +65,10 @@ def kakao_message(data, access_token):
 
 
 def telegram_message(content='Hello world', content_type='text', description='description'):
-    telegram_token = "2062294044:AAEzrGGPlV7C2C-9ZQ9Ji9QbTm7DoG8NgWw"
+    telegram_token = "5011897744:AAFvwnQrdllp09gz2Iy_XD6SONWy1-jQuNM"
     telegram_chat_id = 1926421781
     bot = telegram.Bot(token=telegram_token)
+
 
     # Bottom is telegram bot manual
     """ 
