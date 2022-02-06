@@ -170,12 +170,12 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     # loginfo = info_rivera
     # info_date = info_date_test
     #
-
+    'log information from loginfo var. '
     url = loginfo['url']
     loginpage = loginfo['loginPage']
     loginID = loginfo['id']
     loginPW = loginfo['pw']
-
+    'wish date & hour information from info_date var.'
     wish_date = info_date['wish_date']
     wish_hour = info_date['wish_hour']
     hour_option = info_date['hour_option']
@@ -192,11 +192,11 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     driver.get(url)
     driver.get(loginpage)
 
-    # id
+    'id for login'
     userId = driver.find_element(By.ID, 'memberId')  # /html/body/div/div[5]/div/div/div/div[2]/div/form/div[1]/div[1]/input
     userId.send_keys(loginID)  # 로그인 할 계정 id
 
-    # password
+    'password for login'
     userPwd = driver.find_element(By.ID, 'key')  # /html/body/div/div[5]/div/div/div/div[2]/div/form/div[1]/div[2]/input
     userPwd.send_keys(loginPW)
     userPwd.send_keys(Keys.ENTER)
@@ -205,7 +205,7 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     # loginbtn = driver.find_element(By.XPATH, "//form[@id='loginForm']/div[@class='login_btn']")
     # loginbtn.click()
 
-    # 통합 예약/실시간예약
+    '통합 예약/실시간예약 접속 화면'
     # reservation = driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")  # /html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a
     reservation_open = driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")
     driver.execute_script("arguments[0].click();", reservation_open)
@@ -265,14 +265,14 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
 
         if date_count >0 :
 
-
             try:
+                '원하는 일정 목록에서 년 월 일 정보 추'
                 wish_year = dt[:4]
                 wish_month = dt[4:6]
                 wish_day = dt[6:8]
 
+                '예약 화면의 달력으로 이동'
                 calendar = driver.find_element(By.XPATH, "//div[@class='reservation_table calendar_table']/table/tbody")
-
 
                 if reserve_type   ==  'real':
                     pass
@@ -286,7 +286,7 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                     calendar_week = driver.find_elements(By.XPATH,
                                                          "//div[@class='reservation_table calendar_table']/table/tbody/tr")
                     for i in range(len(calendar_week[0].find_elements(By.XPATH, "//td"))):
-
+                        '예약 가능한 날짜 추출'
                         s = (calendar_week[0].find_elements(By.XPATH, "//td")[i].text)
                         if s.find('\n')>0:
                             s = s.split('\n')[0]
@@ -294,6 +294,7 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                             able_ls.append(able_date)
                         else:
                             pass
+                        '예약 가능일이 원하는 날과 같으면 예약 시도 횟수를 +1 한다'
                         if s  == str(int(wish_day)):
                             book_try_cnt += 1
                         else:
@@ -315,10 +316,12 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
             try:
                 if reserve_type == 'real':
                     pass
+
                 elif reserve_type == 'test' and len(able_ls) >0 :
+                    '예약 타입이 test 이면서 예약 가능일이 있으면 예약 가능일 첫 날을 dt 변수에 넣는다.'
                     dt = able_ls[0]
                 elif reserve_type == 'test' and len(able_ls) ==0 and  book_try_cnt == len(wish_date):
-
+                    '예약 타입이 test 이면서 예약 가능일이 없고 예약 시도횟수와 원하는 날 수가 같다면 반복문에서 빠져나'
                     continue
                 else:
                     print('Check book_try_cnt')
@@ -371,8 +374,8 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                 timeTable.columns = timeTable_columns
                 timeTable.reset_index(drop=True, inplace=True)
 
-                # 원하는 시간대 골라내기
-                timeTable_masked = pd.DataFrame()
+                '원하는 시간대 골라내기'
+                timeTable_filterd = pd.DataFrame()
                 for h in wish_hour:
                     first_time = h.split('~')[0]
                     end_time = h.split('~')[1]
@@ -380,20 +383,20 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                                 timeTable['hour'].str[0:2] < end_time)  # 시간대 filter
 
                     timeTable_sorted = timeTable.loc[mask1, :].sort_values('hour')
-                    timeTable_masked = pd.concat([timeTable_masked, timeTable_sorted])
+                    timeTable_filterd = pd.concat([timeTable_filterd, timeTable_sorted])
 
-                timeTable_masked.reset_index(inplace=True)
+                timeTable_filterd.reset_index(inplace=True)
                 while(reserve_cnt > 0):
 
                     if hour_option == 'first':
-                        index_no = timeTable_masked['index'].iloc[0]
+                        index_no = timeTable_filterd['index'].iloc[0]
                     elif hour_option == 'mid':
-                        index_no = timeTable_masked['index'].iloc[round(len(timeTable_sorted) / 2)]
+                        index_no = timeTable_filterd['index'].iloc[round(len(timeTable_sorted) / 2)]
                     elif hour_option == 'last':
-                        index_no = timeTable_masked['index'].iloc[-1]
+                        index_no = timeTable_filterd['index'].iloc[-1]
 
-                    idx = timeTable_masked[timeTable_masked['index']== index_no].index
-                    timeTable_masked = timeTable_masked.drop(idx)
+                    idx = timeTable_filterd[timeTable_filterd['index'] == index_no].index
+                    timeTable_filterd = timeTable_filterd.drop(idx)
 
                     # 골라낸 시간에 예약 버튼 누르기
 
@@ -417,7 +420,7 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                                         "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
                         # 이렇게 하면 바로 예약 됨
                         popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
-                        # kakao_message(popup_text, access_token)
+                        # kakao감_message(popup_text, access_token)
 
                         telegram_message(content=popup_text , content_type='text', description='description')
 
@@ -684,7 +687,7 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                 timeTable.reset_index(drop=True, inplace=True)
 
                 # 원하는 시간대 골라내기
-                timeTable_masked = pd.DataFrame()
+                timeTable_filterd = pd.DataFrame()
                 for h in wish_hour:
                     first_time = h.split('~')[0]
                     end_time = h.split('~')[1]
@@ -692,9 +695,9 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                                 timeTable['hour'].str[0:2] < end_time)  # 시간대 filter
 
                     timeTable_sorted = timeTable.loc[mask1, :].sort_values('hour')
-                    timeTable_masked = pd.concat([timeTable_masked, timeTable_sorted])
+                    timeTable_filterd = pd.concat([timeTable_filterd, timeTable_sorted])
 
-                timeTable_masked.reset_index(inplace=True)
+                timeTable_filterd.reset_index(inplace=True)
             except:
                 print('macro fail:  making reserve table')
                 # access_token = access_token_mkr(REST_API_KEY, refresh_token)
@@ -707,14 +710,14 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_cnt=1,reserve_type='test', 
                 while(reserve_cnt > 0):
 
                     if hour_option == 'first':
-                        index_no = timeTable_masked['index'].iloc[0]
+                        index_no = timeTable_filterd['index'].iloc[0]
                     elif hour_option == 'mid':
-                        index_no = timeTable_masked['index'].iloc[round(len(timeTable_sorted) / 2)]
+                        index_no = timeTable_filterd['index'].iloc[round(len(timeTable_sorted) / 2)]
                     elif hour_option == 'last':
-                        index_no = timeTable_masked['index'].iloc[-1]
+                        index_no = timeTable_filterd['index'].iloc[-1]
 
-                    idx = timeTable_masked[timeTable_masked['index']== index_no].index
-                    timeTable_masked = timeTable_masked.drop(idx)
+                    idx = timeTable_filterd[timeTable_filterd['index']== index_no].index
+                    timeTable_filterd = timeTable_filterd.drop(idx)
 
                     # 골라낸 시간에 예약 버튼 누르기
 
@@ -1014,9 +1017,9 @@ while True:
 #             first_time = wish_hour[0].split('~')[0]
 #             end_time = wish_hour[0].split('~')[1]
 #             mask1 = (timeTable['hour'].str[0:2] >= first_time) & (timeTable['hour'].str[0:2] < end_time)  # 시간대 filter
-#             timeTable_masked = timeTable.loc[mask1, :]
+#             timeTable_filterd = timeTable.loc[mask1, :]
 #
-#             timeTable_sorted = timeTable_masked.sort_values('hour')
+#             timeTable_sorted = timeTable_filterd.sort_values('hour')
 #             timeTable_sorted.reset_index(inplace=True)
 #
 #             if hour_option == 'first':
