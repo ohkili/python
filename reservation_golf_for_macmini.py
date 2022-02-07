@@ -471,6 +471,7 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_try_cnt=9,reserve_type='tes
     # driver.close()
     # loginfo = info_rivera
     # info_date = info_date_test
+    'reserve_try_cnt means n times trying for reservation, when website clock is not sync with code'
 
     url = loginfo['url']
     loginpage = loginfo['loginPage']
@@ -482,6 +483,18 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_try_cnt=9,reserve_type='tes
     hour_option = info_date['hour_option']
 
     book_try_cnt = 0
+    reserve_succees_cnt = 0
+    reserve_need_cnt = len(wish_date) * len(wish_hour)
+    date_count = len(wish_date)
+
+    if reserve_type == 'real':
+        pass
+    elif reserve_type == 'test':
+        reserve_try_cnt = 1
+    else:
+        reserve_try_cnt =0
+        telegram_message(content='Please, check your reserve_type', content_type='text', description='description')
+
     able_ls = []
     driver = driverAct(url,osopt)
     driver.get(loginpage)
@@ -560,23 +573,19 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_try_cnt=9,reserve_type='tes
                                         <td> 130,000 </td> 금액
                                         <td> 
                                            <button conclick> 예약 선택 버튼 """
-    reserve_succees_cnt = 0
-    reserve_need_cnt     = len(wish_date) * len(wish_hour)
-    # reserve_try_cnt =
-    date_count = len(wish_date)
+
+
     while(reserve_need_cnt > 0 and reserve_try_cnt > 0 ):
         for dt in wish_date:
             # dt = wish_date[0]
-            if date_count >0 :
-
+            if date_count > 0:
 
                 try:
-                    wish_year = dt[:4]
+                    wish_year  = dt[:4]
                     wish_month = dt[4:6]
-                    wish_day = dt[6:8]
+                    wish_day   = dt[6:8]
 
                     calendar = driver.find_element(By.XPATH, "//div[@class='reservation_table calendar_table']/table/tbody")
-
 
                     if reserve_type   ==  'real':
                         pass
