@@ -135,3 +135,5 @@ qq = tri(30,40)
 print(qq)
 ww = tri(23,34)
 print(ww)
+
+
