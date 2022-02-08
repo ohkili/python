@@ -4,11 +4,127 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="chrome driver auto selection" />
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="chrome driver auto selection">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/work.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/gittest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#668#1019#0" />
+                <element signature="e#2369#2507#0" />
+                <element signature="e#2790#3128#0" />
+                <element signature="e#2846#2966#0" />
+                <element signature="e#3173#4015#0" />
+                <element signature="e#3238#3337#0" />
+                <element signature="e#3366#3418#0" />
+                <element signature="e#3431#3756#0" />
+                <element signature="e#3471#3749#0" />
+                <element signature="e#3596#3708#0" />
+                <element signature="e#4114#6027#0" />
+                <element signature="e#4301#5073#1" />
+                <element signature="e#5114#5204#0" />
+                <element signature="e#5248#5383#0" />
+                <element signature="e#5428#5559#0" />
+                <element signature="e#5606#5935#0" />
+                <element signature="e#5606#5649#0" />
+                <element signature="e#6059#6374#0" />
+                <element signature="e#6398#6715#0" />
+                <element signature="e#6813#22294#0" />
+                <element signature="e#6813#6867#0" />
+                <element signature="e#7525#7578#0" />
+                <element signature="e#8138#8205#0" />
+                <element signature="e#8728#8834#0" />
+                <element signature="e#9524#11529#1" />
+                <element signature="e#11596#21688#0" />
+                <element signature="e#11628#21586#0" />
+                <element signature="e#11649#13575#0" />
+                <element signature="e#12073#13526#0" />
+                <element signature="e#12856#13526#0" />
+                <element signature="e#13029#13179#0" />
+                <element signature="e#13613#14138#0" />
+                <element signature="e#13669#13731#0" />
+                <element signature="e#14173#21026#0" />
+                <element signature="e#14312#14401#0" />
+                <element signature="e#14524#14613#0" />
+                <element signature="e#14656#14712#0" />
+                <element signature="e#14916#15010#0" />
+                <element signature="e#15823#15879#0" />
+                <element signature="e#16337#16392#0" />
+                <element signature="e#16622#16762#0" />
+                <element signature="e#16844#17143#0" />
+                <element signature="e#17401#17809#0" />
+                <element signature="e#17932#21026#0" />
+                <element signature="e#18476#18495#0" />
+                <element signature="e#19473#19962#0" />
+                <element signature="e#20065#20643#0" />
+                <element signature="e#21065#21586#0" />
+                <element signature="e#21122#21184#0" />
+                <element signature="e#21736#22156#0" />
+                <element signature="e#21736#21798#0" />
+                <element signature="e#22404#22420#0" />
+                <element signature="e#23085#23219#0" />
+                <element signature="e#23543#23596#0" />
+                <element signature="e#24091#24158#0" />
+                <element signature="e#24675#24781#0" />
+                <element signature="e#25471#27476#1" />
+                <element signature="e#27545#40107#0" />
+                <element signature="e#27578#39365#0" />
+                <element signature="e#27646#39248#0" />
+                <element signature="e#27671#29544#0" />
+                <element signature="e#28052#29487#0" />
+                <element signature="e#28873#29487#0" />
+                <element signature="e#29015#29173#0" />
+                <element signature="e#29590#30129#0" />
+                <element signature="e#29650#29712#0" />
+                <element signature="e#30173#34544#0" />
+                <element signature="e#30770#30864#0" />
+                <element signature="e#32800#32896#0" />
+                <element signature="e#33220#33364#0" />
+                <element signature="e#33454#33769#0" />
+                <element signature="e#34051#34479#0" />
+                <element signature="e#34589#35157#0" />
+                <element signature="e#34652#34714#0" />
+                <element signature="e#35200#38615#0" />
+                <element signature="e#35254#38615#0" />
+                <element signature="e#35829#35848#0" />
+                <element signature="e#37112#37551#0" />
+                <element signature="e#37163#37179#0" />
+                <element signature="e#37662#38194#0" />
+                <element signature="e#38662#39248#0" />
+                <element signature="e#38740#38802#0" />
+                <element signature="e#39421#39853#0" />
+                <element signature="e#39421#39483#0" />
+                <element signature="e#40136#40546#0" />
+                <element signature="e#40225#40360#0" />
+                <element signature="e#40383#40520#0" />
+                <element signature="e#40547#40569#0" />
+                <element signature="e#41353#41543#0" />
+                <element signature="e#41566#41696#0" />
+                <element signature="e#41709#41818#0" />
+                <element signature="e#42289#42390#0" />
+                <element signature="e#42289#42322#0" />
+                <element signature="e#42393#42407#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,10 +189,10 @@
         <option value="$PROJECT_DIR$/chromedriver_autoinstall.py" />
         <option value="$PROJECT_DIR$/chromedriver_autoinstall_raw.py" />
         <option value="$PROJECT_DIR$/telegram_message.py" />
-        <option value="$PROJECT_DIR$/reservation_golf_for_macmini.py" />
         <option value="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" />
         <option value="$PROJECT_DIR$/gittest.py" />
         <option value="$PROJECT_DIR$/reservation_golf.py" />
+        <option value="$PROJECT_DIR$/reservation_golf_for_macmini.py" />
       </list>
     </option>
   </component>
@@ -93,6 +209,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -100,11 +217,20 @@
               <item name="python" type="b2602c69:ProjectViewProjectNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python" type="462c0819:PsiDirectoryNode" />
+              <item name="94" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python" type="462c0819:PsiDirectoryNode" />
+              <item name="95" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -129,6 +255,18 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\python" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.lotto_auto_purchasing">
     <configuration name="lotto_auto_purchase_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -253,7 +391,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -509,11 +647,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1716" y="194" width="1936" height="1056" extended-state="0" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48816568" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" sideWeight="0.5118343" side_tool="true" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48668638" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.5133136" side_tool="true" visible="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -537,6 +675,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -567,7 +711,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -729,16 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15532">
-          <caret line="724" column="43" selection-start-line="724" selection-start-column="43" selection-end-line="724" selection-end-column="43" />
-          <folding>
-            <element signature="e#37#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gittest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2794">
@@ -842,6 +975,109 @@
             <element signature="e#37642#37743#0" />
             <element signature="e#37642#37675#0" />
             <element signature="e#37746#37760#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#668#1019#0" />
+            <element signature="e#2369#2507#0" />
+            <element signature="e#2790#3128#0" />
+            <element signature="e#2846#2966#0" />
+            <element signature="e#3173#4015#0" />
+            <element signature="e#3238#3337#0" />
+            <element signature="e#3366#3418#0" />
+            <element signature="e#3431#3756#0" />
+            <element signature="e#3471#3749#0" />
+            <element signature="e#3596#3708#0" />
+            <element signature="e#4114#6027#0" />
+            <element signature="e#4301#5073#1" />
+            <element signature="e#5114#5204#0" />
+            <element signature="e#5248#5383#0" />
+            <element signature="e#5428#5559#0" />
+            <element signature="e#5606#5935#0" />
+            <element signature="e#5606#5649#0" />
+            <element signature="e#6059#6374#0" />
+            <element signature="e#6398#6715#0" />
+            <element signature="e#6813#22294#0" />
+            <element signature="e#6813#6867#0" />
+            <element signature="e#7525#7578#0" />
+            <element signature="e#8138#8205#0" />
+            <element signature="e#8728#8834#0" />
+            <element signature="e#9524#11529#1" />
+            <element signature="e#11596#21688#0" />
+            <element signature="e#11628#21586#0" />
+            <element signature="e#11649#13575#0" />
+            <element signature="e#12073#13526#0" />
+            <element signature="e#12856#13526#0" />
+            <element signature="e#13029#13179#0" />
+            <element signature="e#13613#14138#0" />
+            <element signature="e#13669#13731#0" />
+            <element signature="e#14173#21026#0" />
+            <element signature="e#14312#14401#0" />
+            <element signature="e#14524#14613#0" />
+            <element signature="e#14656#14712#0" />
+            <element signature="e#14916#15010#0" />
+            <element signature="e#15823#15879#0" />
+            <element signature="e#16337#16392#0" />
+            <element signature="e#16622#16762#0" />
+            <element signature="e#16844#17143#0" />
+            <element signature="e#17401#17809#0" />
+            <element signature="e#17932#21026#0" />
+            <element signature="e#18476#18495#0" />
+            <element signature="e#19473#19962#0" />
+            <element signature="e#20065#20643#0" />
+            <element signature="e#21065#21586#0" />
+            <element signature="e#21122#21184#0" />
+            <element signature="e#21736#22156#0" />
+            <element signature="e#21736#21798#0" />
+            <element signature="e#22404#22420#0" />
+            <element signature="e#23085#23219#0" />
+            <element signature="e#23543#23596#0" />
+            <element signature="e#24091#24158#0" />
+            <element signature="e#24675#24781#0" />
+            <element signature="e#25471#27476#1" />
+            <element signature="e#27545#40107#0" />
+            <element signature="e#27578#39365#0" />
+            <element signature="e#27646#39248#0" />
+            <element signature="e#27671#29544#0" />
+            <element signature="e#28052#29487#0" />
+            <element signature="e#28873#29487#0" />
+            <element signature="e#29015#29173#0" />
+            <element signature="e#29590#30129#0" />
+            <element signature="e#29650#29712#0" />
+            <element signature="e#30173#34544#0" />
+            <element signature="e#30770#30864#0" />
+            <element signature="e#32800#32896#0" />
+            <element signature="e#33220#33364#0" />
+            <element signature="e#33454#33769#0" />
+            <element signature="e#34051#34479#0" />
+            <element signature="e#34589#35157#0" />
+            <element signature="e#34652#34714#0" />
+            <element signature="e#35200#38615#0" />
+            <element signature="e#35254#38615#0" />
+            <element signature="e#35829#35848#0" />
+            <element signature="e#37112#37551#0" />
+            <element signature="e#37163#37179#0" />
+            <element signature="e#37662#38194#0" />
+            <element signature="e#38662#39248#0" />
+            <element signature="e#38740#38802#0" />
+            <element signature="e#39421#39853#0" />
+            <element signature="e#39421#39483#0" />
+            <element signature="e#40136#40546#0" />
+            <element signature="e#40225#40360#0" />
+            <element signature="e#40383#40520#0" />
+            <element signature="e#40547#40569#0" />
+            <element signature="e#41353#41543#0" />
+            <element signature="e#41566#41696#0" />
+            <element signature="e#41709#41818#0" />
+            <element signature="e#42289#42390#0" />
+            <element signature="e#42289#42322#0" />
+            <element signature="e#42393#42407#0" />
           </folding>
         </state>
       </provider>
