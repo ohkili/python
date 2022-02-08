@@ -19,6 +19,7 @@ from bs4 import BeautifulSoup
 import schedule
 import ssl
 import telegram
+import platform
 
 # chrome driver auto install and driver activation
 def chromedriver_autorun():
@@ -35,23 +36,24 @@ def chromedriver_autorun():
     driver.implicitly_wait(10)
     return driver
 
-def driverAct(url, option ='macmini'):
-    os = {'macmini': 'macmini',
-          'macpro' : 'macpro',
-          'win': 'windows'}
+def driverAct(url):
 
-    os_option = os[option]
-    if os_option == 'macmini':
+    os_ver       = platform.system()
+    platfrom_ver = platform.platform()
+
+
+    if os_ver == 'Darwin' and platfrom_ver == 'Darwin-19.6.0-x86_64-i386-64bit':
         executable_path =  '/Users/gwon-yonghwan/PycharmProjects/chromedriver'
         #'/Users/home/PycharmProjects/chromedriver'   # '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
-    elif os_option == 'macpro':
+    elif os_ver == 'Darwin' and platfrom_ver == 'macOS-10.16-x86_64-i386-64bit':
         executable_path = '/Users/home/PycharmProjects/chromedriver'
-    elif os_option == 'windows':
+    elif os_ver == 'Windows' and platfrom_ver == 'Windows-10-10.0.19041-SPD':
         # executable_path = "C:\\Users\ohkil\\PycharmProjects\\chromedriver_win32\\chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
         executable_path = "C:/Users\ohkil/PycharmProjects/chromedriver_win32/chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
-
     else:
         print('Check your OS type')
+        telegram_message('Check your chrome driver path or version.')
+
     driver = webdriver.Chrome(executable_path=executable_path)
     driver.set_window_size(1400, 1000)  # (가로, 세로)음
     driver.get(url)
@@ -467,7 +469,7 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     print('book_try_cnt',book_try_cnt)
     print('wish_date',wish_date)
     driver.close()
-def reserve_rivera_macmini(loginfo,info_date,reserve_try_cnt=9,reserve_type='test', multi_date = False,osopt='macmini'):
+def reserve_rivera_macmini(loginfo,info_date,reserve_try_cnt=9,reserve_type='test', multi_date = False):
     # driver.close()
     # loginfo = info_rivera
     # info_date = info_date_test
@@ -496,7 +498,12 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_try_cnt=9,reserve_type='tes
         telegram_message(content='Please, check your reserve_type', content_type='text', description='description')
 
     able_ls = []
-    driver = driverAct(url,osopt)
+    try:
+        driver = driverAct(url)
+    except Exception as e:
+        telegram_message(content=repr(e),content_type='text',description='description' )
+        telegram_message(content='Check your chrome driver version', content_type='text', description='description')
+
     driver.get(loginpage)
     # if reserve_cnt is True ,then reservation don't stop
     # if reserve_cnt is False ,then reservation 1 time and stop
@@ -876,7 +883,7 @@ good_luck()
 schedule.every().day.at("19:30").do(good_luck)
 schedule.every().day.at("07:30").do(good_luck)
 # str(random.randrange(9,14)).zfill(2)
-schedule.every().day.at("16:15").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test(),reserve_try_cnt=1,reserve_type='test', multi_date = False,osopt='macmini') )
+schedule.every().day.at("16:15").do(lambda:  reserve_rivera_macmini(info_rivera,info_date_test(),reserve_try_cnt=1,reserve_type='test', multi_date = False) )
 while True:
 
 	# Checks whether a scheduled task
