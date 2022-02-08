@@ -43,26 +43,22 @@ def driverAct(url):
     if os_ver == 'Darwin' and platfrom_ver == 'Darwin-19.6.0-x86_64-i386-64bit':
         executable_path = '/Users/gwon-yonghwan/PycharmProjects/chromedriver'
         # '/Users/home/PycharmProjects/chromedriver'   # '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
+        'driver activation for mac os'
+        driver = webdriver.Chrome(executable_path=executable_path)
     elif os_ver == 'Darwin' and platfrom_ver == 'macOS-10.16-x86_64-i386-64bit':
         executable_path = '/Users/home/PycharmProjects/chromedriver'
+        'driver activation for mac os'
+        driver = webdriver.Chrome(executable_path=executable_path)
 
-    else:
-        print('Check your OS type')
-        telegram_message('Check your chrome driver path or version.')
-    'driver activation for mac os'
-    driver = webdriver.Chrome(executable_path=executable_path)
-
-    if os_ver == 'Windows' and platfrom_ver == 'Windows-10-10.0.19041-SPD':
+    elif os_ver == 'Windows' and platfrom_ver == 'Windows-10-10.0.19041-SP0':
         # executable_path = "C:\\Users\ohkil\\PycharmProjects\\chromedriver_win32\\chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
         # executable_path = "C:/Users\ohkil/PycharmProjects/chromedriver_win32/chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
         'driver activation for windows pc'
         driver = chromedriver_autorun()
-
     else:
         print('Check your OS type')
         telegram_message('Check your chrome driver path or version.')
 
-    # driver = webdriver.Chrome(executable_path=executable_path)
     driver.set_window_size(1400, 1000)  # (가로, 세로)음
     driver.get(url)
     return driver
