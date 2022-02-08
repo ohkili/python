@@ -19,6 +19,7 @@ from bs4 import BeautifulSoup
 import schedule
 import ssl
 import telegram
+import platform
 
 # chrome driver auto install and driver activation
 def chromedriver_autorun():
@@ -41,12 +42,17 @@ def driverAct(url, option ='macmini'):
           'win': 'windows'}
 
     os_option = os[option]
-    if os_option == 'macmini':
+
+    os_ver = platform.system()
+    machine_type = platform.machine()
+
+
+    if os_ver == 'Darwin' and machine_type == 'x86_64':
         executable_path =  '/Users/gwon-yonghwan/PycharmProjects/chromedriver'
         #'/Users/home/PycharmProjects/chromedriver'   # '/usr/local/bin/chromedriver'  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
-    elif os_option == 'macpro':
+    elif os_ver == 'Darwin' and machine_type == 'i386':
         executable_path = '/Users/home/PycharmProjects/chromedriver'
-    elif os_option == 'windows':
+    elif os_ver == 'Windows' and machine_type == 'AMD64':
         # executable_path = "C:\\Users\ohkil\\PycharmProjects\\chromedriver_win32\\chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
         executable_path = "C:/Users\ohkil/PycharmProjects/chromedriver_win32/chromedriver.exe"  # 크롬드라이버가 보안에 막혀서 크롬드라이버를 압축풀고 해당 폴더로 이동시켜주었다
 
