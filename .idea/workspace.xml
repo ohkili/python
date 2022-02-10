@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="chrome driver auto install in windows pc.">
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
     </list>
@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reservation_golf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="835" lean-forward="true" selection-start-line="375" selection-end-line="835" />
+            <state relative-caret-position="4750">
+              <caret line="835" selection-start-line="375" selection-end-line="835" />
               <folding>
                 <element signature="e#625#975#0" />
                 <element signature="e#815#925#0" />
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="940" column="15" lean-forward="true" selection-start-line="940" selection-start-column="15" selection-end-line="940" selection-end-column="15" />
+            <state relative-caret-position="325">
+              <caret line="1016" column="41" selection-start-line="1016" selection-start-column="41" selection-end-line="1016" selection-end-column="41" />
               <folding>
                 <element signature="e#668#1019#0" />
                 <element signature="e#859#969#0" />
@@ -131,7 +131,6 @@
                 <element signature="e#24314#24381#0" />
                 <element signature="e#24898#25004#0" />
                 <element signature="e#25694#27699#1" />
-                <element signature="e#27768#40330#0" />
                 <element signature="e#27801#39588#0" />
                 <element signature="e#27869#39471#0" />
                 <element signature="e#27894#29767#0" />
@@ -158,44 +157,6 @@
                 <element signature="e#38963#39025#0" />
                 <element signature="e#39644#40076#0" />
                 <element signature="e#39644#39706#0" />
-                <element signature="e#41522#41537#0" />
-                <element signature="e#42202#42234#0" />
-                <element signature="e#43898#44173#0" />
-                <element signature="e#45323#45462#0" />
-                <element signature="e#46021#46027#0" />
-                <element signature="e#48036#48057#0" />
-                <element signature="e#48868#50873#1" />
-                <element signature="e#50940#59981#0" />
-                <element signature="e#50973#59879#0" />
-                <element signature="e#50994#52748#0" />
-                <element signature="e#51345#52699#0" />
-                <element signature="e#52129#52699#0" />
-                <element signature="e#52263#52413#0" />
-                <element signature="e#52786#53065#0" />
-                <element signature="e#53100#59562#0" />
-                <element signature="e#53428#53484#0" />
-                <element signature="e#53688#53782#0" />
-                <element signature="e#54595#54651#0" />
-                <element signature="e#55109#55164#0" />
-                <element signature="e#55394#55534#0" />
-                <element signature="e#55616#55915#0" />
-                <element signature="e#56172#56578#0" />
-                <element signature="e#56700#59562#0" />
-                <element signature="e#57236#57255#0" />
-                <element signature="e#58233#58609#0" />
-                <element signature="e#58712#59179#0" />
-                <element signature="e#59601#59879#0" />
-                <element signature="e#60029#60232#0" />
-                <element signature="e#40359#40769#0" />
-                <element signature="e#40448#40583#0" />
-                <element signature="e#40606#40743#0" />
-                <element signature="e#40770#40792#0" />
-                <element signature="e#41576#41766#0" />
-                <element signature="e#41789#41919#0" />
-                <element signature="e#41932#42041#0" />
-                <element signature="e#42512#42613#0" />
-                <element signature="e#42512#42545#0" />
-                <element signature="e#42616#42630#0" />
               </folding>
             </state>
           </provider>
@@ -276,8 +237,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1716" />
-    <option name="y" value="194" />
+    <option name="x" value="1973" />
+    <option name="y" value="267" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -288,6 +249,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -309,7 +271,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -319,7 +280,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -734,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644326407681</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="ipo cc update">
+      <created>1644418175699</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1644418175699</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView">
@@ -750,8 +718,8 @@
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4852071" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" sideWeight="0.5147929" side_tool="true" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4822485" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.51775146" side_tool="true" visible="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -842,7 +810,8 @@
     <MESSAGE value="reserve cnt codition update" />
     <MESSAGE value="chrome driver auto selection" />
     <MESSAGE value="chrome driver auto install in windows pc." />
-    <option name="LAST_COMMIT_MESSAGE" value="chrome driver auto install in windows pc." />
+    <MESSAGE value="ipo cc update" />
+    <option name="LAST_COMMIT_MESSAGE" value="ipo cc update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1011,8 +980,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reservation_golf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="835" lean-forward="true" selection-start-line="375" selection-end-line="835" />
+        <state relative-caret-position="4750">
+          <caret line="835" selection-start-line="375" selection-end-line="835" />
           <folding>
             <element signature="e#625#975#0" />
             <element signature="e#815#925#0" />
@@ -1053,8 +1022,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="940" column="15" lean-forward="true" selection-start-line="940" selection-start-column="15" selection-end-line="940" selection-end-column="15" />
+        <state relative-caret-position="325">
+          <caret line="1016" column="41" selection-start-line="1016" selection-start-column="41" selection-end-line="1016" selection-end-column="41" />
           <folding>
             <element signature="e#668#1019#0" />
             <element signature="e#859#969#0" />
@@ -1120,7 +1089,6 @@
             <element signature="e#24314#24381#0" />
             <element signature="e#24898#25004#0" />
             <element signature="e#25694#27699#1" />
-            <element signature="e#27768#40330#0" />
             <element signature="e#27801#39588#0" />
             <element signature="e#27869#39471#0" />
             <element signature="e#27894#29767#0" />
@@ -1147,44 +1115,6 @@
             <element signature="e#38963#39025#0" />
             <element signature="e#39644#40076#0" />
             <element signature="e#39644#39706#0" />
-            <element signature="e#41522#41537#0" />
-            <element signature="e#42202#42234#0" />
-            <element signature="e#43898#44173#0" />
-            <element signature="e#45323#45462#0" />
-            <element signature="e#46021#46027#0" />
-            <element signature="e#48036#48057#0" />
-            <element signature="e#48868#50873#1" />
-            <element signature="e#50940#59981#0" />
-            <element signature="e#50973#59879#0" />
-            <element signature="e#50994#52748#0" />
-            <element signature="e#51345#52699#0" />
-            <element signature="e#52129#52699#0" />
-            <element signature="e#52263#52413#0" />
-            <element signature="e#52786#53065#0" />
-            <element signature="e#53100#59562#0" />
-            <element signature="e#53428#53484#0" />
-            <element signature="e#53688#53782#0" />
-            <element signature="e#54595#54651#0" />
-            <element signature="e#55109#55164#0" />
-            <element signature="e#55394#55534#0" />
-            <element signature="e#55616#55915#0" />
-            <element signature="e#56172#56578#0" />
-            <element signature="e#56700#59562#0" />
-            <element signature="e#57236#57255#0" />
-            <element signature="e#58233#58609#0" />
-            <element signature="e#58712#59179#0" />
-            <element signature="e#59601#59879#0" />
-            <element signature="e#60029#60232#0" />
-            <element signature="e#40359#40769#0" />
-            <element signature="e#40448#40583#0" />
-            <element signature="e#40606#40743#0" />
-            <element signature="e#40770#40792#0" />
-            <element signature="e#41576#41766#0" />
-            <element signature="e#41789#41919#0" />
-            <element signature="e#41932#42041#0" />
-            <element signature="e#42512#42613#0" />
-            <element signature="e#42512#42545#0" />
-            <element signature="e#42616#42630#0" />
           </folding>
         </state>
       </provider>
