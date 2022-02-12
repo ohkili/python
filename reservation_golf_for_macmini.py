@@ -819,6 +819,11 @@ def reserve_rivera_macmini(loginfo,info_date,reserve_try_cnt=9,reserve_type='tes
         print('wish_date',wish_date)
         driver.close()
 
+error_msg = {'login_url_aborted    ':'Check your login url',
+             'login_fail'           :'Check your login id or password',
+             'reserve_type'         :'Check your resever type or typo',
+             'chrome_dirver_version': 'Check your chrome driver version'
+             }
 
 
 info_ipo = {'url'      : 'http://ipo-cc.co.kr/cmm/main/mainPage.do',
@@ -835,24 +840,33 @@ info_date = {'wish_date': ['20220223', '202228'],
            'hour_option': 'first'
            }
 
-def reserve_ipo(loginfo,info_date, reserve_cnt=1,reserve_type='test', multi_date = False):
+def reserve_ipo(loginfo,info_date, reserve_try_cnt  = 9,reserve_type='test', multi_date = False):
 
-    # 1.  inforamtion of login  date
-
-    url = loginfo['url']
+    # inforamtion of login date initial variable.
+    "로그인에 필요한 정보"
+    url       = loginfo['url']
     loginpage = loginfo['loginPage']
-    loginID = loginfo['id']
-    loginPW = loginfo['pw']
-
-    wish_date = info_date['wish_date']
-    wish_hour = info_date['wish_hour']
+    loginID   = loginfo['id']
+    loginPW   = loginfo['pw']
+    "예약을 원하는 날짜 list"
+    wish_date   = info_date['wish_date']
+    wish_hour   = info_date['wish_hour']
     hour_option = info_date['hour_option']
 
+    "예약 가능한 일시를 저장하기 위함"
+    reservable_table_columns = ['cc', 'course', 'date', 'time', 'status', 'price', 'key_date','key_time','key_course']
+    reservable_table = pd.DataFrame(data=[], columns=reservable_table_columns)
+    "예약 가능한 일시를 저장하기 위함"
+    reservable_time_table = pd.DataFrame()
+    "예약 완료한 일시를 저장하기 위함, 대기 예약이 가능하므로 status는 유지함"
+    reserve_result_table_columns = ['cc', 'course', 'date', 'time', 'status', 'price']
+    reserve_result_table = pd.DataFrame(data=[], columns=reserve_result_table_columns)
 
-    book_try_cnt = 0
+    book_try_cnt        = 0
+    reserve_try_cnt     = 9 # 예약 오픈 일시가 web server 시각과 local pc 시각 불일치를 고려 강제 시도 횟수 지정
     reserve_succees_cnt = 0
-    reserve_need_cnt = len(wish_date) * len(wish_hour)
-    date_count = len(wish_date)
+    reserve_need_cnt    = len(wish_date) * len(wish_hour)
+    date_count          = len(wish_date)
 
     if reserve_type == 'real':
         pass
@@ -860,14 +874,8 @@ def reserve_ipo(loginfo,info_date, reserve_cnt=1,reserve_type='test', multi_date
         reserve_try_cnt = 1
     else:
         reserve_try_cnt =0
-        telegram_message(content='Please, check your reserve_type', content_type='text', description='description')
+        telegram_message(content= 'ipo_cc : ' + error_msg['reserve_type'], content_type='text', description='description')
 
-    #driver = chromedriver_autorun()
-
-    # if reserve_cnt is True ,then reservation don't stop
-    # if reserve_cnt is False ,then reservation 1 time and stop
-    # driver.close()
-    # driver.quit()
 
 
     # 2.  log in page open & log in
@@ -875,18 +883,28 @@ def reserve_ipo(loginfo,info_date, reserve_cnt=1,reserve_type='test', multi_date
         driver = driverAct(url)
     except Exception as e:
         telegram_message(content=repr(e), content_type='text', description='description')
-        telegram_message(content='Check your chrome driver version', content_type='text', description='description')
+        telegram_message(content='ipo_cc : ' + error_msg['chrome_dirver_version'], content_type='text', description='description')
 
-    driver.get(loginpage)
+    try:
+        driver.get(loginpage)
+    except:
+        telegram_message(content='ipo_cc : ' + error_msg['login_url_aborted'], content_type='text', description='description')
 
-    # id
-    userId = driver.find_element(By.ID, 'id')
-    userId.send_keys(loginID)  # 로그인 할 계정 id
 
-    # password
-    userPwd = driver.find_element(By.ID, 'password')
-    userPwd.send_keys(loginPW)
-    userPwd.send_keys(Keys.ENTER)
+
+    "ID Pasword 입력하여 login"
+    try:
+        # id
+        userId = driver.find_element(By.ID, 'id')
+        userId.send_keys(loginID)  # 로그인 할 계정 id
+
+        # password
+        userPwd = driver.find_element(By.ID, 'password')
+        userPwd.send_keys(loginPW)
+        userPwd.send_keys(Keys.ENTER)
+    except:
+        telegram_message(content='ipo_cc : ' + error_msg['login_fail'], content_type='text',
+                         description='description')
 
     # 리베라에 해당하는 사례임
     # log in putton userPwd에 password를 엔터를 치면 되는데, 아래처럼 로그인 버튼을 누를수도 있다
@@ -897,6 +915,7 @@ def reserve_ipo(loginfo,info_date, reserve_cnt=1,reserve_type='test', multi_date
     # reservation = driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")  # /html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a
 
     # 3. reserveation page open
+    "예약 화면 open"
     reservation_open = driver.find_element(By.XPATH, "/html/body/div/div[1]/div[3]/div/ul/li[1]/a")
     driver.execute_script("arguments[0].click();", reservation_open)   # 예약 화면 오픈
 
@@ -941,33 +960,35 @@ def reserve_ipo(loginfo,info_date, reserve_cnt=1,reserve_type='test', multi_date
     # 3. 달력 예약 / 마감/ 오프전 달력 취합 다른 방법, 이것이 빠름
 
     # 예약 달력, 날짜별 예약 가능 여부 표시 되어 있음
+    "달려 open하여 날짜별 예약 상태 수집"
     driver.find_element(By.XPATH, "//div[@id='timeform']")
     "timeform 아래에 input 속성이 날짜별로 있어 list함"
-    time_ls = driver.find_elements(By.XPATH, "//div[@id='timeform']/input")
+    date_ls = driver.find_elements(By.XPATH, "//div[@id='timeform']/input")
 
-    timeTable_2nd = pd.DataFrame()
 
-    for d in time_ls:
+    for d in date_ls:
+        # d = date_ls[15]
         try:
 
-            class_col = d.get_attribute('type')
-            id_col = d.get_attribute('id')
-            name_col = d.get_attribute('name')
+            status = d.get_attribute('name').split('_')[3]
+            key_date = d.get_attribute('id')
+            date      = key_date.split('_')[1]
+            # name_col = d.get_attribute('name')
+            ['cc', 'course', 'date', 'time', 'status', 'price', 'key_date', 'key_time', 'key_course']
+            temp_data = {'cc':['ipo_cc'],
+                      'date':[date],
+                      'status':[status],
+                      'key_date':[ key_date]}
+            # temp_1_colums = ['cc','date','status','key_date']
+            temp = pd.DataFrame(data=temp_data)
 
-            temp = [class_col, id_col, name_col]
-            temp = pd.DataFrame(data=temp).T
-            timeTable_2nd = timeTable_2nd.append(temp)
+            reservable_table = pd.concat([reservable_table,temp])
         except:
             pass
-    timeTable_2nd_columns   = ['type','id','name']
-    timeTable_2nd.columns   = timeTable_2nd_columns
-    timeTable_2nd['date']   = timeTable_2nd['id'].apply(lambda x: x.split('_')[1])
-    timeTable_2nd['status'] = timeTable_2nd['name'].apply(lambda x: x.split('_')[3])
-    timeTable_2nd.reset_index(drop=True, inplace=True)
-    "위 timeTalbe_2nd table에서 예약 가능한 일자만 추출"
-    reserve_able_date_ls = timeTable_2nd[timeTable_2nd['status'] == '예약']
 
-
+    reservable_table = reservable_table[reservable_table['status'] == '예약']
+    reservable_table.reset_index(drop=True,inplace=True)
+    # reservable_table.info()
 
     # 4. 날짜 선택 기능
 
@@ -977,54 +998,79 @@ def reserve_ipo(loginfo,info_date, reserve_cnt=1,reserve_type='test', multi_date
     driver.find_element(By.XPATH, "//div[@id='content']/div[@class='txtcont']/div[@class='join_form']")
     driver.find_elements(By.XPATH,"//div[@class = 'mt10 mb40 leftcont']")
 
-    wish_date =  ['20220214']
-    d = wish_date[0]
+    wish_date =  ['20220214','20220215'] # test 용
+    # d = wish_date[0] # test용
     # # bottom is exercise
     # wish_date = '20211106'
     # date_temp = "//td[@id=" + wish_date + "]"
     # driver.find_element(By.XPATH, date_temp).text # example = '6\n마감'
-    reserve_result = []
+    ['cc', 'course', 'date', 'time', 'status', 'price']
+    reserve_result_table
 
-    for d in wish_date:
+    " wishdate filtering"
 
-        "달력에서 날짜별 선택 아래 폼으로 찾으면 wishdate를 활성화"
-        date_temp = "//td[@id=" + d + "]"
+    temp_table = pd.DataFrame()
+    for date_able in wish_date:
+        # date_able = wish_date[0]
+        temp_table1 = reservable_table[reservable_table['date'] == date_able]
+        temp_table = pd.concat([temp_table,temp_table1])
+    reservable_table = temp_table
+
+    "달력에서 날짜별 선택 아래 폼으로 찾으면 wishdate를 활성화"
+    # date_id = "//td[@id=" + d + "]"
+    reservable_table['key_date'] = "//td[@id=" + reservable_table['date'] + "]"
+
+    for key_d in reservable_table['key_date'].unique():
+        # key_d = reservable_table['key_date'].unique()[1]
+
         try:
             " '14\n예약' 형태로 되어 있어 split을 하여 예약 부분을 추출"
-            status = driver.find_element(By.XPATH, date_temp).text.split('\n')[-1]
+            status = driver.find_element(By.XPATH, key_d).text.split('\n')[-1]
 
             if status == '예약':
-                reserve_result.append([d, status])
-                driver.find_element(By.XPATH, date_temp).click()
+                driver.find_element(By.XPATH, key_d).click()
                 # 이부분에 시간 에약 기능이 들어가야 함
                 driver.find_element(By.XPATH,"//div[@class = 'mt10 mb40 rightcont join_form']")
-                # out course 선택
+                # course 선택
                 course_dict = {'out': "//td[@valign = 'top']/table[@id = 'out_table']/tbody",
                                'in' :  "//td[@valign = 'top']/table[@id = 'in_table']/tbody"}
                 course_timetable = pd.DataFrame()
-                course_timetable_columns = ['date', 'time', 'fee', 'status', 'course']
+                course_timetable_columns = ['date', 'time', 'price','key_time', 'status', 'course']
                 for c in course_dict.keys():
                     print(c)
                     driver.find_element(By.XPATH,course_dict[c])
                     # 시간 list 추출
                     time_ls = driver.find_elements(By.XPATH, "//tr[@style = 'cursor:pointer']")
+
                     for i in range(len(time_ls)):
-                        temp_out_time = time_ls[i].find_element(By.XPATH, "th").text
-                        temp_out_fee = time_ls[i].find_element(By.XPATH, "td").text
+                        temp_date = key_d.split('=')[1][:8] # '//td[@id=20220214]'
+                        temp_time = time_ls[i].find_element(By.XPATH, "th").text
+                        temp_price = time_ls[i].find_element(By.XPATH, "td").text
+                        temp_key_time = time_ls[i]
                         course_timetable = pd.concat(
-                            [course_timetable, pd.DataFrame([d, temp_out_time, temp_out_fee, status, c]).T])
+                            [course_timetable, pd.DataFrame([temp_date, temp_time, temp_price, temp_key_time,status, c]).T])
                 course_timetable.columns = course_timetable_columns
-                "220211 01:23 이 위까지 작업하였음"
+                ['cc', 'course', 'date', 'time', 'status', 'price', 'key_date', 'key_time', 'key_course']
+
+                left_join_key = ['date', 'status' ]
+                right_join_key = ['date', 'status' ]
+                join_table = pd.merge(reservable_table,course_timetable,how='left',left_on=left_join_key,right_on=right_join_key)
+                join_table.drop(['course_x','time_x','key_time_x','price_x'],axis=1,inplace=True)
+                join_table.rename(columns={'time_y':'time','price_y':'price','course_y':'course','key_time_y':'key_time'},inplace=True)
+                reservable_time_table = pd.concat([reservable_time_table,join_table])
+
+                "220213 02:42 이 위까지 작업하였음"
 
 
-            elif status == '마감' or status =='오픈전':
-                reserve_result.append([d,status])
-            else:
-                reserve_result.append([d, 'error'])
+            #
+            # elif status == '마감' or status =='오픈전':
+            #     reserve_result.append([d,status])
+            # else:
+            #     reserve_result.append([d, 'error'])
         except:
-            reserve_result.append([d, 'exception case'])
+            ""
 
-    print(reserve_result)
+
 
     # 4. 시간 선택 기능
 
