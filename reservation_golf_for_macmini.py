@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.alert import Alert
 from bs4 import BeautifulSoup
 
@@ -841,7 +842,9 @@ info_date = {'wish_date': ['20220223', '202228'],
            }
 
 def reserve_ipo(loginfo,info_date, reserve_try_cnt  = 9,reserve_type='test', multi_date = False):
-
+    reserve_type = 'test'
+    multi_date = False
+    reserve_try_cnt = 9
     # inforamtion of login date initial variable.
     "로그인에 필요한 정보"
     url       = loginfo['url']
@@ -960,7 +963,7 @@ def reserve_ipo(loginfo,info_date, reserve_try_cnt  = 9,reserve_type='test', mul
     # 3. 달력 예약 / 마감/ 오프전 달력 취합 다른 방법, 이것이 빠름
 
     # 예약 달력, 날짜별 예약 가능 여부 표시 되어 있음
-    "달려 open하여 날짜별 예약 상태 수집"
+    "Canledar open하여 날짜별 예약 상태 수집"
     driver.find_element(By.XPATH, "//div[@id='timeform']")
     "timeform 아래에 input 속성이 날짜별로 있어 list함"
     date_ls = driver.find_elements(By.XPATH, "//div[@id='timeform']/input")
@@ -996,9 +999,10 @@ def reserve_ipo(loginfo,info_date, reserve_try_cnt  = 9,reserve_type='test', mul
 
     # 달력 부분 활성화
     driver.find_element(By.XPATH, "//div[@id='content']/div[@class='txtcont']/div[@class='join_form']")
-    driver.find_elements(By.XPATH,"//div[@class = 'mt10 mb40 leftcont']")
+    driver.find_element(By.XPATH,"//div[@class = 'mt10 mb40 leftcont']")
 
-    wish_date =  ['20220214','20220215'] # test 용
+    wish_date =  ['20220216','20220217'] # test 용
+
     # d = wish_date[0] # test용
     # # bottom is exercise
     # wish_date = '20211106'
@@ -1028,37 +1032,59 @@ def reserve_ipo(loginfo,info_date, reserve_try_cnt  = 9,reserve_type='test', mul
             status = driver.find_element(By.XPATH, key_d).text.split('\n')[-1]
 
             if status == '예약':
+                driver.refresh()  # 'stale error issue solution but past history forgotton. '
                 driver.find_element(By.XPATH, key_d).click()
                 # 이부분에 시간 에약 기능이 들어가야 함
+
                 driver.find_element(By.XPATH,"//div[@class = 'mt10 mb40 rightcont join_form']")
+
                 # course 선택
                 course_dict = {'out': "//td[@valign = 'top']/table[@id = 'out_table']/tbody",
                                'in' :  "//td[@valign = 'top']/table[@id = 'in_table']/tbody"}
-                course_timetable = pd.DataFrame()
-                course_timetable_columns = ['date', 'time', 'price','key_time', 'status', 'course']
-                for c in course_dict.keys():
+
+                for c in list(course_dict.keys()):
+                    # c = list(course_dict.keys())[1]
                     print(c)
-                    driver.find_element(By.XPATH,course_dict[c])
+                    # driver.find_element(By.XPATH,course_dict[c]).text
                     # 시간 list 추출
-                    time_ls = driver.find_elements(By.XPATH, "//tr[@style = 'cursor:pointer']")
+                    # course_dict['out'] + "/tr[@style = 'cursor:pointer']"
+
+                    time_ls = driver.find_elements(By.XPATH,course_dict[c] + "/tr[@style = 'cursor:pointer']")
+                    # time_ls = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(By.XPATH,course_dict[c] + "/tr[@style = 'cursor:pointer']"))
+                    driver.implicitly_wait(1)
+                    # time.sleep(1)
+                    print('time sleep')
+                    course_timetable_columns = ['date', 'time', 'price', 'key_time', 'status', 'course']
+                    course_timetable = pd.DataFrame()
+
 
                     for i in range(len(time_ls)):
+
                         temp_date = key_d.split('=')[1][:8] # '//td[@id=20220214]'
                         temp_time = time_ls[i].find_element(By.XPATH, "th").text
                         temp_price = time_ls[i].find_element(By.XPATH, "td").text
+
                         temp_key_time = time_ls[i]
                         course_timetable = pd.concat(
                             [course_timetable, pd.DataFrame([temp_date, temp_time, temp_price, temp_key_time,status, c]).T])
-                course_timetable.columns = course_timetable_columns
-                ['cc', 'course', 'date', 'time', 'status', 'price', 'key_date', 'key_time', 'key_course']
 
-                left_join_key = ['date', 'status' ]
-                right_join_key = ['date', 'status' ]
-                join_table = pd.merge(reservable_table,course_timetable,how='left',left_on=left_join_key,right_on=right_join_key)
-                join_table.drop(['course_x','time_x','key_time_x','price_x'],axis=1,inplace=True)
-                join_table.rename(columns={'time_y':'time','price_y':'price','course_y':'course','key_time_y':'key_time'},inplace=True)
-                reservable_time_table = pd.concat([reservable_time_table,join_table])
+                    print('time ls')
+                    temp_key_time.click()
+                    ['cc', 'course', 'date', 'time', 'status', 'price', 'key_date', 'key_time', 'key_course']
+                    course_timetable.columns = course_timetable_columns
 
+
+
+                    left_join_key = ['date', 'status' ]
+                    right_join_key = ['date', 'status' ]
+                    reservable_table_target = reservable_table[reservable_table['date'] == temp_date]
+                    join_table = pd.merge(reservable_table_target,course_timetable,how='left',left_on=left_join_key,right_on=right_join_key)
+                    join_table.drop(['course_x','time_x','key_time_x','price_x'],axis=1,inplace=True)
+                    join_table.rename(columns={'time_y':'time','price_y':'price','course_y':'course','key_time_y':'key_time'},inplace=True)
+                    reservable_time_table = pd.concat([reservable_time_table,join_table])
+                    # reservable_time_table['key_time'].iloc[0].click()
+                reservable_time_table.reset_index(drop=True,inplace=True)
+                reservable_time_table['key_time'].iloc[47].click()
                 "220213 02:42 이 위까지 작업하였음"
 
 
@@ -1068,7 +1094,7 @@ def reserve_ipo(loginfo,info_date, reserve_try_cnt  = 9,reserve_type='test', mul
             # else:
             #     reserve_result.append([d, 'error'])
         except:
-            ""
+            print('error')
 
 
 

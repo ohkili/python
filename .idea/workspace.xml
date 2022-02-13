@@ -9,6 +9,16 @@
       <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
     </list>
     <ignored path="E:\python\.idea\shelf/" />
+    <ignored path="20211117_010932.jpg" />
+    <ignored path="20211117_015751.jpg" />
+    <ignored path="98/chromedriver.exe" />
+    <ignored path="95/chromedriver.exe" />
+    <ignored path="94/chromedriver.exe" />
+    <ignored path="ipo_main.html" />
+    <ignored path="ipo_reserve_sub04_2.html" />
+    <ignored path="obo-t17800628-33.html" />
+    <ignored path="webpage.html" />
+    <ignored path="주행기록.jpg" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,60 +27,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reservation_golf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4750">
-              <caret line="835" selection-start-line="375" selection-end-line="835" />
-              <folding>
-                <element signature="e#625#975#0" />
-                <element signature="e#815#925#0" />
-                <element signature="e#1143#1157#0" />
-                <element signature="e#1266#1604#0" />
-                <element signature="e#1322#1442#0" />
-                <element signature="e#1649#2491#0" />
-                <element signature="e#1714#1813#0" />
-                <element signature="e#1842#1894#0" />
-                <element signature="e#1907#2232#0" />
-                <element signature="e#1947#2225#0" />
-                <element signature="e#2072#2184#0" />
-                <element signature="e#2516#2808#0" />
-                <element signature="e#2906#2960#0" />
-                <element signature="e#3481#3534#0" />
-                <element signature="e#4074#4141#0" />
-                <element signature="e#5454#7459#1" />
-                <element signature="e#7580#9334#0" />
-                <element signature="e#7931#9285#0" />
-                <element signature="e#8715#9285#0" />
-                <element signature="e#8849#8999#0" />
-                <element signature="e#9372#9651#0" />
-                <element signature="e#10014#10070#0" />
-                <element signature="e#10274#10368#0" />
-                <element signature="e#11181#11237#0" />
-                <element signature="e#11695#11750#0" />
-                <element signature="e#12202#12501#0" />
-                <element signature="e#13822#13841#0" />
-                <element signature="e#14819#15195#0" />
-                <element signature="e#15298#15765#0" />
-                <element signature="e#16187#16465#0" />
-                <element signature="e#16615#16818#0" />
-                <element signature="e#16969#17177#0" />
-                <element signature="e#17293#36978#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="1016" column="41" selection-start-line="1016" selection-start-column="41" selection-end-line="1016" selection-end-column="41" />
+            <state relative-caret-position="409">
+              <caret line="1030" column="21" selection-start-line="1030" selection-start-column="21" selection-end-line="1030" selection-end-column="21" />
               <folding>
                 <element signature="e#668#1019#0" />
                 <element signature="e#859#969#0" />
+                <element signature="e#1045#2423#0" />
                 <element signature="e#1199#1508#0" />
                 <element signature="e#1597#1763#0" />
+                <element signature="e#1850#2216#0" />
                 <element signature="e#1850#1989#0" />
                 <element signature="e#2235#2332#0" />
                 <element signature="e#2592#2730#0" />
@@ -131,6 +99,7 @@
                 <element signature="e#24314#24381#0" />
                 <element signature="e#24898#25004#0" />
                 <element signature="e#25694#27699#1" />
+                <element signature="e#27768#40330#0" />
                 <element signature="e#27801#39588#0" />
                 <element signature="e#27869#39471#0" />
                 <element signature="e#27894#29767#0" />
@@ -157,6 +126,59 @@
                 <element signature="e#38963#39025#0" />
                 <element signature="e#39644#40076#0" />
                 <element signature="e#39644#39706#0" />
+                <element signature="e#40344#40624#0" />
+                <element signature="e#40638#40855#0" />
+                <element signature="e#40898#41026#0" />
+                <element signature="e#42354#42495#0" />
+                <element signature="e#42611#42823#0" />
+                <element signature="e#43051#43304#0" />
+                <element signature="e#43325#43461#0" />
+                <element signature="e#43467#43482#0" />
+                <element signature="e#44164#44196#0" />
+                <element signature="e#45914#46625#0" />
+                <element signature="e#45958#46592#0" />
+                <element signature="e#46272#46413#0" />
+                <element signature="e#46764#46789#0" />
+                <element signature="e#47104#47130#0" />
+                <element signature="e#47494#47655#0" />
+                <element signature="e#48544#48701#0" />
+                <element signature="e#48857#48908#0" />
+                <element signature="e#50787#50793#0" />
+                <element signature="e#51835#51844#0" />
+                <element signature="e#52406#52748#0" />
+                <element signature="e#52802#52823#0" />
+                <element signature="e#53634#55639#1" />
+                <element signature="e#55706#64747#0" />
+                <element signature="e#55739#64645#0" />
+                <element signature="e#55760#57514#0" />
+                <element signature="e#56111#57465#0" />
+                <element signature="e#56895#57465#0" />
+                <element signature="e#57029#57179#0" />
+                <element signature="e#57552#57831#0" />
+                <element signature="e#57866#64328#0" />
+                <element signature="e#58194#58250#0" />
+                <element signature="e#58454#58548#0" />
+                <element signature="e#59361#59417#0" />
+                <element signature="e#59875#59930#0" />
+                <element signature="e#60160#60300#0" />
+                <element signature="e#60382#60681#0" />
+                <element signature="e#60938#61344#0" />
+                <element signature="e#61466#64328#0" />
+                <element signature="e#62002#62021#0" />
+                <element signature="e#62999#63375#0" />
+                <element signature="e#63478#63945#0" />
+                <element signature="e#64367#64645#0" />
+                <element signature="e#64795#64998#0" />
+                <element signature="e#65166#65576#0" />
+                <element signature="e#65255#65390#0" />
+                <element signature="e#65413#65550#0" />
+                <element signature="e#65577#65599#0" />
+                <element signature="e#66383#66573#0" />
+                <element signature="e#66596#66726#0" />
+                <element signature="e#66739#66848#0" />
+                <element signature="e#67319#67420#0" />
+                <element signature="e#67319#67352#0" />
+                <element signature="e#67423#67437#0" />
               </folding>
             </state>
           </provider>
@@ -173,12 +195,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bookNo</find>
-      <find>contL</find>
-      <find>bookNotice</find>
-      <find>bookN</find>
-      <find>관람일</find>
-      <find>예매?</find>
       <find>예매</find>
       <find>step_flag -= 1</find>
       <find>check_exists_by_element</find>
@@ -186,7 +202,6 @@
       <find>check_exist</find>
       <find>Keys</find>
       <find>click</find>
-      <find>WebDriverWait</find>
       <find>hour_option</find>
       <find>d</find>
       <find>wish_year</find>
@@ -202,6 +217,14 @@
       <find>and</find>
       <find>timeTable</find>
       <find>platfrom_ver</find>
+      <find>time_ls</find>
+      <find>temp_out_fee</find>
+      <find>find_elements</find>
+      <find>reservable_time_table</find>
+      <find>implicitly</find>
+      <find>wait</find>
+      <find>WebDriverWait</find>
+      <find>impli</find>
     </findStrings>
     <replaceStrings>
       <replace>step_dic</replace>
@@ -211,6 +234,9 @@
       <replace>content_type</replace>
       <replace>good_luck_kakao</replace>
       <replace>plaform_ver</replace>
+      <replace>date_ls</replace>
+      <replace>temp_time</replace>
+      <replace>temp_price</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -237,8 +263,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1973" />
-    <option name="y" value="267" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -718,8 +744,8 @@
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4822485" visible="true" weight="0.24973656" />
-      <window_info id="Structure" order="1" sideWeight="0.51775146" side_tool="true" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48082596" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" sideWeight="0.51917404" side_tool="true" visible="true" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -731,7 +757,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947146" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49947146" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.3329718" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" visible="true" weight="0.26681128" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" visible="true" weight="0.2646421" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -820,6 +846,11 @@
           <url>file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py</url>
           <line>55</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reservation_golf_for_macmini.py</url>
+          <line>1060</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -980,8 +1011,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reservation_golf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4750">
-          <caret line="835" selection-start-line="375" selection-end-line="835" />
+        <state relative-caret-position="268">
+          <caret line="370" column="35" lean-forward="true" selection-start-line="370" selection-start-column="35" selection-end-line="370" selection-end-column="35" />
           <folding>
             <element signature="e#625#975#0" />
             <element signature="e#815#925#0" />
@@ -1022,13 +1053,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="1016" column="41" selection-start-line="1016" selection-start-column="41" selection-end-line="1016" selection-end-column="41" />
+        <state relative-caret-position="409">
+          <caret line="1030" column="21" selection-start-line="1030" selection-start-column="21" selection-end-line="1030" selection-end-column="21" />
           <folding>
             <element signature="e#668#1019#0" />
             <element signature="e#859#969#0" />
+            <element signature="e#1045#2423#0" />
             <element signature="e#1199#1508#0" />
             <element signature="e#1597#1763#0" />
+            <element signature="e#1850#2216#0" />
             <element signature="e#1850#1989#0" />
             <element signature="e#2235#2332#0" />
             <element signature="e#2592#2730#0" />
@@ -1089,6 +1122,7 @@
             <element signature="e#24314#24381#0" />
             <element signature="e#24898#25004#0" />
             <element signature="e#25694#27699#1" />
+            <element signature="e#27768#40330#0" />
             <element signature="e#27801#39588#0" />
             <element signature="e#27869#39471#0" />
             <element signature="e#27894#29767#0" />
@@ -1115,6 +1149,59 @@
             <element signature="e#38963#39025#0" />
             <element signature="e#39644#40076#0" />
             <element signature="e#39644#39706#0" />
+            <element signature="e#40344#40624#0" />
+            <element signature="e#40638#40855#0" />
+            <element signature="e#40898#41026#0" />
+            <element signature="e#42354#42495#0" />
+            <element signature="e#42611#42823#0" />
+            <element signature="e#43051#43304#0" />
+            <element signature="e#43325#43461#0" />
+            <element signature="e#43467#43482#0" />
+            <element signature="e#44164#44196#0" />
+            <element signature="e#45914#46625#0" />
+            <element signature="e#45958#46592#0" />
+            <element signature="e#46272#46413#0" />
+            <element signature="e#46764#46789#0" />
+            <element signature="e#47104#47130#0" />
+            <element signature="e#47494#47655#0" />
+            <element signature="e#48544#48701#0" />
+            <element signature="e#48857#48908#0" />
+            <element signature="e#50787#50793#0" />
+            <element signature="e#51835#51844#0" />
+            <element signature="e#52406#52748#0" />
+            <element signature="e#52802#52823#0" />
+            <element signature="e#53634#55639#1" />
+            <element signature="e#55706#64747#0" />
+            <element signature="e#55739#64645#0" />
+            <element signature="e#55760#57514#0" />
+            <element signature="e#56111#57465#0" />
+            <element signature="e#56895#57465#0" />
+            <element signature="e#57029#57179#0" />
+            <element signature="e#57552#57831#0" />
+            <element signature="e#57866#64328#0" />
+            <element signature="e#58194#58250#0" />
+            <element signature="e#58454#58548#0" />
+            <element signature="e#59361#59417#0" />
+            <element signature="e#59875#59930#0" />
+            <element signature="e#60160#60300#0" />
+            <element signature="e#60382#60681#0" />
+            <element signature="e#60938#61344#0" />
+            <element signature="e#61466#64328#0" />
+            <element signature="e#62002#62021#0" />
+            <element signature="e#62999#63375#0" />
+            <element signature="e#63478#63945#0" />
+            <element signature="e#64367#64645#0" />
+            <element signature="e#64795#64998#0" />
+            <element signature="e#65166#65576#0" />
+            <element signature="e#65255#65390#0" />
+            <element signature="e#65413#65550#0" />
+            <element signature="e#65577#65599#0" />
+            <element signature="e#66383#66573#0" />
+            <element signature="e#66596#66726#0" />
+            <element signature="e#66739#66848#0" />
+            <element signature="e#67319#67420#0" />
+            <element signature="e#67319#67352#0" />
+            <element signature="e#67423#67437#0" />
           </folding>
         </state>
       </provider>
