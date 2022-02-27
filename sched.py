@@ -20,7 +20,7 @@ def job_2(input_num):
 input_nums = input('input number')
 job_id1 = schedule.every(1).seconds.do(job_2,input_nums)
 count =0
-while count < 5:
+while True:
 
     # Checks whether a scheduled task
     # is pending to run or not
@@ -30,7 +30,7 @@ while count < 5:
 
     count = count +1
 
-    # if count > 3:
-    #     schedule.cancel_job(job_id1)
+    if count > 3:
+        schedule.cancel_job(job_id1)
 
 print('Job is done!')
