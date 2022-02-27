@@ -68,7 +68,6 @@ def driverAct(url):
     driver.get(url)
     return driver
 
-
 # REST_API_KEY and refresh_token is borrow
 REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
 refresh_token = '2hZcRLD01s1Rl0qEA0BhnenFH1om0rtTNimYSgo9cuoAAAF81jvBOA'
@@ -165,7 +164,6 @@ def good_luck_kakao():
       print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
       access_token = access_token_mkr(REST_API_KEY,refresh_token)
       kakao_message('message test from macmini with golf '+ str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))),access_token)
-
 
 def good_luck():
     print("Good Luck for Test")
