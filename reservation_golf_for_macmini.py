@@ -2241,6 +2241,8 @@ def pass_key(macaddress):
     macaddress_int = int(''.join([str(ord(s)) for s in macaddress]))
     pass_key = macaddress_int % 790604
     return pass_key
+pk = pass_key('BC5FF4395741')
+print(pk)
 "시나리온 developer가 제공하는 pass_key를 넣어서 pass_cal의 결과와 일치하면 실행"
 if pass_key(macaddress_ex())  == pass_cal():
     print('True')
