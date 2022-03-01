@@ -25,6 +25,8 @@ from apscheduler.jobstores.base import JobLookupError
 import ssl
 import telegram
 import platform
+import os
+import cpuinfo  # reading cpu serial
 
 # chrome driver auto install and driver activation
 def chromedriver_autorun():
@@ -1030,7 +1032,7 @@ def reserve_ipo(loginfo,info_date, reserve_try_cnt  = 9, reserve_type='test', mu
 
                     for c in list(course_dict.keys()):
                         # c = list(course_dict.keys())[1]
-                        print(c)
+                        # print(c)
                         # driver.find_element(By.XPATH,course_dict[c]).text
                         # 시간 list 추출
                         # course_dict['out'] + "/tr[@style = 'cursor:pointer']"
@@ -1622,6 +1624,7 @@ def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
     elif reserve_type == 'test':
         reserve_try_cnt = 1
         reserve_able_cnt =1
+        pass
     else:
         reserve_try_cnt =0
         telegram_message(content= 'ipo_cc : ' + error_msg['reserve_type'], content_type='text', description='description')
@@ -1665,6 +1668,17 @@ def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
     # reservation = driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")  # /html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a
 
     # 3. reserveation page open
+
+    reservation_log_path = "D:/result_reservation.txt"
+    if os.path.exists(reservation_log_path):
+        os.remove(reservation_log_path)
+    else:
+        pass
+    result_not_able_log_path = "D:/result_not_able.txt"
+    if os.path.exists(result_not_able_log_path):
+        os.remove(result_not_able_log_path)
+    else:
+        pass
 
     while(reserve_need_cnt > 0 and reserve_try_cnt > 0 and reserve_able_cnt > 0 ):
         "예약 화면 open"
@@ -1776,12 +1790,17 @@ def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
         if len(reservable_table) == 0 :
 
             telegram_message('예약 가능일 없음\n' + '당신의 요청 예약일\n' + str(info_date2))
+            print('예약 가능일 없음\n' + '당신의 요청 예약일\n' + str(info_date2))
+            time.sleep(1)
+
+            file = open(result_not_able_log_path, 'w')
+            file.write('예약 가능일 없음\n' + '당신의 요청 예약일\n' + str(info_date2))
+            file.close()
+
+            break
 
         else:
             pass
-
-
-
 
 
         for kd in list(info_date_temp.keys()):
@@ -1808,7 +1827,7 @@ def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
 
                             for c in list(course_dict.keys()):
                                 # c = list(course_dict.keys())[0]
-                                print(c)
+                                # print(c)
                                 # driver.find_element(By.XPATH,course_dict[c]).text
                                 # 시간 list 추출
                                 # course_dict['out'] + "/tr[@style = 'cursor:pointer']"
@@ -1817,7 +1836,7 @@ def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
                                 # time_ls = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(By.XPATH,course_dict[c] + "/tr[@style = 'cursor:pointer']"))
                                 driver.implicitly_wait(1)
                                 # time.sleep(1)
-                                print('time sleep')
+                                # print('time sleep')
 
 
 
@@ -1833,7 +1852,7 @@ def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
                                     course_timetable = pd.concat(
                                         [course_timetable, pd.DataFrame([temp_date, temp_time, temp_price, temp_key_time,status, c]).T])
 
-                                    print('time ls')
+                                    # print('time ls')
                                     # temp_key_time.click()
                                     ['cc', 'course', 'date', 'time', 'status', 'price', 'key_date', 'key_time', 'key_course']
                                     course_timetable.columns = course_timetable_columns
@@ -1889,20 +1908,36 @@ def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
                                     reserve_confirm = driver.find_element(By.XPATH,
                                                                           "//form[@name = 'sub04_2' and @id='sub04_2']/div[@class = 'mt20 mb50 btnarea4']/span[@class='btn_enter mr20']")
                                     reserve_confirm.click()
-                                    telegram_message('예약 완료:\n' + timeTable_masked.iloc[index_no]['cc'] + '\n' + reserve_message)
+                                    final_reserve_message = '예약 완료:\n' + timeTable_masked.iloc[index_no]['cc'] + '\n' + reserve_message
+                                    telegram_message(final_reserve_message)
+                                    print(final_reserve_message)
+                                    time.sleep(1)
+                                    # print('pause')
 
                                     reserve_need_cnt -= 1
                                     reserve_able_cnt -= 1
 
                                 elif reserve_type == 'test':
-
-                                    telegram_message(
-                                        '예약 Test:실제로 예약된 것은 아님\n' + timeTable_masked.iloc[index_no]['cc'] + '\n' + reserve_message)
+                                    final_reserve_message = '예약 Test:실제로 예약된 것은 아님\n' + timeTable_masked.iloc[index_no]['cc'] + '\n' + reserve_message
+                                    telegram_message(final_reserve_message)
+                                    print(final_reserve_message)
+                                    time.sleep(1)
+                                    # print('pause')
                                     reserve_cancel = driver.find_element(By.XPATH,
                                                                           "//form[@name = 'sub04_2' and @id='sub04_2']/div[@class = 'mt20 mb50 btnarea4']/span[@class='btn_cancel']")
 
                                     reserve_try_cnt = 0
                                     reserve_able_cnt = 0
+
+                                reservation_log_path = "D:/result_reservation.txt"
+                                if os.path.exists(reservation_log_path):
+                                    file = open(reservation_log_path, 'a')
+                                    file.write('\n'+ final_reserve_message +'\n')
+                                    file.close()
+                                else:
+                                    file = open(reservation_log_path, 'w')
+                                    file.write(final_reserve_message +'\n')
+                                    file.close()
                             except:
                                 pass
                     except:
@@ -2040,6 +2075,97 @@ def info_date_test2():
 # string = time.strftime('%Y%m%d', t1)
 # print(string)
 
+def info_date_ex():
+    try:
+        columnNames = ['Order', 'Date', 'Front_Time', 'End_Time', 'Filter']
+        columnNames1 = ['ID', 'Password']
+
+        info_ipo = {'url': 'http://ipo-cc.co.kr/cmm/main/mainPage.do',
+                    'loginPage': 'https://ipocc.com/uat/uia/egovLoginUsr.do',
+                    'id': '',
+                    'pw': ''
+                    }
+
+        temp = pd.read_excel('D:/ipo_reserve_order.xlsx', sheet_name='timeTable')
+        temp1 = pd.read_excel('D:/ipo_reserve_order.xlsx', sheet_name='ID')
+
+        temp.columns = columnNames
+        temp = temp.astype('str')
+        temp['Front_Time'] = temp['Front_Time'].apply(lambda x: '0' + x if len(x) == 1 else x)
+        temp['End_Time'] = temp['End_Time'].apply(lambda x: '0' + x if len(x) == 1 else x)
+        temp['Filter'] = temp['Filter'].apply(lambda x: x.lower())
+        temp['Filter'] = temp['Filter'].apply(lambda x: 'first' if x[0] == 'f' else 'mid' if x[0] == 'm' else 'last')
+
+        temp.reset_index(drop=True, inplace=True)
+
+        info_date2 = {}
+        for i in range(len(temp)):
+            info_date2[temp['Order'].iloc[i]] = [temp['Date'].iloc[i],
+                                                 temp['Front_Time'].iloc[i] + '~' + temp['End_Time'].iloc[i],
+                                                 temp['Filter'].iloc[i]]
+
+        temp1.columns = columnNames1
+        temp1.reset_index(drop=True, inplace=True)
+
+        info_ipo['id'] = temp1['ID'].iloc[0]
+        info_ipo['pw'] = temp1['Password'].iloc[0]
+
+    except:
+        print('Check your file, file name is ipo_reserve_order.xlsx')
+
+    return info_date2
+
+def info_ipo_ex():
+
+    try:
+        columnNames = ['Order', 'Date', 'Front_Time', 'End_Time', 'Filter']
+        columnNames1 = ['ID','Password']
+        columnNames2 = ['Gen_key', 'Pass_key']
+
+        "part of info of ipo cc url"
+        info_ipo = {'url': 'http://ipo-cc.co.kr/cmm/main/mainPage.do',
+                    'loginPage': 'https://ipocc.com/uat/uia/egovLoginUsr.do',
+                    'id': '',
+                    'pw': ''
+                    }
+
+        temp = pd.read_excel('D:/ipo_reserve_order.xlsx',sheet_name='timeTable')
+        temp1 = pd.read_excel('D:/ipo_reserve_order.xlsx', sheet_name='cc')
+        temp2 = pd.read_excel('D:/ipo_reserve_order.xlsx', sheet_name='macro')
+
+        "part of info reserve order date"
+        temp.columns = columnNames
+        temp = temp.astype('str')
+        temp['Front_Time'] = temp['Front_Time'].apply(lambda x : '0' + x if len(x) == 1 else x)
+        temp['End_Time'] = temp['End_Time'].apply(lambda x : '0' + x if len(x) == 1 else x)
+        temp['Filter'] = temp['Filter'].apply(lambda x: x.lower())
+        temp['Filter'] = temp['Filter'].apply(lambda x: 'first' if x[0] == 'f' else 'mid' if x[0] =='m' else 'last')
+        temp.reset_index(drop=True, inplace=True)
+
+        info_date2 ={}
+        for i in range(len(temp)):
+            info_date2[temp['Order'].iloc[i]] = [temp['Date'].iloc[i], temp['Front_Time'].iloc[i] +'~' + temp['End_Time'].iloc[i], temp['Filter'].iloc[i]]
+
+        "part of info login ID & Password"
+        temp1.columns = columnNames1
+        temp1.reset_index(drop=True, inplace=True)
+
+        info_ipo['id'] = temp1['ID'].iloc[0]
+        info_ipo['pw'] = temp1['Password'].iloc[0]
+
+        "part of info macro gen & pass key"
+        temp2.columns = columnNames2
+        temp2.reset_index(drop=True, inplace=True)
+
+        key_pair = {}
+
+        key_pair['Gen_key'] = temp2['Gen_key'].iloc[0]
+        key_pair['Pass_key'] = temp2['Pass_key'].iloc[0]
+
+    except:
+        print('Check your file, file name is ipo_reserve_order.xlsx')
+
+    return  info_ipo, info_date2,key_pair
 
 error_msg = {'login_url_aborted    ':'Check your login url',
              'login_fail'           :'Check your login id or password',
@@ -2094,8 +2220,39 @@ info_date_ipo ={'wish_1st_datehour': ['20220312', '07~09','first'],
 good_luck()
 
 
+import uuid
+import re
+
+"macro part"
+def pass_cal():
+
+    # print(f"Mac-Address: {':'.join(re.findall('..', '%012x' % uuid.getnode()))}")
+    macaddress = ''.join(re.findall('..', '%012x' % uuid.getnode())).upper()
+    macaddress_int = int(''.join([str(ord(s)) for s in macaddress]))
+    pass_cal = macaddress_int % 790604
+    return pass_cal
+"users's tool"
+def macaddress_ex():
+    macaddress = ''.join(re.findall('..', '%012x' % uuid.getnode())).upper()
+
+    return macaddress
+"developer's IP"
+def pass_key(macaddress):
+    macaddress_int = int(''.join([str(ord(s)) for s in macaddress]))
+    pass_key = macaddress_int % 790604
+    return pass_key
+"시나리온 developer가 제공하는 pass_key를 넣어서 pass_cal의 결과와 일치하면 실행"
+if pass_key(macaddress_ex())  == pass_cal():
+    print('True')
+else:
+    print('Falase')
+
+
 # reserve_ipo(info_ipo, info_date, reserve_try_cnt=2, reserve_type='test', multi_date=False)
-# reserve_ipo3(info_ipo,info_date_ipo, reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False)
+
+# info_ipo_ex,info_date_ex,key_pair = info_ipo_ex()
+
+# reserve_ipo3(info_ipo_ex,info_date_ex, reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False)
 # reserve_ipo3(info_ipo,info_date_test2(), reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False)
 # reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 
@@ -2118,11 +2275,6 @@ while True:
 
     if count >0 :
         schedule.cancel_job(job_real1)
-
-
-
-
-
 
 
 # # test  part
