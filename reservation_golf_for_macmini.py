@@ -2240,6 +2240,10 @@ def pass_key(macaddress):
     pass_key = macaddress_int % 790604
     return pass_key
 pk = pass_key('BC5FF4395741')
+pk1 = pass_key('988D4696F7C5')
+pk_husu = pass_key('F8633F2EF52B')
+
+
 print(pk)
 "시나리온 developer가 제공하는 pass_key를 넣어서 pass_cal의 결과와 일치하면 실행"
 if pass_key(macaddress_ex())  == pass_cal():
