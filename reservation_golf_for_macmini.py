@@ -1583,6 +1583,7 @@ def reserve_ipo2(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
                                         <td> 
                                            <button conclick> 예약 선택 버튼 """
 "resrve_ipo3는 성공"
+loginfo = info_ipo
 def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False):
 
     # inforamtion of login date initial variable.
@@ -2257,7 +2258,7 @@ else:
 # info_ipo_ex,info_date_ex,key_pair = info_ipo_ex()
 
 # reserve_ipo3(info_ipo_ex,info_date_ex, reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False)
-# reserve_ipo3(info_ipo,info_date_test2(), reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False)
+reserve_ipo3(info_ipo,info_date_test2(), reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False)
 # reserve_rivera_macmini(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
 
 # reserve_rivera(info_rivera, info_date_test(), reserve_cnt=1, reserve_type='test', multi_date=False)
