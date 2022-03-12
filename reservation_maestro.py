@@ -124,10 +124,10 @@ def telegram_message(content='Hello world', content_type='text', description='de
     else:
         print('You must choice content_type as text, imgUrl, imgFile, hyperlink')
 
-def good_luc_from_ipo():
-    print("Good Luck for Test")
+def good_luc_from_maestro():
+    print("Good Luck for Test from maestro")
     print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    content_new =  'message test from reservattion_ipocc ' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    content_new =  'message test from reservattion_maestro ' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     telegram_message(content = content_new, content_type='text', description= 'etc' )
 
 def info_ipo_ex(folder_name,id_no =1):
@@ -202,30 +202,6 @@ def info_ipo_ex(folder_name,id_no =1):
         print('Check your file, file name is ipo_reserve_order.xlsx')
 
     return  info_ipo, info_date2,key_pair,run_mode
-# info_path = 'C:/ipocc_info'
-# loginfo, info_date2, key_pair, run_mode = info_ipo_ex(info_path, id_no=1)
-reserve_try_cnt  = 9
-reserve_able_cnt = 3
-reserve_type='test'
-
-
-info_maestro = {'url'      : 'https://www.maestrocc.co.kr/index.asp',
-            'loginPage': 'https://www.maestrocc.co.kr/login/login.asp',
-             'id'      : 'ohkili',
-             'pw'      : 'mae!1203',
-             'filepath':  ''
-               }
-loginfo = info_maestro
-info_date2 = {'wish_1st_datehour': ['20220315', '05~18','mid'],
-              'wish_2nd_datehour': ['20220228', '08~09', 'mid'],
-              'wish_3rd_datehour': ['20220302', '07~08', 'mid'],
-              'wish_4th_datehour': ['20220303', '10~19', 'mid'],
-              'wish_5th_datehour': ['20220306', '10~19', 'mid'],
-              'wish_6th_datehour': ['20220309', '11~19', 'mid'],
-              'wish_7th_datehour': ['20220310', '13~19', 'mid'],
-              'wish_8th_datehour': ['20220307', '08~17', 'last'],
-              'wish_9th_datehour': ['20220307', '04~19', 'mid'],
-           }
 def reserve_ipo5_mobile(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', reserve_open_time = '09:00', multi_date = False):
 
     def homefunc(driver):
@@ -760,6 +736,31 @@ def reserve_ipo5_mobile(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cn
                                         <td> 130,000 </td> 금액
                                         <td> 
                                            <button conclick> 예약 선택 버튼 """
+# info_path = 'C:/ipocc_info'
+# loginfo, info_date2, key_pair, run_mode = info_ipo_ex(info_path, id_no=1)
+reserve_try_cnt  = 9
+reserve_able_cnt = 3
+reserve_type='test'
+
+
+info_maestro = {'url'      : 'https://www.maestrocc.co.kr/index.asp',
+            'loginPage': 'https://www.maestrocc.co.kr/login/login.asp',
+             'id'      : 'ohkili',
+             'pw'      : 'mae!1203',
+             'filepath':  ''
+               }
+loginfo = info_maestro
+info_date2 = {'wish_1st_datehour': ['20220328', '05~18','mid'],
+              'wish_2nd_datehour': ['20220327', '08~09', 'mid'],
+              'wish_3rd_datehour': ['20220326', '07~08', 'mid'],
+              'wish_4th_datehour': ['20220325', '10~19', 'mid'],
+              'wish_5th_datehour': ['20220324', '10~19', 'mid'],
+              'wish_6th_datehour': ['20220323', '11~19', 'mid'],
+              'wish_7th_datehour': ['20220322', '13~19', 'mid'],
+              'wish_8th_datehour': ['20220321', '08~17', 'last'],
+              'wish_9th_datehour': ['20220320', '04~19', 'mid'],
+           }
+
 def reserve_maestro(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', reserve_open_time = '09:00', multi_date = False):
 
     def homefunc(driver):
@@ -994,16 +995,29 @@ def reserve_maestro(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 
 
         # 예약 달력, 날짜별 예약 가능 여부 표시 되어 있음
         "Canledar open하여 날짜별 예약 상태 수집"
-        driver.find_element(By.XPATH,"/html/body/div[@id='wrap']/div[@id='body']/div[@class='content_sub_in']"
-                                     "/div[@class='content']/div[@class='sub_top']/div[@id='content_body']/div[@id='cm_homepage']/div[@id='cm_reservation']"
-                                     "/div[@id='cm_reservation_left']/div[@class='cm_calender_area_in']"
-                                     "/div[@id='cm_calendar_small_01']/div[@id='calendar_view_ajax_1']"
-                                     "/div[@class='cm_calendEr_top']/strong")
+        fisrt_month3 = driver.find_element(By.XPATH,
+                                     "//div[@id='cm_calendar_small_01']/div[@id='calendar_view_ajax_1']"
+                                     "/div[@class='cm_calender_top']/strong").text
+
+        second_month5 = driver.find_element(By.XPATH,
+                                     "//div[@id='cm_calendar_small_02']/div[@id='calendar_view_ajax_2']"
+                                     "/div[@class='cm_calender_top']/strong").text
+
+
+        "/html/body/div[@id='wrap']/div[@id='body']/div[@class='content_sub']/div[@class='content_sub_in']"
+        "/div[@class='content']/div[@class='sub_top']/div[@id='content_body']/div[@id='cm_homepage']/div[@id='cm_reservation']"
+        "//div[@id='cm_reservation_left']/div[@class='cm_calender_area_in']"
 
         "timeform 아래에 input 속성이 날짜별로 있어 list함"
-        date_ls = driver.find_elements(By.XPATH, "//div[@id='timeform']/input")
-
-
+        "worked at 220312 17:15"
+        date_temp_1st = driver.find_elements(By.XPATH,
+                                     "//div[@id='cm_calendar_small_01']/div[@id='calendar_view_ajax_1']"
+                                     "/table[@class='cm_calender_tbl']/tbody/tr")
+        date_temp_1st_dep1 = date_temp_1st[0].find_elements(By.XPATH,"td")
+        date_temp_1st_dep1[33].text
+        for i in range(len(date_temp_1st_dep1)):
+            print(i, date_temp_1st_dep1[i].text)
+        "worked at 220312 18:49"
         for d in date_ls:
             # d = date_ls[15]
             try:
@@ -1385,7 +1399,7 @@ info_date2 = {'wish_1st_datehour': ['20220315', '05~18','mid'],
               'wish_9th_datehour': ['20220307', '04~19', 'mid'],
            }                                 # hour_option 'first, 'mid', 'last'
 
-good_luc_from_ipo()                                # telegram conneting check one time at program run
+good_luc_from_maestro()                                # telegram conneting check one time at program run
 
 
 #===================================================================
@@ -1430,13 +1444,13 @@ if run_mode['mode'] == 'test':
     except:
         pass
     " test part"
-    job2 = schedule.every().day.at("08:00").do(good_luc_from_ipo)
+    job2 = schedule.every().day.at("08:00").do(good_luc_from_maestro)
     job3 = schedule.every().day.at("09:00").do(lambda: reserve_ipo5_mobile(info_ipo_ex1,info_date_test_afer14days(), reserve_try_cnt  = 9,reserve_able_cnt = 2, reserve_type=run_mode['mode'] , multi_date = False)  )
 
 elif run_mode['mode'] == 'real':
 
     "real part"
-    good_luc_from_ipo()
+    good_luc_from_maestro()
 
     try:
         reserve_ipo5_mobile(info_ipo_ex1, info_date_ex1, reserve_try_cnt=9, reserve_able_cnt=3, reserve_type= 'test' ,reserve_open_time = reserve_time, multi_date=False)
@@ -1444,7 +1458,7 @@ elif run_mode['mode'] == 'real':
     except:
         pass
 
-    job3 = schedule.every().day.at("08:30").do(good_luc_from_ipo)
+    job3 = schedule.every().day.at("08:30").do(good_luc_from_maestro)
 
     try:
         job_real1 = schedule.every().day.at("08:40").do(lambda:  reserve_ipo5_mobile(info_ipo_ex1,info_date_ex1, reserve_try_cnt  = 9,reserve_able_cnt = 2, reserve_type=run_mode['mode'] , reserve_open_time = reserve_time,multi_date = False) )
