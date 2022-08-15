@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="chrome driver auto installer update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +168,28 @@
       <recent name="E:\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.reservation_ipocc_internal">
+  <component name="RunManager" selected="Python.lotto_auto_purchase_for_macmini">
+    <configuration name="lotto_auto_purchase_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="lotto_auto_purchasing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -252,41 +274,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="telegram_message" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="work" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/telegram_message.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.lotto_auto_purchasing" />
       <item itemvalue="Python.reservation_golf_for_macmini" />
-      <item itemvalue="Python.telegram_message" />
       <item itemvalue="Python.reservation_ipocc" />
       <item itemvalue="Python.reservation_ipocc_internal" />
+      <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
         <item itemvalue="Python.reservation_ipocc_internal" />
         <item itemvalue="Python.reservation_ipocc" />
         <item itemvalue="Python.lotto_auto_purchasing" />
         <item itemvalue="Python.reservation_golf_for_macmini" />
-        <item itemvalue="Python.telegram_message" />
       </list>
     </recent_temporary>
   </component>
@@ -624,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660547720640</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="chrome driver auto installer update">
+      <created>1660547918246</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1660547918246</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -769,6 +777,11 @@
           <url>file://$PROJECT_DIR$/reservation_ipocc_shotcut.py</url>
           <line>1</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py</url>
+          <line>316</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -291,7 +291,7 @@ def work():
       print("Study and work hard")
       print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
-# good_luck()
+good_luck()
 # Task scheduling
 # After every 10 mins geeks() is called.
 # schedule.every(10/60).minutes.do(good_luck)
