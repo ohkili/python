@@ -21,15 +21,21 @@ import schedule
 # chrome driver auto install and driver activation
 def chromedriver_autorun():
 
-    chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]  #크롬드라이버 버전 확인
+    # chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]  #크롬드라이버 버전 확인
+    #
+    # try:
+    #     driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
+    # except:
+    #     chromedriver_autoinstaller.install(True)
+    #     driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
 
-    try:
-        driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
-    except:
-        chromedriver_autoinstaller.install(True)
-        driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
+
+    path = chromedriver_autoinstaller.install()
+    driver = webdriver.Chrome(path)
 
     driver.implicitly_wait(10)
+
+
     return driver
 
 # REST_API_KEY and refresh_token is borrow

@@ -5,70 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_03_11_10_39___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_03_11_10_39___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_03_11_10_39___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_03_11_10_39_오후_[Default_Changelist]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/work.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_maestro.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_maestro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/reservation_maestro.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="1019" column="31" selection-start-line="1019" selection-start-column="31" selection-end-line="1019" selection-end-column="31" />
-              <folding>
-                <element signature="e#673#1024#0" />
-                <element signature="e#864#974#0" />
-                <element signature="e#1050#2472#0" />
-                <element signature="e#1204#1513#0" />
-                <element signature="e#1602#1768#0" />
-                <element signature="e#1846#2265#0" />
-                <element signature="e#1846#1890#0" />
-                <element signature="e#2284#2381#0" />
-                <element signature="e#2641#2779#0" />
-                <element signature="e#3062#3400#0" />
-                <element signature="e#3118#3238#0" />
-                <element signature="e#3499#5412#0" />
-                <element signature="e#3686#4458#1" />
-                <element signature="e#4499#4589#0" />
-                <element signature="e#4633#4768#0" />
-                <element signature="e#4813#4944#0" />
-                <element signature="e#4991#5320#0" />
-                <element signature="e#4991#5034#0" />
-                <element signature="e#5810#8770#0" />
-                <element signature="e#8949#32519#0" />
-                <element signature="e#34126#35360#0" />
-                <element signature="e#64442#64893#0" />
-                <element signature="e#64535#64870#0" />
-                <element signature="e#64563#64838#0" />
-                <element signature="e#64586#64648#0" />
-                <element signature="e#64731#64793#0" />
-                <element signature="e#64904#65014#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schedule2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2675">
-              <caret line="120" column="16" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -225,18 +173,6 @@
       <recent name="E:\python" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Python.reservation_ipocc_internal">
     <configuration name="lotto_auto_purchasing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
@@ -360,7 +296,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -759,18 +695,12 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -795,6 +725,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
