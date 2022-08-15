@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="chrome driver auto installer update">
+    <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="youtube downloader upgrade">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/github/YouTube_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/github/YouTube_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation_golf_for_macmini.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +168,28 @@
       <recent name="E:\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lotto_auto_purchase_for_macmini">
+  <component name="RunManager" selected="Python.YouTube_extractor">
+    <configuration name="YouTube_extractor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/github" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/github/YouTube_extractor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="lotto_auto_purchase_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -207,27 +226,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lotto_auto_purchasing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="reservation_golf_for_macmini" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="work" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reservation_golf_for_macmini.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -278,22 +276,22 @@
     </configuration>
     <list>
       <item itemvalue="Python.lotto_auto_purchasing" />
-      <item itemvalue="Python.reservation_golf_for_macmini" />
       <item itemvalue="Python.reservation_ipocc" />
       <item itemvalue="Python.reservation_ipocc_internal" />
       <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
+      <item itemvalue="Python.YouTube_extractor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.YouTube_extractor" />
         <item itemvalue="Python.lotto_auto_purchase_for_macmini" />
         <item itemvalue="Python.reservation_ipocc_internal" />
         <item itemvalue="Python.reservation_ipocc" />
         <item itemvalue="Python.lotto_auto_purchasing" />
-        <item itemvalue="Python.reservation_golf_for_macmini" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -641,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660561841038</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="youtube downloader upgrade">
+      <created>1660573471311</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1660573471311</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView">
@@ -772,7 +777,8 @@
     <MESSAGE value="ipo cc 예약 매크로 완성" />
     <MESSAGE value="ipo cc 예약 매크로 모바일 버전 완료" />
     <MESSAGE value="chrome driver auto installer update" />
-    <option name="LAST_COMMIT_MESSAGE" value="chrome driver auto installer update" />
+    <MESSAGE value="youtube downloader upgrade" />
+    <option name="LAST_COMMIT_MESSAGE" value="youtube downloader upgrade" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

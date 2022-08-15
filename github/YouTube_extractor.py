@@ -128,29 +128,31 @@ def youtube_downloader_mp3(url, download_path=''):
 
     search_no = np.argmax(ratio_ls)
     search_file = file_ls[search_no]
+    # search_file = search_file.split('.mp4')[0].replace('.','') + '.mp4'
+    # search_file = search_file.replace('|','').replace('!','').replace('*','')
     renamed_file = search_file.replace('.mp4','.mp3')
     os.rename(search_file,renamed_file)
     if os.path.isfile(renamed_file) is True:
         print('File down load is succeed:',renamed_file )
 
 
-
-
-url = 'https://www.youtube.com/watch?v=lIKmm-G7YVQ'
 download_path = '/users/home/Music/download'
+# url = 'https://www.youtube.com/watch?v=lIKmm-G7YVQ'
 
-youtube_downloader_mp3(url, download_path)
 #
-# url_ls = ['https://www.youtube.com/watch?v=OT9jLERUM9U',
-#           'https://www.youtube.com/watch?v=CzHhjlxGgrA',
-#           'https://www.youtube.com/watch?v=yyo51Z__vWk',
-#           'https://www.youtube.com/watch?v=4o9Y2sOxEGg',
-#           'https://www.youtube.com/watch?v=6zZw5J6GK4E',
-#           'https://www.youtube.com/watch?v=9zxnQgwzbcY'
-#           ]
-#
-# for url in url_ls:
-#     youtube_downloader_mp3(url,download_path)
+# youtube_downloader_mp3(url, download_path)
+
+url_ls = ['https://www.youtube.com/watch?v=OT9jLERUM9U',
+          'https://www.youtube.com/watch?v=CzHhjlxGgrA',
+          'https://www.youtube.com/watch?v=yyo51Z__vWk',
+          'https://www.youtube.com/watch?v=4o9Y2sOxEGg',
+          'https://www.youtube.com/watch?v=6zZw5J6GK4E',
+          'https://www.youtube.com/watch?v=9zxnQgwzbcY',
+          'https://www.youtube.com/watch?v=lIKmm-G7YVQ'
+          ]
+
+for url in url_ls:
+    youtube_downloader_mp3(url,download_path)
 #
 # file_ls = glob.glob(download_path + '/*.mp4')
 # for file_old in file_ls:
