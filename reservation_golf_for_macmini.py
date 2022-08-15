@@ -26,7 +26,7 @@ import ssl
 import telegram
 import platform
 import os
-import cpuinfo  # reading cpu serial
+# import cpuinfo  # reading cpu serial
 
 # chrome driver auto install and driver activation
 def chromedriver_autorun():
@@ -1583,7 +1583,7 @@ def reserve_ipo2(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, 
                                         <td> 
                                            <button conclick> 예약 선택 버튼 """
 "resrve_ipo3는 성공"
-loginfo = info_ipo
+
 def reserve_ipo3(loginfo,info_date2, reserve_try_cnt  = 9,reserve_able_cnt = 3, reserve_type='test', multi_date = False):
 
     # inforamtion of login date initial variable.
