@@ -303,13 +303,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627889143966</updated>
     </task>
-    <task id="LOCAL-00001" summary="ticket code update">
-      <created>1627970794777</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1627970794777</updated>
-    </task>
     <task id="LOCAL-00002" summary="인터파크 티켓 예매 구조를 거의 파악하였고&#10;셀레니움으로 엘리먼트 찾고 수행하는 기능 정리 되었음">
       <created>1628008943916</created>
       <option name="number" value="00002" />
@@ -646,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660573471311</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="youtube downloader upgrade">
+      <created>1660576610506</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1660576610506</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView">

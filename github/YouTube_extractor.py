@@ -135,25 +135,101 @@ def youtube_downloader_mp3(url, download_path=''):
     if os.path.isfile(renamed_file) is True:
         print('File down load is succeed:',renamed_file )
 
+def youtube_downloader(url, download_path='',mp3=True):
+
+    #ssl  문제 해결 코드
+
+    requests.get(url)
+    yt = YouTube(url)
+
+    # 동영상 링크를 이용해 YouTube 객체 생성
+
+    print("영상 제목 : ", yt.title)
+    print("영상 길이 : ", yt.length)
+    print("영상 평점 : ", yt.rating)
+    print("영상 썸네일 링크 : ", yt.thumbnail_url)
+    print("영상 조회수 : ", yt.views)
+    print("영상 설명 : ", yt.description)
+    try:
+        yt_streams = yt.streams
+    except:
+        # ssl  문제 해결 코드
+        ssl._create_default_https_context = ssl._create_unverified_context
+        yt_streams = yt.streams
+
+    # YouTube 객체인 yt에서 stream 객체를 생성
+
+    print("다운가능한 영상 상세 정보 :")
+    for i, stream in enumerate(yt_streams.all()):
+        print(i, " : ", stream)
+
+    #audio file streams all searching
+    print(i, " : ", stream)
+    for i, stream in enumerate(yt.streams.filter(only_audio=True).all()):
+        print(i, " : ", stream)
+    # video file streams all searching
+    print(i, " : ", stream)
+    for i, stream in enumerate(yt.streams.filter(only_audio=False).all()):
+        print(i, " : ", stream)
+
+    #audio file highest download & file name  change to mp3
+    if len(download_path)> 0:
+        down_path = download_path
+    else:
+        cwd = os.getcwd()
+        down_path = cwd + '/'+  'result_file'
+    if os.path.exists(down_path):
+        pass
+    else:
+        os.makedirs(down_path)
+    # file type selection
+    if mp3 :
+        yt.streams.filter(only_audio=True,file_extension='mp4').order_by('abr').desc().first().download(down_path)
+        yt_title = yt.streams.filter(only_audio=True,file_extension='mp4').order_by('abr').desc().first().title.replace(',','')
+    else:
+        yt.streams.filter(only_audio=False, file_extension='mp4').order_by('abr').desc().first().download(down_path)
+        yt_title = yt.streams.filter(only_audio=False, file_extension='mp4').order_by('abr').desc().first().title.replace(',', '')
+    # file name extension type selection
+    if mp3 :
+
+        file_ls = glob.glob(down_path +'/*.mp4')
+        ratio_ls = []
+
+        for file in file_ls:
+            ratio = SequenceMatcher(None, yt_title, file).ratio()
+            ratio_ls.append(ratio)
+            print(ratio,file)
+
+        search_no = np.argmax(ratio_ls)
+        search_file = file_ls[search_no]
+        # search_file = search_file.split('.mp4')[0].replace('.','') + '.mp4'
+        # search_file = search_file.replace('|','').replace('!','').replace('*','')
+        renamed_file = search_file.replace('.mp4','.mp3')
+        os.rename(search_file,renamed_file)
+        if os.path.isfile(renamed_file) is True:
+            print('File down load is succeed:',renamed_file )
+    else:
+        print('File down load is succeed:', yt_title)
+
 
 download_path = '/users/home/Music/download'
-# url = 'https://www.youtube.com/watch?v=lIKmm-G7YVQ'
+url = 'https://youtu.be/8dTxc882sGY'
 
 #
-# youtube_downloader_mp3(url, download_path)
-
-url_ls = ['https://www.youtube.com/watch?v=OT9jLERUM9U',
-          'https://www.youtube.com/watch?v=CzHhjlxGgrA',
-          'https://www.youtube.com/watch?v=yyo51Z__vWk',
-          'https://www.youtube.com/watch?v=4o9Y2sOxEGg',
-          'https://www.youtube.com/watch?v=6zZw5J6GK4E',
-          'https://www.youtube.com/watch?v=9zxnQgwzbcY',
-          'https://www.youtube.com/watch?v=lIKmm-G7YVQ'
-          ]
-
-for url in url_ls:
-    youtube_downloader_mp3(url,download_path)
+youtube_downloader(url, download_path , mp3 = False) # "mp3 False means mp4, True means mp3"
 #
+# url_ls = ['https://www.youtube.com/watch?v=OT9jLERUM9U',
+#           'https://www.youtube.com/watch?v=CzHhjlxGgrA',
+#           'https://www.youtube.com/watch?v=yyo51Z__vWk',
+#           'https://www.youtube.com/watch?v=4o9Y2sOxEGg',
+#           'https://www.youtube.com/watch?v=6zZw5J6GK4E',
+#           'https://www.youtube.com/watch?v=9zxnQgwzbcY',
+#           'https://www.youtube.com/watch?v=lIKmm-G7YVQ'
+#           ]
+#
+# for url in url_ls:
+#     youtube_downloader_mp3(url,download_path)
+# #
 # file_ls = glob.glob(download_path + '/*.mp4')
 # for file_old in file_ls:
 #     file_new = file_old.replace('.mp4', '').replace('.', '').replace('|', '')
