@@ -1,14 +1,14 @@
 # 파이썬 소스코드
 from pytube import YouTube
-import moviepy.editor as mp
+# import moviepy.editor as mp
 import requests
 import glob
-import urllib
+# import urllib
 import ssl
 import os, sys
 import numpy as np
+import time
 
-import requests
 # 라이브러리 가져오기
 
 # 1 키워드 검색을 통해 검색된 리스트중에서 조회수 구독 다운로드 등 지표가 높은 항목을 우선 수위 정렬
@@ -135,16 +135,32 @@ def youtube_downloader_mp3(url, download_path=''):
     if os.path.isfile(renamed_file) is True:
         print('File down load is succeed:',renamed_file )
 
-def youtube_downloader(url, download_path='',mp3=True):
+
+def youtube_downloader(url, download_path='',mp3=True, cnt = 100):
 
     #ssl  문제 해결 코드
 
     requests.get(url)
     yt = YouTube(url)
+    while cnt > 0:
+        try:
+            title = yt.title
+            break
+        except:
+            print("Failed to get name. Retrying... : ",cnt)
+            time.sleep(1)
+            yt = YouTube(url)
+            cnt -= 1
+            continue
+
+    if len(title) < 0:
+        title = 'unknown'
+
+
 
     # 동영상 링크를 이용해 YouTube 객체 생성
 
-    print("영상 제목 : ", yt.title)
+    print("영상 제목 : ", title)
     print("영상 길이 : ", yt.length)
     print("영상 평점 : ", yt.rating)
     print("영상 썸네일 링크 : ", yt.thumbnail_url)
@@ -212,11 +228,12 @@ def youtube_downloader(url, download_path='',mp3=True):
         print('File down load is succeed:', yt_title)
 
 
-download_path = '/users/home/Music/download'
-url = 'https://youtu.be/8dTxc882sGY'
+if __name__ == '__main__':
 
-#
-youtube_downloader(url, download_path , mp3 = False) # "mp3 False means mp4, True means mp3"
+    download_path = 'Y:/youtube_ext'
+    url ='https://www.youtube.com/watch?v=iboCn4HkLsI'
+
+    youtube_downloader(url, download_path , mp3 = True, cnt=1000) # "mp3 False means mp4, True means mp3"
 #
 # url_ls = ['https://www.youtube.com/watch?v=OT9jLERUM9U',
 #           'https://www.youtube.com/watch?v=CzHhjlxGgrA',
