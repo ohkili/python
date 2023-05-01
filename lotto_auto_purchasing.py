@@ -46,7 +46,7 @@ def check_exists_by_element(by, name):
         return False
     return True
 
- # lotto homepage : 'https://dhlottery.co.kr/common.do?method=main'
+# lotto homepage : 'https://dhlottery.co.kr/common.do?method=main'
 
 def lotto_purchase():
     print('hello world')

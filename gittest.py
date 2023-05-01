@@ -126,8 +126,7 @@ def tri(a,b):
 result = tri(2,3)
 print(result)
 result = a * b + 100
-q =
-print(q)
+
 w = 23 * 34 +100
 print(w)
 
