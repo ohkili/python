@@ -16,8 +16,6 @@ from web_crawling.Set_chromedriver import driverAct
 from web_crawling.Telegram_message import telegram_message
 from util.pause import pause
 
-
-
 def lotto_purchase():
     print('hello world')
     info_dict = {'url_homepage':'https://dhlottery.co.kr/common.do?method=main',

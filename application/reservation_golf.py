@@ -1,5 +1,4 @@
 
-import chromedriver_autoinstaller
 import time
 # from  datetime import  *
 import pandas as pd
@@ -8,149 +7,39 @@ import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import random
+
 from selenium.webdriver.support.ui import WebDriverWait
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.alert import Alert
 from bs4 import BeautifulSoup
-import telegram
+
 import schedule
-
-# chrome driver auto install and driver activation
-def chromedriver_autorun():
-
-    # chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]  #크롬드라이버 버전 확인
-    #
-    # try:
-    #     driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
-    # except:
-    #     chromedriver_autoinstaller.install(True)
-    #     driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
+from web_crawling.Set_chromedriver import chromedriver_autorun
+from web_crawling.Set_chromedriver import driverAct
+from web_crawling.Telegram_message import telegram_message
+from util.present_time_str import present_time_str
 
 
-    path = chromedriver_autoinstaller.install()
-    driver = webdriver.Chrome(path)
-
-    driver.implicitly_wait(10)
-
-
-    return driver
-
-# REST_API_KEY and refresh_token is borrow
-REST_API_KEY ='22644bd965c28d381ea875a9dde9e2d1'
-refresh_token = 'zIkN8jgb2ITalVnnyIQ56_4ym20mRA6almpDHAo9dNsAAAF8KA4bGA'
-
-# 카카오톡 메시지 API
-# rest api key와 refresth token을 이용하여 access token 갱신
-def access_token_mkr(REST_API_KEY, refresh_token):
-    url = "https://kauth.kakao.com/oauth/token"
-
-    data = {
-        "grant_type": "refresh_token",
-        "client_id": REST_API_KEY,
-        "refresh_token": refresh_token
-    }
-    response = requests.post(url, data=data)
-    tokens2 = response.json()
-    print(tokens2)
-
-    access_token = tokens2['access_token']
-    return access_token
-
-def kakao_message(data, access_token):
-    url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
-    # access_token = 'pnvTjrwWOlNoRrFHo5IEfDco_Mi9Kf7R-vC_TQorDNMAAAF8IfKFow'  # tokens['access_token']
-
-    # 사용자 토큰
-    headers = {
-        "Authorization": "Bearer " + access_token}
-
-    data = {
-        "template_object": json.dumps({"object_type": "text",
-                                   "text": str(data),
-                                       "link": {
-                                           "web_url": "www.naver.com"
-                                       }
-                                       })
-    }
-
-    response = requests.post(url, headers=headers, data=data)
-    print(response.status_code)
-    if response.json().get('result_code') == 0:
-        print('메시지를 성공적으로 보냈습니다.')
-    else:
-        print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
-
-def telegram_message(content='Hello world', content_type='text', description='description'):
-    telegram_token = "5011897744:AAFvwnQrdllp09gz2Iy_XD6SONWy1-jQuNM"
-    telegram_chat_id = 1926421781
-    bot = telegram.Bot(token=telegram_token)
-
-
-    # Bottom is telegram bot manual
-    """ 
-    # text 보내기
-    bot.sendMessage(chat_id=telegram_chat_id, text='hello world')
-    # image 보내기 image url
-    photo_url = "https://telegram.org/img/t_logo.png"
-    bot.sendPhoto(chat_id=telegram_chat_id, photo=photo_url, caption='telegrm logo')
-    # hyperlink 보내기
-    # 미리보기 기능 off ==>  disable_web_page_preview= True
-    # []안에 문자는 제목으로 전송되고, ()안에 hyperlink 넣어주면 됨
-    bot.send_message(chat_id=telegram_chat_id, text="[naver 증권](https://finance.naver.com)", parse_mode='Markdown',
-                     disable_web_page_preview=False)
-
-    # image 보내기 image file
-    # os.getcwd()
-    # glob.glob('E:\\python\\' + '*.jpg')
-    photo_file = 'E:\\python\\주행기록.jpg'
-    bot.sendPhoto(chat_id=telegram_chat_id, photo=open(photo_file, 'rb'), caption='카니발 주행기록') 
-    """
-
-    if content_type == 'text':
-        # example is 'hello world'
-        bot.sendMessage(chat_id=telegram_chat_id, text=content)
-    elif content_type == 'imgUrl':
-        # example is  "https://telegram.org/img/t_logo.png"
-        bot.sendPhoto(chat_id=telegram_chat_id, photo=content, caption=description)
-    elif content_type == 'imgFile':
-        # example is 'E:\\python\\주행기록.jpg'
-        bot.sendPhoto(chat_id=telegram_chat_id, photo=open(content, 'rb'), caption=description)
-    elif content_type == 'hyperlink':
-        # []안에 문자는 제목으로 전송되고, ()안에 hyperlink 넣어주면 됨
-        #  example is "[naver 증권](https://finance.naver.com)"
-        content_hyperlink = "[" + description + "](" + content + ")"
-        bot.send_message(chat_id=telegram_chat_id, text=content_hyperlink, parse_mode='Markdown',
-                         disable_web_page_preview=False)
-    else:
-        print('You must choice content_type as text, imgUrl, imgFile, hyperlink')
-
-def good_luck():
-    print("Good Luck for Test")
-    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    content_new = 'message test from macmini with golf ' + str(
-        time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    telegram_message(content=content_new, content_type='text', description='etc')
-
-def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False):
+def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', multi_date = False):
     # info_rivera = {'url': 'https://www.shinangolf.com/',
     #                'loginPage': 'https://www.shinangolf.com/member/login',
     #                'id': 'ohkili',
     #                'pw': 'Sin!1203'
     #                }
-    # loginfo = info_rivera
+    # info_login = info_rivera
     # info_date = info_date_test
     #
 
-    url = loginfo['url']
-    loginpage = loginfo['loginPage']
-    loginID = loginfo['id']
-    loginPW = loginfo['pw']
+    url = info_login['url']
+    loginpage = info_login['loginPage']
+    loginID = info_login['id']
+    loginPW = info_login['pw']
 
-    wish_date = info_date['wish_date']
-    wish_hour = info_date['wish_hour']
+    wish_date   = info_date['wish_date']
+    wish_hour   = info_date['wish_hour']
+    hour_option = info_date['hour_option']
 
     book_try_cnt = 0
     able_ls = []
@@ -278,8 +167,8 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
 
             except:
                 print('macro fail : date simple check')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))) , access_token)
+
+                telegram_message('rivera macro fail  : date simple check  \n' + present_time_str() )
 
             try:
                 if reserve_type == 'real':
@@ -386,15 +275,15 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
                                         "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
                         # 이렇게 하면 바로 예약 됨
                         popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
-                        kakao_message(popup_text, access_token)
+                        telegram_message(popup_text)
 
                     elif   reserve_type == 'test' and reserve_text =='예약하기':
-                        # 카카오 문자 보내기
+                        # Telegram 문자 보내기
                         driver.find_element(By.XPATH,
                                             "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
-                        access_token = access_token_mkr(REST_API_KEY, refresh_token)
+
                         popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n'+ popup_text
-                        kakao_message(popup_text, access_token)
+                        telegram_message(popup_text)
 
                     else:
                         print('Check reserve count')
@@ -409,16 +298,16 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
 
             except:
                 print('macro fail:  targetting reserve')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail:  targetting reserve  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+
+                telegram_message('rivera macro fail:  targetting reserve  \n' + present_time_str())
 
         elif date_count == 0:
             break
         else :
             print('Check date_count')
     if book_try_cnt == len(wish_date):
-        access_token = access_token_mkr(REST_API_KEY, refresh_token)
-        kakao_message('There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+
+        telegram_message('There is no able day to book \n' + present_time_str())
     else:
         print('Check book_try_cnt')
 
@@ -426,14 +315,14 @@ def reserve_rivera(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_da
     print('wish_date',wish_date)
     driver.close()
 
-def reserve_ipo(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date = False):
+def reserve_ipo(info_login, info_date, reserve_cnt=1, reserve_type='test', multi_date = False):
 
     # 1.  inforamtion of login  date
 
-    url = loginfo['url']
-    loginpage = loginfo['loginPage']
-    loginID = loginfo['id']
-    loginPW = loginfo['pw']
+    url = info_login['url']
+    loginpage = info_login['loginPage']
+    loginID = info_login['id']
+    loginPW = info_login['pw']
 
     wish_date = info_date['wish_date']
     wish_hour = info_date['wish_hour']
@@ -549,7 +438,8 @@ def reserve_ipo(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date 
     driver.find_element(By.XPATH, "//div[@id='content']/div[@class='txtcont']/div[@class='join_form']")
     driver.find_elements(By.XPATH,"//div[@class = 'mt10 mb40 leftcont']")
 
-    wish_date =  ['20211106', '20211212']
+    # wish_date =  ['20211106', '20211212']
+
     # # bottom is exercise
     # wish_date = '20211106'
     # date_temp = "//td[@id=" + wish_date + "]"
@@ -731,8 +621,8 @@ def reserve_ipo(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date 
 
             except:
                 print('macro fail : date simple check')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail  : date simple check  \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))) , access_token)
+
+                telegram_message('rivera macro fail  : date simple check  \n' + present_time_str())
 
             try:
                 if reserve_type == 'real':
@@ -839,15 +729,14 @@ def reserve_ipo(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date 
                                         "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
                         # 이렇게 하면 바로 예약 됨
                         popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
-                        kakao_message(popup_text, access_token)
+                        telegram_message(popup_text)
 
-                    elif   reserve_type == 'test' and reserve_text =='예약하기':
-                        # 카카오 문자 보내기
+                    elif reserve_type == 'test' and reserve_text == '예약하기':
+                        # Telegram 문자 보내기
                         driver.find_element(By.XPATH,
                                             "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
-                        access_token = access_token_mkr(REST_API_KEY, refresh_token)
                         popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n'+ popup_text
-                        kakao_message(popup_text, access_token)
+                        telegram_message(popup_text)
 
                     else:
                         print('Check reserve count')
@@ -862,16 +751,15 @@ def reserve_ipo(loginfo,info_date,reserve_cnt=1,reserve_type='test', multi_date 
 
             except:
                 print('macro fail:  targetting reserve')
-                access_token = access_token_mkr(REST_API_KEY, refresh_token)
-                kakao_message('rivera macro fail:  targetting reserve  \n' + str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+                telegram_message('rivera macro fail:  targetting reserve  \n' + present_time_str())
 
         elif date_count == 0:
             break
         else :
             print('Check date_count')
     if book_try_cnt == len(wish_date):
-        access_token = access_token_mkr(REST_API_KEY, refresh_token)
-        kakao_message('There is no able day to book \n' + str( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))), access_token)
+
+        telegram_message('There is no able day to book \n' + present_time_str())
     else:
         print('Check book_try_cnt')
 
@@ -920,17 +808,17 @@ info_date_test = {'wish_date': ['20211016','20211017'],
 
 
 
-info_rivera = {'url': 'https://www.shinangolf.com/',
-               'loginPage': 'https://www.shinangolf.com/member/login',
-               'id': 'ohkili',
-               'pw': 'Sin!1203'
+info_login_rivera = {'url'        : 'https://www.shinangolf.com/',
+               'loginPage'  : 'https://www.shinangolf.com/member/login',
+               'id'         : 'ohkili',
+               'pw'         : 'Sin!1203'
                }
 
-info_ipo = {'url': 'http://ipo-cc.co.kr/cmm/main/mainPage.do',
-               'loginPage': 'http://ipo-cc.co.kr/uat/uia/egovLoginUsr.do',
-               'id': 'ohkili',
-               'pw': 'Ipocc!1203'
-               }
+info_login_ipo = {'url'          : 'http://ipo-cc.co.kr/cmm/main/mainPage.do',
+            'loginPage'    : 'http://ipo-cc.co.kr/uat/uia/egovLoginUsr.do',
+            'id'           : 'ohkili',
+            'pw'           : 'Ipocc!1203'
+            }
 
 # 날짜 고르기
 info_date = {'wish_date': ['20211023', '20211028'],
@@ -939,13 +827,13 @@ info_date = {'wish_date': ['20211023', '20211028'],
              }
 info_date_test = info_date_test()
 # test
-reserve_rivera(info_rivera, info_date_test, reserve_cnt=1, reserve_type='test', multi_date=False)
+reserve_rivera(info_login_rivera, info_date_test, reserve_cnt=1, reserve_type='test', multi_date=False)
 
 # Every day at 12am or 00:00 time bedtime() is called.
-schedule.every().day.at("19:30").do(good_luck)
-schedule.every().day.at("07:30").do(good_luck)
+schedule.every().day.at("19:30").do(telegram_message('This job is work\n' + present_time_str()))
+schedule.every().day.at("07:30").do(telegram_message('This job is work\n' + present_time_str()))
 # str(random.randrange(9,14)).zfill(2)
-schedule.every().day.at("12:30").do(lambda:  reserve_rivera(info_rivera,info_date_test(),reserve_cnt=1,reserve_type='test', multi_date = False) )
+schedule.every().day.at("12:30").do(lambda:  reserve_rivera(info_login_rivera,info_date_test(),reserve_cnt=1,reserve_type='test', multi_date = False) )
 while True:
 
 	# Checks whether a scheduled task
@@ -968,7 +856,7 @@ while True:
 # #    1) 예약 시간 양도 관련 내가 취소 즉시 다른 사람이 예약 가능하도록 변경 기능
 # #
 #
-# info_rivera = {'url': 'https://www.shinangolf.com/',
+# info_login_rivera = {'url': 'https://www.shinangolf.com/',
 #                'loginPage': 'https://www.shinangolf.com/member/login',
 #                'id': 'ohkili',
 #                'pw': 'Sin!1203'
@@ -984,12 +872,12 @@ while True:
 # # wish_hour = ['15~19']
 # # hour_option = 'first'  # ['first, mid, last']
 # # 골프장 고르기
-# loginfo = info_rivera
+# info_login = info_login_rivera
 #
-# url = loginfo['url']
-# loginpage = loginfo['loginPage']
-# loginID = loginfo['id']
-# loginPW = loginfo['pw']
+# url = info_login['url']
+# loginpage = info_login['loginPage']
+# loginID = info_login['id']
+# loginPW = info_login['pw']
 #
 # driver = chromedriver_autorun()
 # # driver.close()
