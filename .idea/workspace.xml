@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/initialize_ex230430.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen_key_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/gen_key_old.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize_ex230430.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_log.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/lotto_log.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reserv_first_txt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/reserv_first_txt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reserv_second_txt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/reserv_second_txt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sched.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/soup_txt.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teckect_reserv_move_step1.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_crawling/Login_excite_driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/reservation_golf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,6 +267,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "E:/python/data",
     "settings.editor.selected.configurable": "preferences.customizations"
@@ -298,7 +293,28 @@
       <recent name="E:\python\web_crawling" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lotto_auto_purchasing">
+  <component name="RunManager" selected="Python.Login_excite_driver">
+    <configuration name="Login_excite_driver" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_crawling" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web_crawling/Login_excite_driver.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="YouTube_extractor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -342,11 +358,13 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Login_excite_driver" />
       <item itemvalue="Python.lotto_auto_purchasing" />
       <item itemvalue="Python.YouTube_extractor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Login_excite_driver" />
         <item itemvalue="Python.YouTube_extractor" />
       </list>
     </recent_temporary>
@@ -362,13 +380,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627889143966</updated>
-    </task>
-    <task id="LOCAL-00007" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함">
-      <created>1632638968981</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1632638968982</updated>
     </task>
     <task id="LOCAL-00008" summary="Merge remote-tracking branch 'github/ohkily/python/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <created>1632659805200</created>
@@ -706,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687358074295</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="file arrange">
+      <created>1687358672631</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1687358672631</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TodoView">
@@ -823,19 +841,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/reservation_ipocc_shotcut.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/application/lotto_auto_purchasing.py</url>
           <line>1</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/application/reservation_golf.py</url>
-          <line>726</line>
+          <line>735</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/application/reservation_golf.py</url>
+          <line>679</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
