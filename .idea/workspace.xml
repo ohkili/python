@@ -5,24 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/util/present_time_str.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chromedriver_autoinstall.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/encrypt_decrept.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/encrypt_decrept.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/excel_megredcell_unmerge.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/excel_megredcell_unmerge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kakao_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_crawling/kakao_message.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_for_macmini.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_ver2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_auto_purchase_ver2_for_ohjin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_auto_purchasing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lotto_auto_purchasing_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/lotto_auto_purchasing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_vcf_for_icloud.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/make_vcf_for_icloud.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/reservation_golf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_golf_for_macmini.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream_downloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/stream_downloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram_message.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video_concater.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/video_concater.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/github/YouTube_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/YouTube_extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/github/keyboard_mouse_pyautogui.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/keyboard_mouse_pyautogui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/github/mouse_keyboard_activation.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/mouse_keyboard_activation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/github/python_transform.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gittest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/initialize_ex230420.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation_maestro.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticketing_interpark.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/ticketing_interpark.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +191,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/reservation_golf_for_macmini.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/reservation_ipocc_internal.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -305,7 +296,7 @@
       <recent name="E:\python\web_crawling" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lotto_auto_purchasing_new">
+  <component name="RunManager" selected="Python.lotto_auto_purchasing">
     <configuration name="YouTube_extractor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -318,7 +309,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/github/YouTube_extractor.py" />
+      <option name="SCRIPT_NAME" value="E:\python\application\YouTube_extractor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -349,12 +340,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.lotto_auto_purchasing_new" />
+      <item itemvalue="Python.lotto_auto_purchasing" />
       <item itemvalue="Python.YouTube_extractor" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lotto_auto_purchasing_new" />
         <item itemvalue="Python.YouTube_extractor" />
       </list>
     </recent_temporary>
@@ -370,13 +360,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627889143966</updated>
-    </task>
-    <task id="LOCAL-00005" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함">
-      <created>1629472619520</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1629472619520</updated>
     </task>
     <task id="LOCAL-00006" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함">
       <created>1632631810870</created>
@@ -714,7 +697,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687184133305</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="reserve golf update">
+      <created>1687275202822</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1687275202822</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView">
@@ -800,7 +790,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/github/test" />
     </ignored-roots>
-    <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함" />
     <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함" />
     <MESSAGE value="chrome driver를 자동으로 설치하여 사용할 수 있게 해주는 lib" />
     <MESSAGE value="골프 자동 예약 메크로" />
@@ -825,7 +814,8 @@
     <MESSAGE value="all file update" />
     <MESSAGE value="youtube retry update" />
     <MESSAGE value="lotto purchase update" />
-    <option name="LAST_COMMIT_MESSAGE" value="lotto purchase update" />
+    <MESSAGE value="reserve golf update" />
+    <option name="LAST_COMMIT_MESSAGE" value="reserve golf update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
