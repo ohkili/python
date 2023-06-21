@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/github/YouTube_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/YouTube_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/github/keyboard_mouse_pyautogui.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/keyboard_mouse_pyautogui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/github/mouse_keyboard_activation.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/mouse_keyboard_activation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/github/python_transform.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gittest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialize_ex230420.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation_maestro.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketing_interpark.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/ticketing_interpark.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/initialize_ex230430.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen_key_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/gen_key_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initialize_ex230430.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lotto_log.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data/lotto_log.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reserv_first_txt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/reserv_first_txt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reserv_second_txt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/reserv_second_txt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sched.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/schedule2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/soup_txt.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/teckect_reserv_move_step1.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,15 +269,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/python&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "E:/python/data",
+    "settings.editor.selected.configurable": "preferences.customizations"
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings module-name="work" is-module-sdk="true">
@@ -293,6 +294,7 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\python\application" />
+      <recent name="E:\python\data" />
       <recent name="E:\python\web_crawling" />
     </key>
   </component>
@@ -360,13 +362,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627889143966</updated>
-    </task>
-    <task id="LOCAL-00006" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함">
-      <created>1632631810870</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1632631810870</updated>
     </task>
     <task id="LOCAL-00007" summary="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함">
       <created>1632638968981</created>
@@ -704,7 +699,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687275202822</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="file arrange">
+      <created>1687358074294</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1687358074295</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView">
@@ -790,7 +792,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/github/test" />
     </ignored-roots>
-    <MESSAGE value="로또 구매를 자동으로 할 수 있게 매크로 작성함&#10;추가로 정해진 시간에 동작할 수 있도록 스케줄 기능 추가함" />
     <MESSAGE value="chrome driver를 자동으로 설치하여 사용할 수 있게 해주는 lib" />
     <MESSAGE value="골프 자동 예약 메크로" />
     <MESSAGE value="site 변경 여부 test 기능 추가" />
@@ -815,7 +816,8 @@
     <MESSAGE value="youtube retry update" />
     <MESSAGE value="lotto purchase update" />
     <MESSAGE value="reserve golf update" />
-    <option name="LAST_COMMIT_MESSAGE" value="reserve golf update" />
+    <MESSAGE value="file arrange" />
+    <option name="LAST_COMMIT_MESSAGE" value="file arrange" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

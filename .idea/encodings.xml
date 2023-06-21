@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM">
-    <file url="file://$PROJECT_DIR$/reserv_second_txt.txt" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/soup_txt.txt" charset="x-windows-949" />
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/data/reserv_second_txt.txt" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/data/reserv_second_txt.txt" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/data/soup_txt.txt" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/data/soup_txt.txt" charset="x-windows-949" />
   </component>
 </project>
