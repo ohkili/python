@@ -53,7 +53,8 @@ def Login_exicte_driver(info_login):
     userPwd.send_keys(Keys.ENTER)
 
     return driver
-
+info_login = info_login_rivera
+info_date = info_date_test()
 def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', multi_date = False):
     # info_rivera = {'url': 'https://www.shinangolf.com/',
     #                'loginPage': 'https://www.shinangolf.com/member/login',
@@ -787,11 +788,11 @@ def info_date_test():
         string = time.strftime('%Y%m%d', temp_tm)
         time_ls.append(string)
 
-    info_date_test = {'wish_date': time_ls,
+    result = {'wish_date': time_ls,
                       'wish_hour': ['05~23'],
                       'hour_option': 'first'
                       }
-    return info_date_test
+    return result
 
 def test():
     # info_date_test = {'wish_date': time_ls,
@@ -1031,6 +1032,7 @@ if __name__ == '__main__':
                  'hour_option': 'first'
                  }
     info_date_test = info_date_test()
+
     # test
     reserve_rivera(info_login_rivera, info_date_test, reserve_cnt=1, reserve_type='test', multi_date=False)
 

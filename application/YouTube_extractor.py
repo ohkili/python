@@ -77,7 +77,11 @@ def youtube_downloader_mp3(url, download_path=''):
     #ssl  문제 해결 코드
 
     requests.get(url)
-    yt = YouTube(url)
+    try:
+        yt = YouTube(url)
+    except Exception as e:
+        print(e)
+        yt = YouTube(url, use_oauth = True, allow_oauth_cache = True)
 
     # 동영상 링크를 이용해 YouTube 객체 생성
 
@@ -136,12 +140,14 @@ def youtube_downloader_mp3(url, download_path=''):
         print('File down load is succeed:',renamed_file )
 
 
-def youtube_downloader(url, download_path='',mp3=True, cnt = 100):
+def youtube_downloader(url, download_path='',mp3=True, cnt = 100, use_oauth = True, allow_oauth_cache = True):
 
     #ssl  문제 해결 코드
 
     requests.get(url)
-    yt = YouTube(url)
+
+    yt = YouTube(url, use_oauth = use_oauth, allow_oauth_cache = allow_oauth_cache)
+
     while cnt > 0:
         try:
             title = yt.title
@@ -231,24 +237,10 @@ def youtube_downloader(url, download_path='',mp3=True, cnt = 100):
 if __name__ == '__main__':
 
     download_path = 'Y:/youtube_ext'
-    url ='https://www.youtube.com/watch?v=iboCn4HkLsI'
+    url ='https://www.youtube.com/watch?v=FJ2d-FPqDGE'
 
-    youtube_downloader(url, download_path , mp3 = True, cnt=1000) # "mp3 False means mp4, True means mp3"
-#
-# url_ls = ['https://www.youtube.com/watch?v=OT9jLERUM9U',
-#           'https://www.youtube.com/watch?v=CzHhjlxGgrA',
-#           'https://www.youtube.com/watch?v=yyo51Z__vWk',
-#           'https://www.youtube.com/watch?v=4o9Y2sOxEGg',
-#           'https://www.youtube.com/watch?v=6zZw5J6GK4E',
-#           'https://www.youtube.com/watch?v=9zxnQgwzbcY',
-#           'https://www.youtube.com/watch?v=lIKmm-G7YVQ'
-#           ]
-#
-# for url in url_ls:
-#     youtube_downloader_mp3(url,download_path)
-# #
-# file_ls = glob.glob(download_path + '/*.mp4')
-# for file_old in file_ls:
-#     file_new = file_old.replace('.mp4', '').replace('.', '').replace('|', '')
-#     file_new = file_new + '.mp3'
-#     os.rename(file_old, file_new)
+    youtube_downloader(url, download_path , mp3 = True, cnt=1000, use_oauth = True, allow_oauth_cache = True)
+    # "mp3 False means mp4, True means mp3"
+    # use_oauth = True, allow_oauth_cache = True  solve authentication
+    # if age restriction error , class Youtube's __main.py
+    # def bypass_age_gate(self):  ==> change  from client=ANDROID_EMBED  to client='ANDROID'
