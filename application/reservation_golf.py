@@ -23,6 +23,142 @@ from web_crawling.Login_excite_driver import Login_exicte_driver
 from util.present_time_str import present_time_str
 
 
+def Make_reservable_time_table(driver, cc='rivera'):
+    print('This function is Make_reservable_time_table()')
+    try:
+        if cc == 'rivera':
+
+            reservation_time = driver.find_element(By.XPATH, "//div[@class = 'reservation_table time_table']")
+            reservation_time_list = reservation_time.find_elements(By.XPATH, "//table/tbody/tr/td/button")
+        else:
+            # this condition if for another cc
+            reservation_time = driver.find_element(By.XPATH,
+                                                   "//div[@class = 'reservation_table time_table']")
+            reservation_time_list = reservation_time.find_elements(By.XPATH, "//table/tbody/tr/td/button")
+
+        # s = reservation_time_list[0].get_attribute('onclick')
+        # s = s.replace('showConfirm','').replace('(','').replace(')','').replace("'",'').split(',')
+
+        # time table을 list로 만들자
+        timeTable_lst = []
+
+        if cc == 'rivera':
+
+            timeTable_columns = ['fulldate', 'day', 'hour', 'course_type', 'cousrse_name', 'price']
+
+            for i in range(len(reservation_time_list)):
+                # i = 1
+                s = reservation_time_list[i].get_attribute('onclick')
+                s = s.replace('showConfirm', '').replace('(', '').replace(')', '').replace("'", '').split(',')
+                s = s[0:len(timeTable_columns)]
+                s = pd.DataFrame(data=[s], columns=timeTable_columns)
+                timeTable_lst.append(s)
+
+
+        else:
+            pass
+
+        timeTable = pd.concat(timeTable_lst)
+        timeTable.reset_index(drop=True, inplace=True)
+        print(timeTable)
+        print('Success to run Make_reservable_time_table(), time table size is {}'.format(timeTable.shape))
+    except Exception as e:
+        print(e)
+        timeTable = pd.DataFrame()
+        print('Fail to run Make_reservable_time_table(), time table size is {}'.format(
+            timeTable.shape))
+
+    return timeTable ,reservation_time_list
+
+
+def Pick_wish_hours_from_timetable(timeTable,wish_hour, cc='rivera'):
+    print('This function is Pick_wish_hours_from_timetable()')
+    # 원하는 시간대 골라내기
+
+    timeTable_masked_lst = []
+    try:
+
+        if cc == 'rivera':
+
+            for h in wish_hour:
+                first_time = h.split('~')[0]
+                end_time = h.split('~')[1]
+                mask1 = (timeTable['hour'].str[0:2] >= first_time) & (
+                        timeTable['hour'].str[0:2] < end_time)  # 시간대 filter
+
+                timeTable_sorted = timeTable.loc[mask1, :]
+                timeTable_masked_lst.append(timeTable_sorted)
+        else:
+            pass
+
+        timeTable_masked = pd.concat(timeTable_masked_lst, axis=0)
+        timeTable_masked = timeTable_masked.sort_values('hour')
+        timeTable_masked.reset_index(drop = True, inplace=True)
+        print('Success to Pick_wish_hours_from_timetable() time table size is {}'.format(timeTable_masked))
+    except Exception as e:
+        print(e)
+        timeTable_masked = pd.DataFrame()
+        print('Fail to Pick_wish_hours_from_timetable() time table size is{}'.format(timeTable_masked))
+
+    return timeTable_masked
+
+
+def Reserve_by_hour_option(driver,timeTable_masked, reservation_time_list, hour_option, cc= 'rivera', reserve_type='test'):
+    print('This function is Reserve_by_hour_option()')
+    try:
+        if cc == 'rivera':
+            index_dict = {'first': timeTable_masked.index[0],
+                          'mid': int((timeTable_masked.index[0] + timeTable_masked.index[-1]) / 2),
+                          'last': -1
+                          }
+            timeTable_masked = timeTable_masked.drop(index_dict[hour_option])
+
+            print(index_dict)
+            # timeTable_masked.reset_index(drop=True, inplace=True)
+
+            # 골라낸 시간에 예약 버튼 누르기
+
+            # reservation_time_list[index_no].get_attribute('onclick')
+            # reservation_time_list[index_no].click()
+            #
+            # reservation_time_list[index_no].get_attribute('onclick')
+            driver.execute_script("arguments[0].click();", reservation_time_list[index_dict[hour_option]])
+
+            # 예약 확인 pop up
+
+            popup_text = driver.find_element(By.XPATH,
+                                             "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']").text
+            print(popup_text)
+            reserve_text = driver.find_element(By.XPATH,
+                                               "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").text
+            print(reserve_text)
+
+            if reserve_type == 'real':
+                driver.find_element(By.XPATH,
+                                    "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
+                # 이렇게 하면 바로 예약 됨
+                popup_text = '[예약 완료, macro 정상 동작]\n' + + popup_text
+                telegram_message(popup_text)
+
+            elif reserve_type == 'test' and reserve_text == '예약하기':
+                # Telegram 문자 보내기
+                driver.find_element(By.XPATH,
+                                    "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
+
+                popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n' + popup_text
+                telegram_message(popup_text)
+
+            else:
+                print('Check reserve count')
+        else:
+            pass
+
+        print('Success to reserve for {}'.format(reserve_type))
+
+    except Exception as e:
+        print(e)
+        print('Fail to reserve{}'.format(reserve_type))
+    return driver,timeTable_masked, reservation_time_list
 
 def Login_exicte_driver(info_login):
     """ example
@@ -53,9 +189,8 @@ def Login_exicte_driver(info_login):
     userPwd.send_keys(Keys.ENTER)
 
     return driver
-info_login = info_login_rivera
-info_date = info_date_test()
-def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', multi_date = False):
+
+def reserve_rivera(info_login, info_date,cc = 'rivera', reserve_cnt=1, reserve_type='test', multi_date = False):
     # info_rivera = {'url': 'https://www.shinangolf.com/',
     #                'loginPage': 'https://www.shinangolf.com/member/login',
     #                'id': 'ohkili',
@@ -72,16 +207,12 @@ def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', mu
     wish_hour   = info_date['wish_hour']
     hour_option = info_date['hour_option']
 
-    book_try_cnt = 0
-    able_ls = []
-
     # log in putton userPwd에 password를 엔터를 치면 되는데, 아래처럼 로그인 버튼을 누를수도 있다
     # loginbtn = driver.find_element(By.XPATH, "//form[@id='loginForm']/div[@class='login_btn']")
     # loginbtn.click()
 
     # 통합 예약/실시간예약
     # reservation = driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")  # /html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a
-
 
     reservation_open = driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")
     driver.execute_script("arguments[0].click();", reservation_open)
@@ -137,6 +268,9 @@ def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', mu
                                         <td> 
                                            <button conclick> 예약 선택 버튼 """
     date_count = len(wish_date)
+    book_try_cnt = 0
+    able_ls = []
+
     for dt in wish_date:
 
         if date_count > 0 :
@@ -162,7 +296,7 @@ def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', mu
                     calendar_week = driver.find_elements(By.XPATH,
                                                          "//div[@class='reservation_table calendar_table']/table/tbody/tr")
                     for i in range(len(calendar_week[0].find_elements(By.XPATH, "//td"))):
-
+                        # i = 1
                         s = (calendar_week[0].find_elements(By.XPATH, "//td")[i].text)
                         if s.find('\n')>0:
                             s = s.split('\n')[0]
@@ -176,11 +310,11 @@ def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', mu
                             pass
                         # print(i, s, able_ls, book_try_cnt)
 
-
                 else:
                     pass
 
-            except:
+            except Exception as e:
+                print(e)
                 print('macro fail : date simple check')
 
                 telegram_message('rivera macro fail  : date simple check  \n' + present_time_str() )
@@ -191,10 +325,10 @@ def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', mu
                 elif reserve_type == 'test' and len(able_ls) >0 :
                     dt = able_ls[0]
                 elif reserve_type == 'test' and len(able_ls) ==0 and  book_try_cnt == len(wish_date):
-                    continue
+                    pass
                 else:
                     print('Check book_try_cnt')
-                    continue
+                    pass
 
 
                 date_selected_1 = "//tr/td/a[@class='open'  and @id =" + "'" + dt + "']"
@@ -202,110 +336,31 @@ def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', mu
                 # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open'  and @id ='20211028']")
                 # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open active'  and @id ='20211028']")
                 # calendar.find_element(By.XPATH, date_selected).text 에 예약이 가능하면 팀수가 나옴 없으면 예약 불가능하므로 예약 시도 cancel
-
-                if calendar.find_element(By.XPATH, date_selected_1).text.find('팀') >= 0:
+                try:
                     calendar_selected = calendar.find_element(By.XPATH, date_selected_1)
-                elif calendar.find_element(By.XPATH, date_selected_2).text.find('팀') >= 0:
+                except Exception as e:
+                    print(e)
                     calendar_selected = calendar.find_element(By.XPATH, date_selected_2)
-                elif calendar.find_element(By.XPATH, date_selected_1).text.find('팀') == -1 \
-                        and calendar.find_element(By.XPATH, date_selected_2).text.find('팀') == -1:   # 예약일이 없으면 바로 빠져 나와서 처리 속도를 높여줌
+                except Exception as e:
+                    print(e)
+                    # 예약일이 없으면 바로 빠져 나와서 처리 속도를 높여줌
                     print('There is no book', dt)
-
-                    break
-
-                else :
                     print('Check Calendar')
-
-
 
 
                 calendar_selected.click()     # 원하는 날짜에 해당하는 달력 check
                 # calendar.find_element(By.XPATH, date_selected).text
 
-                reservation_time = driver.find_element(By.XPATH, "//div[@class = 'reservation_table time_table']")
-                reservation_time_list = reservation_time.find_elements(By.XPATH, "//table/tbody/tr/td/button")
-
-
-                # s = reservation_time_list[0].get_attribute('onclick')
-                # s = s.replace('showConfirm','').replace('(','').replace(')','').replace("'",'').split(',')
-
-                # time table을 list로 만들자
-                timeTable = pd.DataFrame()
-                timeTable_columns = ['fulldate', 'day', 'hour', 'course_type', 'cousrse_name', 'price', 'unknown1',
-                                     'unknown2', 'unknown3']
-
-                for i in range(len(reservation_time_list)):
-                    s = reservation_time_list[i].get_attribute('onclick')
-                    s = s.replace('showConfirm', '').replace('(', '').replace(')', '').replace("'", '').split(',')
-                    s = pd.DataFrame(data=[s])
-                    timeTable = timeTable.append(s)
-                    print(i, s)
-
-                timeTable.columns = timeTable_columns
-                timeTable.reset_index(drop=True, inplace=True)
-
-                # 원하는 시간대 골라내기
-                timeTable_masked_lst = []
-                for h in wish_hour:
-                    first_time = h.split('~')[0]
-                    end_time = h.split('~')[1]
-                    mask1 = (timeTable['hour'].str[0:2] >= first_time) & (
-                                timeTable['hour'].str[0:2] < end_time)  # 시간대 filter
-
-                    timeTable_sorted = timeTable.loc[mask1, :].sort_values('hour')
-                    timeTable_masked_lst.append(timeTable_sorted)
-
-                timeTable_masked =  pd.concat(timeTable_masked_lst, axis= 0)
-                timeTable_masked.reset_index(inplace=True)
+                # making reservable time table
+                timeTable ,reservation_time_list = Make_reservable_time_table(driver, cc=cc)
+                # pick wish time table
+                timeTable_masked = Pick_wish_hours_from_timetable(timeTable,wish_hour, cc=cc)
 
                 while(reserve_cnt > 0):
 
-                    if hour_option == 'first':
-                        index_no = timeTable_masked['index'].iloc[0]
-                    elif hour_option == 'mid':
-                        index_no = timeTable_masked['index'].iloc[round(len(timeTable_sorted) / 2)]
-                    elif hour_option == 'last':
-                        index_no = timeTable_masked['index'].iloc[-1]
-                    else:
-                        index_no = ''
+                    driver,timeTable_masked, reservation_time_list =  Reserve_by_hour_option(driver, timeTable_masked, reservation_time_list, hour_option,
+                                           reserve_type=reserve_type)
 
-                    idx = timeTable_masked[timeTable_masked['index'] == index_no].index
-                    timeTable_masked = timeTable_masked.drop(idx)
-
-                    # 골라낸 시간에 예약 버튼 누르기
-
-                    # reservation_time_list[index_no].get_attribute('onclick')
-                    # reservation_time_list[index_no].click()
-                    #
-                    # reservation_time_list[index_no].get_attribute('onclick')
-                    driver.execute_script("arguments[0].click();", reservation_time_list[index_no])
-
-                    # 예약 확인 pop up
-
-                    popup_text = driver.find_element(By.XPATH,
-                                                     "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']").text
-                    print(popup_text)
-                    reserve_text = driver.find_element(By.XPATH,
-                                                       "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").text
-                    print(reserve_text)
-
-                    if reserve_type == 'real':
-                        driver.find_element(By.XPATH,
-                                        "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
-                        # 이렇게 하면 바로 예약 됨
-                        popup_text = '[예약 완료, macro 정상 동작]\n' +  + popup_text
-                        telegram_message(popup_text)
-
-                    elif   reserve_type == 'test' and reserve_text =='예약하기':
-                        # Telegram 문자 보내기
-                        driver.find_element(By.XPATH,
-                                            "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
-
-                        popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n'+ popup_text
-                        telegram_message(popup_text)
-
-                    else:
-                        print('Check reserve count')
                     reserve_cnt -= 1  # 예약 건수를 1개 줄임
                     if multi_date == True:
                         date_count -= 1
@@ -313,6 +368,7 @@ def reserve_rivera(info_login, info_date, reserve_cnt=1, reserve_type='test', mu
                         date_count = 0
                     else:
                         print('Check multidate option')
+
 
 
             except:
@@ -1005,6 +1061,9 @@ def test():
 
 if __name__ == '__main__':
 
+    # info_login = info_login_rivera
+    # info_date = info_date_test()
+
     info_date_test = {'wish_date': ['20230622','20230630'],
                       'wish_hour': ['05~23'],
                       'hour_option': 'first'
@@ -1031,6 +1090,7 @@ if __name__ == '__main__':
                  'wish_hour': ['14~16', '18~19'],
                  'hour_option': 'first'
                  }
+    info_date = info_date_test
     info_date_test = info_date_test()
 
     # test
