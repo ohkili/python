@@ -7,7 +7,6 @@
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/YouTube_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/YouTube_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/reservation_golf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,13 +402,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627889143966</updated>
     </task>
-    <task id="LOCAL-00008" summary="Merge remote-tracking branch 'github/ohkily/python/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <created>1632659805200</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1632659805200</updated>
-    </task>
     <task id="LOCAL-00009" summary="chrome driver를 자동으로 설치하여 사용할 수 있게 해주는 lib">
       <created>1633361167479</created>
       <option name="number" value="00009" />
@@ -746,7 +738,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687358672631</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="YouTube_extractor.py update from age restriciton error">
+      <created>1688214269476</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1688214269477</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView">
@@ -832,7 +831,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/github/test" />
     </ignored-roots>
-    <MESSAGE value="chrome driver를 자동으로 설치하여 사용할 수 있게 해주는 lib" />
     <MESSAGE value="골프 자동 예약 메크로" />
     <MESSAGE value="site 변경 여부 test 기능 추가" />
     <MESSAGE value="macpro macmini 구분 개선" />
@@ -857,7 +855,8 @@
     <MESSAGE value="lotto purchase update" />
     <MESSAGE value="reserve golf update" />
     <MESSAGE value="file arrange" />
-    <option name="LAST_COMMIT_MESSAGE" value="file arrange" />
+    <MESSAGE value="YouTube_extractor.py update from age restriciton error" />
+    <option name="LAST_COMMIT_MESSAGE" value="YouTube_extractor.py update from age restriciton error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

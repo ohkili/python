@@ -142,6 +142,11 @@ def youtube_downloader_mp3(url, download_path=''):
 
 def youtube_downloader(url, download_path='',mp3=True, cnt = 100, use_oauth = True, allow_oauth_cache = True):
 
+    # "mp3 False means mp4, True means mp3"
+    # use_oauth = True, allow_oauth_cache = True  solve authentication
+    # if age restriction error , class YouTube's __main.py
+    # def bypass_age_gate(self):  ==> change  from client=ANDROID_EMBED  to client='ANDROID'
+
     #ssl  문제 해결 코드
 
     requests.get(url)
@@ -240,7 +245,3 @@ if __name__ == '__main__':
     url ='https://www.youtube.com/watch?v=FJ2d-FPqDGE'
 
     youtube_downloader(url, download_path , mp3 = True, cnt=1000, use_oauth = True, allow_oauth_cache = True)
-    # "mp3 False means mp4, True means mp3"
-    # use_oauth = True, allow_oauth_cache = True  solve authentication
-    # if age restriction error , class Youtube's __main.py
-    # def bypass_age_gate(self):  ==> change  from client=ANDROID_EMBED  to client='ANDROID'
