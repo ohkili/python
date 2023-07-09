@@ -1,26 +1,28 @@
-
+import datetime
 import time
 # from  datetime import  *
 import pandas as pd
-import requests
-import json
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 from selenium.webdriver.support.ui import WebDriverWait
 
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.alert import Alert
-from bs4 import BeautifulSoup
 
 import schedule
-from web_crawling.Set_chromedriver import chromedriver_autorun
 from web_crawling.Set_chromedriver import driverAct
 from web_crawling.Telegram_message import telegram_message
-from web_crawling.Login_excite_driver import Login_exicte_driver
+from golf_reservation.Login_excite_driver import Login_exicte_driver
+from golf_reservation.Login_exite_driver_for_hanwon import Login_exicte_driver_for_hanwon
+from web_crawling.Close_all_pop_up_return_main import Close_all_pop_up_return_main
 from util.present_time_str import present_time_str
+
+def week_of_month(year, month, day):
+    day = 26
+    weekday_of_day_one = (datetime.date(year, month, 1).weekday()+1)%7
+    weekday_of_day = (datetime.date(year, month, day).weekday()+1)%7
+    wom = (day-1)//7 + 1 + (weekday_of_day < weekday_of_day_one)
+    return wom
 
 def Make_info_date(fromdate_delta):
 
@@ -39,90 +41,6 @@ def Make_info_date(fromdate_delta):
                       }
     return result
 
-def Close_all_pop_up_return_main(driver):
-    window_lst = driver.window_handles
-    "main is main_lst[0], the other is pop up"
-    for window in window_lst:
-        if window != window_lst[0]:
-            driver.switch_to.window(window)
-            driver.close()
-    driver.switch_to.window(window_lst[0])
-
-    return driver
-
-
-
-# info_login =  info_login_hanwon
-def Login_exicte_driver(info_login, cc= 'rivera'):
-    """ example
-       info_login_rivera = {'url'        : 'https://www.shinangolf.com/',
-                  'loginPage'  : 'https://www.shinangolf.com/member/login',
-                  'id'         : '??????',
-                  'pw'         : '???????',
-                  'elmt_id'    : 'memberId',
-                  'elmt_pw'    : 'key'
-                  }
-       """
-    url = info_login['url']
-    loginpage = info_login['loginPage']
-    loginID = info_login['id']
-    loginPW = info_login['pw']
-    member_type = info_login['member_type']
-    elmt_id_lst = info_login['elmt_id_dict'][member_type]
-    elmt_pw = info_login['elmt_pw_dict'][member_type]
-
-    driver = driverAct(url)
-    driver.get(loginpage)
-    driver = Close_all_pop_up_return_main(driver)
-
-    if cc == 'rivera':
-        # id
-        userId = driver.find_element(By.ID, elmt_id_lst[0])  # /html/body/div/div[5]/div/div/div/div[2]/div/form/div[1]/div[1]/input
-        userId.send_keys(loginID)  # 로그인 할 계정 id
-
-    elif cc == 'hanwon':
-        if member_type == 'cyber':
-            # id
-            id_member_type = driver.find_element(By.ID, 'rdo_MemGu_C')
-            driver.execute_script("arguments[0].click();", id_member_type)
-            userId = driver.find_element(By.ID,elmt_id_lst[0])  # /html/body/div/div[5]/div/div/div/div[2]/div/form/div[1]/div[1]/input
-            userId.send_keys(loginID)  # 로그인 할 계정 id
-        elif member_type == 'honor':
-            id_member_type = driver.find_element(By.ID, 'rdo_MemGu_M')
-            driver.execute_script("arguments[0].click();", id_member_type)
-            userId_0 = driver.find_element(By.ID, elmt_id_lst[0])
-            userId_0.send_keys(loginID.split('-')[0])
-            userId_1 = driver.find_element(By.ID, elmt_id_lst[1])
-            userId_1.send_keys(loginID.split('-')[1])
-        elif member_type == 'family':
-            id_member_type = driver.find_element(By.ID, 'rdo_MemGu_F')
-            driver.execute_script("arguments[0].click();", id_member_type)
-            userId_0 = driver.find_element(By.ID, elmt_id_lst[0])
-            userId_0.send_keys(loginID.split('-')[0])
-            userId_1 = driver.find_element(By.ID, elmt_id_lst[1])
-            userId_1.send_keys(loginID.split('-')[1])
-        else:
-            pass
-
-
-    # password
-    userPwd = driver.find_element(By.ID, elmt_pw)  # /html/body/div/div[5]/div/div/div/div[2]/div/form/div[1]/div[2]/input
-    userPwd.send_keys(loginPW)
-    userPwd.send_keys(Keys.ENTER)
-
-    driver.implicitly_wait(1) #seconds
-    "accept alert"
-    wait = WebDriverWait(driver,10)
-    alert_flag = wait.until(EC.alert_is_present())
-    if alert_flag:
-        driver.switch_to_alert().accept()
-    else:
-        pass
-
-    driver.implicitly_wait(10)  # seconds
-    driver = Close_all_pop_up_return_main(driver)
-
-    return driver
 
 
 def Extract_date_list_from_calendar(driver, wish_date, book_try_cnt, cc='rivera'):
@@ -132,8 +50,9 @@ def Extract_date_list_from_calendar(driver, wish_date, book_try_cnt, cc='rivera'
     wish_day = wish_date[6:8]
 
     bookable_lst = []
-    if cc == 'rivera':
-        try:
+    try:
+
+        if cc == 'rivera':
             xpath_calendar = "//div[@class='reservation_table calendar_table']/table/tbody"
             calendar = driver.find_element(By.XPATH, xpath_calendar)
             xpath_status_year = "//div[@class='month_wrap']/span[@class ='year']"
@@ -163,14 +82,47 @@ def Extract_date_list_from_calendar(driver, wish_date, book_try_cnt, cc='rivera'
                 else:
                     pass
                 # print(i, bookable_day, bookable_lst, book_try_cnt)
+        elif cc == 'hanwon':
+            xpath_calendar = "//div[@class='reservation_con clearfix']/div"
+            calendar = driver.find_element(By.XPATH, xpath_calendar)
+            xpath_status_month = "//div[@class='month_txt']"
+            status_month_lst = driver.find_elements(By.XPATH, xpath_status_month)
+            status_year_0 = status_month_lst[0].text[:4].replace(' ','').zfill(4)
+            status_year_1 = status_month_lst[1].text[:4].replace(' ','').zfill(4)
+            status_month_0 = status_month_lst[0].text[5:7].replace(' ','').zfill(2)
+            status_month_1 = status_month_lst[1].text[5:7].replace(' ','').zfill(2)
 
-        except Exception as e:
-            print(e)
-            print('macro fail : date simple check')
-            telegram_message('rivera macro fail  : date simple check  \n' + present_time_str())
-            calendar, bookable_lst, book_try_cnt = '', [], 0
-    else:
-        pass
+            xpath_calendar_week = "//div[@class='reservation_con clearfix']/div[@class='cnt_left']/table[@class='tbl_cal']/tbody/tr"
+            elmt_calendar_week_lst = driver.find_elements(By.XPATH, xpath_calendar_week)
+            elmt_calendar_day_lst =  elmt_calendar_week_lst[0].find_elements(By.XPATH, "//td")
+            # print(len(elmt_calendar_day_lst))
+            for i, elmt_calendar_day in enumerate(elmt_calendar_day_lst):
+                # elmt_calendar_day = elmt_calendar_day_lst[15]
+                m_w_d = elmt_calendar_day.get_attribute('id')
+                open_flag = elmt_calendar_day.get_attribute('class')
+                if open_flag == 'open':
+                    bookable_month = m_w_d.split('_')[1]
+                    bookable_day   = m_w_d.split('_')[3]
+                    if status_month_0 == bookable_month :
+                        bookable_yymmdd = status_year_0.zfill(4) + bookable_month.zfill(2) + bookable_day.zfill(2)
+                    elif  status_month_1 == bookable_month :
+                        bookable_yymmdd = status_year_1.zfill(4) + bookable_month.zfill(2) + bookable_day.zfill(2)
+                    else:
+                        bookable_yymmdd = '00000000'
+                    bookable_lst.append(bookable_yymmdd)
+                    print(i, bookable_yymmdd)
+                else:
+                    bookable_yymmdd = '00000000'
+                if bookable_yymmdd == str(wish_date):
+                    book_try_cnt += 1
+                else:
+                    pass
+
+    except Exception as e:
+        print(e)
+        print('macro fail : date simple check')
+        telegram_message('{} macro fail  : date simple check  \n'.format(cc) + present_time_str())
+        calendar, bookable_lst, book_try_cnt = '', [], 0
 
     return calendar, bookable_lst, book_try_cnt
 
@@ -356,160 +308,6 @@ def reserve_rivera(info_login, info_date,cc = 'rivera', reserve_cnt=1, reserve_t
     # driver.close()
     # 실시간 예약
 
-    """ <div id='container'>
-           <div id='content'>
-               <div class ='board_info_wrap'>
-                  <div class = 'inner'>
-                      < div class = 'page_tap_wrap'>  # 신안 계열 골프장 리스트
-                      < div class = 'month_wrap'> #달력
-                       < button type ='button' class= 'prev'> 지난달 버튼
-                       < span class ='year'>   올해 년도
-                       < span class = 'month'> 이번 달
-                       < button type = 'button' class 'next'> 다음달 버튼
-                       < div class = 'reservation_table calender_table> 예약 날짜 목록
-                         <table>
-                          <tbody> 이아래에 날짜별로 목록이 존재
-                           <tr> tr이 주간 묶음이고 하위에 <td>가 날짜를 뜻한다
-                            <td> 공란이면 해당 월에 날이 없는것을 말함(예약 가능일이 아니고 달력 기준 날짜)
-                              < div class ='day'>1 </div>  날짜
-                              < div class ='white'> 이면 예약 가능한 날이 없다는 것이다
-                              or 
-                              <div class ='day'>12 </div> 예약이 가능한 경우는
-                              <a class='open' id='20211012'> 1팀/<a>  날짜와 예약 가능 팀수를 알수 있다. 클릭하면 상세 날짜가 나온다 
-                        <div id ='reservationSelect'> 예약 상세 page 위에 날짜를 선택해야 상세 page가 열림
-                          <div class ='date_wrap' > 해당 날짜
-                            < div class = 'reservation_table time_table>
-                               <table>
-                                 <thread> 
-                                    <tr> 예약 상세화면의 컬럼 정보, [코스, 시간, 그린피, 예약]
-                                 <tbody> 
-                                     <tr> 예약 상세정보 이게 중요한 예약 가능 정보임, 
-                                        <th rowspan =2> LAKES </th>  코스 정보 및 해당 코스(LAKES) 에 몇개 예약(rowspn)이 가능한지 숫자 나옴
-                                        <td> 18:52 </td> 시간
-                                        <td> 130,000 </td> 금액
-                                        <td> 
-                                           <button conclick> 예약 선택 버튼 """
-    wish_date_cnt = len(wish_date_lst)
-    book_try_cnt = 0
-    if wish_date_cnt > 0:
-        for wish_date in wish_date_lst:
-            # wish_date = wish_date_lst[0]
-            calendar, bookable_lst,book_try_cnt =  Extract_date_list_from_calendar(driver,wish_date,book_try_cnt, cc =cc)
-            "change wishdate to book able date from bookable_lst"
-            if reserve_type == 'real':
-                pass
-            elif reserve_type == 'test' and len(bookable_lst) > 0:
-                wish_date = bookable_lst[-1]
-            elif reserve_type == 'test' and len(bookable_lst) == 0 and book_try_cnt == len(wish_date_lst):
-                wish_date = '19790604'
-            else:
-                print('Check book_try_cnt')
-            "click target date on calendar"
-            try:
-                date_selected_1 = "//tr/td/a[@class='open'  and @id =" + "'" + wish_date + "']"
-                date_selected_2 = "//tr/td/a[@class='open active'  and @id =" + "'" + wish_date + "']"
-                # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open'  and @id ='20211028']")
-                # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open active'  and @id ='20211028']")
-                # calendar.find_element(By.XPATH, date_selected).text 에 예약이 가능하면 팀수가 나옴 없으면 예약 불가능하므로 예약 시도 cancel
-                try:
-                    calendar_selected = calendar.find_element(By.XPATH, date_selected_1)
-                except Exception as e:
-                    print(e)
-                    calendar_selected = calendar.find_element(By.XPATH, date_selected_2)
-                except Exception as e:
-                    print(e)
-                    # 예약일이 없으면 바로 빠져 나와서 처리 속도를 높여줌 ???
-                    print('There is no book', wish_date)
-                    print('Check Calendar')
-
-                "set calendar to reserve"
-                calendar_selected.click()     # 원하는 날짜에 해당하는 달력 check
-                # calendar.find_element(By.XPATH, date_selected).text
-
-                # making reservable time table
-                timeTable ,reservation_time_list = Make_reservable_time_table(driver, cc=cc)
-                # pick wish time table
-                timeTable_masked = Pick_wish_hours_from_timetable(timeTable,wish_hour_lst, cc=cc)
-            except Exception as e:
-                print(e)
-                print('Fail to set time table and reservation list')
-
-            "reservation real or test"
-            try:
-                if reserve_cnt > 0 and wish_date_cnt > 0:
-
-                    driver,timeTable_masked, reservation_time_list =  Reserve_by_hour_option(driver, timeTable_masked, reservation_time_list, hour_option,
-                                           reserve_type=reserve_type)
-
-                    reserve_cnt -= 1  # 예약 건수를 1개 줄임
-                    if multi_date == True:
-                        wish_date_cnt -= 1
-                    elif multi_date == False:
-                        wish_date_cnt = 0
-                    else:
-                        print('Check multi date option')
-                else:
-                    print('Check reserve_cnt or wish date count')
-            except:
-                print('macro fail:  targeting reserve')
-
-                telegram_message('rivera macro fail:  targeting reserve  \n' + present_time_str())
-    else :
-        print('Check wish_date_cnt')
-
-    if book_try_cnt == wish_date_cnt:
-        telegram_message('There is no able day to book \n' + present_time_str())
-    else:
-        print('Check book_try_cnt')
-
-    print('book_try_cnt',book_try_cnt)
-    print('wish_date',wish_date_lst)
-    driver.close()
-def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_type='test', multi_date = False):
-    # info_rivera = {'url': 'https://www.shinangolf.com/',
-    #                'loginPage': 'https://www.shinangolf.com/member/login',
-    #                'id': 'ohkili',
-    #                'pw': 'Sin!1203'
-    #                }
-    # info_login = info_rivera
-    # info_date = info_date_test
-    #
-    "log in"
-    driver = Login_exicte_driver(info_login, cc = cc)
-    driver = Close_all_pop_up_return_main(driver)
-
-
-    wish_date_lst   = info_date['wish_date']
-    wish_hour_lst   = info_date['wish_hour']
-    hour_option = info_date['hour_option']
-
-    # log in putton userPwd에 password를 엔터를 치면 되는데, 아래처럼 로그인 버튼을 누를수도 있다
-    # loginbtn = driver.find_element(By.XPATH, "//form[@id='loginForm']/div[@class='login_btn']")
-    # loginbtn.click()
-
-    # 통합 예약/실시간예약
-    # reservation = driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")  # /html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a
-    xpath_reservation_open = '/html/body/div/div[2]/div[2]/div[1]/div[1]/ul/li[1]/a/img'
-    reservation_open = driver.find_element(By.XPATH, xpath_reservation_open )
-    driver.execute_script("arguments[0].click();", reservation_open)
-    # 아래 블럭 처리한 내용은 element에서 click을 하고 시행되지 않으면 execute_script를 쓰라는 문구인데 시간을 아끼기 위해 바로 excecute_sript를 사용하였다.
-    #  """   try:
-    #         print("Element is visible? " + str(reservation_open.is_displayed()))  # elemnet visible check
-    #         reservation_open.click()
-    #         # 에러메시지가 아래와 같이 나오면 엘리먼트가 보이지 않은것이다.
-    #         # " selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable   (Session info: chrome=94.0.4606.61) "
-    #
-    #         print("Element is visible? " + str(reservation_open.is_displayed())) # elemnet visible check
-    #         except:
-    #
-    #              # 그러면 아래와 같이 명령을 쓰면 해결이 된다.
-    #             driver.execute_script("arguments[0].click();",reservation_open)
-    # """
-
-
-    # driver.close()
-    # 실시간 예약
-    "this task is done upper block 230709 01:44"
     """ <div id='container'>
            <div id='content'>
                <div class ='board_info_wrap'>
@@ -1063,6 +861,167 @@ def reserve_ipo(info_login, info_date, cc= 'ipo', reserve_cnt=1, reserve_type='t
     print('wish_date',wish_date)
     driver.close()
 
+
+# info_login =  info_login_hanwon
+
+def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_type='test', multi_date = False):
+    # info_rivera = {'url': 'https://www.shinangolf.com/',
+    #                'loginPage': 'https://www.shinangolf.com/member/login',
+    #                'id': 'ohkili',
+    #                'pw': 'Sin!1203'
+    #                }
+    # info_login = info_rivera
+    # info_date = info_date_test
+    #
+    "log in"
+    driver = Login_exicte_driver_for_hanwon(info_login)
+    driver = Close_all_pop_up_return_main(driver)
+
+
+    wish_date_lst   = info_date['wish_date']
+    wish_hour_lst   = info_date['wish_hour']
+    hour_option = info_date['hour_option']
+
+    # log in putton userPwd에 password를 엔터를 치면 되는데, 아래처럼 로그인 버튼을 누를수도 있다
+    # loginbtn = driver.find_element(By.XPATH, "//form[@id='loginForm']/div[@class='login_btn']")
+    # loginbtn.click()
+
+    # 통합 예약/실시간예약
+    # reservation = driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a")  # /html/body/div/div[2]/div/div[2]/div[1]/ul/li[1]/div/ul/li[1]/a
+    xpath_reservation_open = '/html/body/div/div[2]/div[2]/div[1]/div[1]/ul/li[1]/a/img'
+    reservation_open = driver.find_element(By.XPATH, xpath_reservation_open )
+    driver.execute_script("arguments[0].click();", reservation_open)
+    # 아래 블럭 처리한 내용은 element에서 click을 하고 시행되지 않으면 execute_script를 쓰라는 문구인데 시간을 아끼기 위해 바로 excecute_sript를 사용하였다.
+    #  """   try:
+    #         print("Element is visible? " + str(reservation_open.is_displayed()))  # elemnet visible check
+    #         reservation_open.click()
+    #         # 에러메시지가 아래와 같이 나오면 엘리먼트가 보이지 않은것이다.
+    #         # " selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable   (Session info: chrome=94.0.4606.61) "
+    #
+    #         print("Element is visible? " + str(reservation_open.is_displayed())) # elemnet visible check
+    #         except:
+    #
+    #              # 그러면 아래와 같이 명령을 쓰면 해결이 된다.
+    #             driver.execute_script("arguments[0].click();",reservation_open)
+    # """
+
+
+    # driver.close()
+    # 실시간 예약
+    "this task is done upper block 230709 01:44"
+    """ <div id='container'>
+           <div id='content'>
+               <div class ='board_info_wrap'>
+                  <div class = 'inner'>
+                      < div class = 'page_tap_wrap'>  # 신안 계열 골프장 리스트
+                      < div class = 'month_wrap'> #달력
+                       < button type ='button' class= 'prev'> 지난달 버튼
+                       < span class ='year'>   올해 년도
+                       < span class = 'month'> 이번 달
+                       < button type = 'button' class 'next'> 다음달 버튼
+                       < div class = 'reservation_table calender_table> 예약 날짜 목록
+                         <table>
+                          <tbody> 이아래에 날짜별로 목록이 존재
+                           <tr> tr이 주간 묶음이고 하위에 <td>가 날짜를 뜻한다
+                            <td> 공란이면 해당 월에 날이 없는것을 말함(예약 가능일이 아니고 달력 기준 날짜)
+                              < div class ='day'>1 </div>  날짜
+                              < div class ='white'> 이면 예약 가능한 날이 없다는 것이다
+                              or 
+                              <div class ='day'>12 </div> 예약이 가능한 경우는
+                              <a class='open' id='20211012'> 1팀/<a>  날짜와 예약 가능 팀수를 알수 있다. 클릭하면 상세 날짜가 나온다 
+                        <div id ='reservationSelect'> 예약 상세 page 위에 날짜를 선택해야 상세 page가 열림
+                          <div class ='date_wrap' > 해당 날짜
+                            < div class = 'reservation_table time_table>
+                               <table>
+                                 <thread> 
+                                    <tr> 예약 상세화면의 컬럼 정보, [코스, 시간, 그린피, 예약]
+                                 <tbody> 
+                                     <tr> 예약 상세정보 이게 중요한 예약 가능 정보임, 
+                                        <th rowspan =2> LAKES </th>  코스 정보 및 해당 코스(LAKES) 에 몇개 예약(rowspn)이 가능한지 숫자 나옴
+                                        <td> 18:52 </td> 시간
+                                        <td> 130,000 </td> 금액
+                                        <td> 
+                                           <button conclick> 예약 선택 버튼 """
+    wish_date_cnt = len(wish_date_lst)
+    book_try_cnt = 0
+    if wish_date_cnt > 0:
+        for wish_date in wish_date_lst:
+            # wish_date = wish_date_lst[0]
+            calendar, bookable_lst,book_try_cnt =  Extract_date_list_from_calendar(driver,wish_date,book_try_cnt, cc =cc)
+            "change wishdate to book able date from bookable_lst"
+            if reserve_type == 'real':
+                pass
+            elif reserve_type == 'test' and len(bookable_lst) > 0:
+                wish_date = bookable_lst[-1]
+            elif reserve_type == 'test' and len(bookable_lst) == 0 and book_try_cnt == len(wish_date_lst):
+                wish_date = '19790604'
+            else:
+                print('Check book_try_cnt')
+            "click target date on calendar"
+            try:
+                "??????? 230709 17:55"
+                week_of_month = week_of_month(int(wish_date[:4]),int(wish_date[4:6]),int(wish_date[6:8]))
+                td_id = 'td'+ '_'+  str(wish_date[4:6]) + '_' + str(week_of_month) + '_' +str(wish_date[6:8])
+                date_selected_1 = "//tr/td/[@class='open'  and @id =" + "'" + td_id + "']"
+                date_selected_2 = "//tr/td/[@class='open active'  and @id =" + "'" + td_id + "']"
+                # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open'  and @id ='20211028']")
+                # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open active'  and @id ='20211028']")
+                # calendar.find_element(By.XPATH, date_selected).text 에 예약이 가능하면 팀수가 나옴 없으면 예약 불가능하므로 예약 시도 cancel
+                try:
+                    calendar_selected = calendar.find_element(By.XPATH, date_selected_1)
+                except Exception as e:
+                    print(e)
+                    calendar_selected = calendar.find_element(By.XPATH, date_selected_2)
+                except Exception as e:
+                    print(e)
+                    # 예약일이 없으면 바로 빠져 나와서 처리 속도를 높여줌 ???
+                    print('There is no book', wish_date)
+                    print('Check Calendar')
+
+                "set calendar to reserve"
+                calendar_selected.click()     # 원하는 날짜에 해당하는 달력 check
+                # calendar.find_element(By.XPATH, date_selected).text
+
+                # making reservable time table
+                timeTable ,reservation_time_list = Make_reservable_time_table(driver, cc=cc)
+                # pick wish time table
+                timeTable_masked = Pick_wish_hours_from_timetable(timeTable,wish_hour_lst, cc=cc)
+            except Exception as e:
+                print(e)
+                print('Fail to set time table and reservation list')
+
+            "reservation real or test"
+            try:
+                if reserve_cnt > 0 and wish_date_cnt > 0:
+
+                    driver,timeTable_masked, reservation_time_list =  Reserve_by_hour_option(driver, timeTable_masked, reservation_time_list, hour_option,
+                                           reserve_type=reserve_type)
+
+                    reserve_cnt -= 1  # 예약 건수를 1개 줄임
+                    if multi_date == True:
+                        wish_date_cnt -= 1
+                    elif multi_date == False:
+                        wish_date_cnt = 0
+                    else:
+                        print('Check multi date option')
+                else:
+                    print('Check reserve_cnt or wish date count')
+            except:
+                print('macro fail:  targeting reserve')
+
+                telegram_message('rivera macro fail:  targeting reserve  \n' + present_time_str())
+    else :
+        print('Check wish_date_cnt')
+
+    if book_try_cnt == wish_date_cnt:
+        telegram_message('There is no able day to book \n' + present_time_str())
+    else:
+        print('Check book_try_cnt')
+
+    print('book_try_cnt',book_try_cnt)
+    print('wish_date',wish_date_lst)
+    driver.close()
+
 def test():
     # info_date_test = {'wish_date': time_ls,
     #                   'wish_hour': ['05~23'],
@@ -1286,11 +1245,8 @@ if __name__ == '__main__':
                    'loginPage'   : 'https://www.shinangolf.com/member/login',
                    'id'          : 'ohkili',
                    'pw'          : 'Sin!1203',
-                   'member_type' : 'cyber',  # honor, family
                    'elmt_id'     : 'memberId',
                    'elmt_pw'     : 'key',
-                   'elmt_id_dict': {'cyber' : ['memberId']},
-                   'elmt_pw_dict': {'cyber':  'key'}
                    }
 
     info_login_ipo = {'url'          : 'http://ipo-cc.co.kr/cmm/main/mainPage.do',
