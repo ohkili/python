@@ -17,8 +17,8 @@ from golf_reservation.Login_exite_driver_for_hanwon import Login_exicte_driver_f
 from web_crawling.Close_all_pop_up_return_main import Close_all_pop_up_return_main
 from util.present_time_str import present_time_str
 
-def week_of_month(year, month, day):
-    day = 26
+def Week_of_month(year, month, day):
+    year, month, day = int(year), int(month), int(day)
     weekday_of_day_one = (datetime.date(year, month, 1).weekday()+1)%7
     weekday_of_day = (datetime.date(year, month, day).weekday()+1)%7
     wom = (day-1)//7 + 1 + (weekday_of_day < weekday_of_day_one)
@@ -134,6 +134,10 @@ def Make_reservable_time_table(driver, cc='rivera'):
 
             reservation_time = driver.find_element(By.XPATH, "//div[@class = 'reservation_table time_table']")
             reservation_time_list = reservation_time.find_elements(By.XPATH, "//table/tbody/tr/td/button")
+        elif cc == 'hanwon':
+            reservation_time = driver.find_element(By.XPATH, "//div[@id = 'dvTime' and @class = 'cnt_right']")
+            reservation_time_list = reservation_time.find_elements(By.XPATH, "//div/div/div[@class = 'tab_content2']/table/tbody/tr")
+
         else:
             # this condition if for another cc
             reservation_time = driver.find_element(By.XPATH,
@@ -157,6 +161,19 @@ def Make_reservable_time_table(driver, cc='rivera'):
                 s = s[0:len(timeTable_columns)]
                 s = pd.DataFrame(data=[s], columns=timeTable_columns)
                 timeTable_lst.append(s)
+        elif cc == 'hanwon':
+            timeTable_columns = ['fulldate', 'day', 'hour', 'course_type', 'cousrse_name', 'price']
+
+            for i in range(len(reservation_time_list)):
+                # i = 3
+                s = reservation_time_list[i].get_attribute('innerText')
+                if s.find('대기신청') >=0 :
+                    s = ['','','','','','']
+                else:
+                    s = s.split('\t')
+                    s = ['','',s[0].split(' ')[1],s[2],s[1],s[4]]
+                s = pd.DataFrame(data=[s], columns=timeTable_columns)
+                timeTable_lst.append(s)
 
 
         else:
@@ -175,23 +192,25 @@ def Make_reservable_time_table(driver, cc='rivera'):
     return timeTable ,reservation_time_list
 
 
-def Pick_wish_hours_from_timetable(timeTable,wish_hour, cc='rivera'):
+def Pick_wish_hours_from_timetable(timeTable,wish_hour_lst, cc='rivera'):
     print('This function is Pick_wish_hours_from_timetable()')
     # 원하는 시간대 골라내기
 
     timeTable_masked_lst = []
     try:
 
-        if cc == 'rivera':
+        if cc in ['rivera', 'hanwon']:
 
-            for h in wish_hour:
-                first_time = h.split('~')[0]
-                end_time = h.split('~')[1]
+            for wish_hour in wish_hour_lst:
+                first_time = wish_hour.split('~')[0]
+                end_time = wish_hour.split('~')[1]
                 mask1 = (timeTable['hour'].str[0:2] >= first_time) & (
                         timeTable['hour'].str[0:2] < end_time)  # 시간대 filter
 
-                timeTable_sorted = timeTable.loc[mask1, :]
-                timeTable_masked_lst.append(timeTable_sorted)
+                timeTable_filterd = timeTable.loc[mask1, :]
+                timeTable_masked_lst.append(timeTable_filterd)
+
+
         else:
             pass
 
@@ -227,6 +246,50 @@ def Reserve_by_hour_option(driver,timeTable_masked, reservation_time_list, hour_
             #
             # reservation_time_list[index_no].get_attribute('onclick')
             driver.execute_script("arguments[0].click();", reservation_time_list[index_dict[hour_option]])
+
+            # 예약 확인 pop up
+
+            popup_text = driver.find_element(By.XPATH,
+                                             "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']").text
+            print(popup_text)
+            reserve_text = driver.find_element(By.XPATH,
+                                               "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").text
+            print(reserve_text)
+
+            if reserve_type == 'real':
+                driver.find_element(By.XPATH,
+                                    "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
+                # 이렇게 하면 바로 예약 됨
+                popup_text = '[예약 완료, macro 정상 동작]\n' + + popup_text
+                telegram_message(popup_text)
+
+            elif reserve_type == 'test' and reserve_text == '예약하기':
+                # Telegram 문자 보내기
+                driver.find_element(By.XPATH,
+                                    "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
+
+                popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n' + popup_text
+                telegram_message(popup_text)
+
+            else:
+                print('Check reserve count')
+        if cc == 'hanwon':
+            index_dict = {'first': timeTable_masked.index[0],
+                          'mid': int((timeTable_masked.index[0] + timeTable_masked.index[-1]) / 2),
+                          'last': -1
+                          }
+            timeTable_masked = timeTable_masked.drop(index_dict[hour_option])
+
+            print(index_dict)
+            # timeTable_masked.reset_index(drop=True, inplace=True)
+
+            # 골라낸 시간에 예약 버튼 누르기
+
+            # reservation_time_list[index_no].get_attribute('onclick')
+            # reservation_time_list[index_no].click()
+            #
+            # reservation_time_list[index_no].get_attribute('onclick')
+            driver.execute_script("arguments[0].click();", reservation_time_list[index_dict[hour_option]].text)
 
             # 예약 확인 pop up
 
@@ -959,14 +1022,18 @@ def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_t
                 print('Check book_try_cnt')
             "click target date on calendar"
             try:
-                "??????? 230709 17:55"
-                week_of_month = week_of_month(int(wish_date[:4]),int(wish_date[4:6]),int(wish_date[6:8]))
+
+                wish_year, wish_month, wish_day = wish_date[0:4], wish_date[4:6],wish_date[6:8]
+                week_of_month = Week_of_month(wish_year, wish_month, wish_day)
                 td_id = 'td'+ '_'+  str(wish_date[4:6]) + '_' + str(week_of_month) + '_' +str(wish_date[6:8])
-                date_selected_1 = "//tr/td/[@class='open'  and @id =" + "'" + td_id + "']"
-                date_selected_2 = "//tr/td/[@class='open active'  and @id =" + "'" + td_id + "']"
+
+                date_selected_1 = "//tr/td[@class='open'  and @id =" + "'" + td_id + "']"
+                date_selected_2 = "//tr/td[@class='res'  and @id =" + "'" + td_id + "']"
                 # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open'  and @id ='20211028']")
                 # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open active'  and @id ='20211028']")
                 # calendar.find_element(By.XPATH, date_selected).text 에 예약이 가능하면 팀수가 나옴 없으면 예약 불가능하므로 예약 시도 cancel
+
+                "??????? 230709 17:55"
                 try:
                     calendar_selected = calendar.find_element(By.XPATH, date_selected_1)
                 except Exception as e:
@@ -979,6 +1046,7 @@ def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_t
                     print('Check Calendar')
 
                 "set calendar to reserve"
+
                 calendar_selected.click()     # 원하는 날짜에 해당하는 달력 check
                 # calendar.find_element(By.XPATH, date_selected).text
 
