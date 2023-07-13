@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/YouTube_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/YouTube_extractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/reservation_golf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -400,10 +401,10 @@
     </configuration>
     <list>
       <item itemvalue="Python.Close_all_pop_up_return_main" />
-      <item itemvalue="Python.lotto_auto_purchasing (1)" />
       <item itemvalue="Python.Login_excite_driver" />
-      <item itemvalue="Python.lotto_auto_purchasing" />
       <item itemvalue="Python.YouTube_extractor" />
+      <item itemvalue="Python.lotto_auto_purchasing (1)" />
+      <item itemvalue="Python.lotto_auto_purchasing" />
     </list>
     <recent_temporary>
       <list>

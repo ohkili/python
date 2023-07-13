@@ -135,8 +135,13 @@ def Make_reservable_time_table(driver, cc='rivera'):
             reservation_time = driver.find_element(By.XPATH, "//div[@class = 'reservation_table time_table']")
             reservation_time_list = reservation_time.find_elements(By.XPATH, "//table/tbody/tr/td/button")
         elif cc == 'hanwon':
-            reservation_time = driver.find_element(By.XPATH, "//div[@id = 'dvTime' and @class = 'cnt_right']")
-            reservation_time_list = reservation_time.find_elements(By.XPATH, "//div/div/div[@class = 'tab_content2']/table/tbody/tr")
+            xpath_reservation_time = "//div[@id='dvTime' and @class='cnt_right']/div[@class='tab_container2']/div[@class='tab_container2']/div[@class='tab_content2']/table[@class='tbl_course']/tbody"
+            reservation_time = driver.find_element(By.XPATH,xpath_reservation_time)
+
+            reservation_time_list = reservation_time.find_elements(By.XPATH, "tr")
+            # len(reservation_time_list)
+            # for i, elmt in enumerate(reservation_time_list):
+            #     print(i,elmt.text)
 
         else:
             # this condition if for another cc
@@ -164,8 +169,8 @@ def Make_reservable_time_table(driver, cc='rivera'):
         elif cc == 'hanwon':
             timeTable_columns = ['fulldate', 'day', 'hour', 'course_type', 'cousrse_name', 'price']
 
-            for i in range(len(reservation_time_list)):
-                # i = 3
+            for i , elmt in enumerate(reservation_time_list):
+                # i = 2
                 s = reservation_time_list[i].get_attribute('innerText')
                 if s.find('대기신청') >=0 :
                     s = ['','','','','','']
@@ -274,49 +279,64 @@ def Reserve_by_hour_option(driver,timeTable_masked, reservation_time_list, hour_
             else:
                 print('Check reserve count')
         if cc == 'hanwon':
-            index_dict = {'first': timeTable_masked.index[0],
-                          'mid': int((timeTable_masked.index[0] + timeTable_masked.index[-1]) / 2),
-                          'last': -1
-                          }
-            timeTable_masked = timeTable_masked.drop(index_dict[hour_option])
 
-            print(index_dict)
-            # timeTable_masked.reset_index(drop=True, inplace=True)
+            run_cnt = 1
 
-            # 골라낸 시간에 예약 버튼 누르기
+            while (run_cnt ==1 ) :
+                index_dict = {'first': timeTable_masked.index[0],
+                              'mid': int((timeTable_masked.index[0] + timeTable_masked.index[-1]) / 2),
+                              'last': -1
+                              }
+                timeTable_masked = timeTable_masked.drop(index_dict[hour_option])
 
-            # reservation_time_list[index_no].get_attribute('onclick')
-            # reservation_time_list[index_no].click()
-            #
-            # reservation_time_list[index_no].get_attribute('onclick')
-            driver.execute_script("arguments[0].click();", reservation_time_list[index_dict[hour_option]].text)
+                print(index_dict)
 
-            # 예약 확인 pop up
+                xpath_reservation_button = "td/span[@class='btn_s01']/a"
+                reservation_button = reservation_time_list[index_dict[hour_option]].find_element(By.XPATH,xpath_reservation_button)
+                reserve_btn_txt = reservation_button.text
 
-            popup_text = driver.find_element(By.XPATH,
-                                             "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']").text
-            print(popup_text)
-            reserve_text = driver.find_element(By.XPATH,
-                                               "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").text
-            print(reserve_text)
+                if reserve_btn_txt  == '예약하기':
 
-            if reserve_type == 'real':
-                driver.find_element(By.XPATH,
-                                    "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/button").click()
-                # 이렇게 하면 바로 예약 됨
-                popup_text = '[예약 완료, macro 정상 동작]\n' + + popup_text
-                telegram_message(popup_text)
+                    driver.execute_script("arguments[0].click();", reservation_button)
+                    xpath_reservation_root = "//div[@class='wrap']/div[@class='sub_wrap']/div[@class='sub_contents clearfix']/div[@class='right_contents_wrap clearfix']/div[@class='right_contents']"
+                    # 예약 확인 message
+                    xpath_reservation_info = xpath_reservation_root + "/div[@class='use_wrap']/table[@class='tb001']/tbody"
+                    reservation_info = driver.find_element(By.XPATH, xpath_reservation_info).text
+                    print(reservation_info)
 
-            elif reserve_type == 'test' and reserve_text == '예약하기':
-                # Telegram 문자 보내기
-                driver.find_element(By.XPATH,
-                                    "//div[@id='confirmModal']/div[@class='modal_content']/div[@class='confirm_modal']/div[@class='form_btns']/a").click()
+                    xpath_reservation_confirm_message = xpath_reservation_root + "/p[@class='last_tit']"
+                    reserve_confirm_message_text = driver.find_element(By.XPATH, xpath_reservation_confirm_message).text
+                    print(reserve_confirm_message_text)
 
-                popup_text = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n' + popup_text
-                telegram_message(popup_text)
+                    xpath_reservation_last_yes_button =  xpath_reservation_root + "/div[@class='last_btn']/a[@class='yes_btn']"
+                    reserve_last_yes_button_text = driver.find_element(By.XPATH,xpath_reservation_last_yes_button).text
 
-            else:
-                print('Check reserve count')
+                    xpath_reservation_last_no_button = xpath_reservation_root + "/div[@class='last_btn']/a[@class='no_btn']"
+                    reserve_last_no_button_text = driver.find_element(By.XPATH, xpath_reservation_last_no_button).text
+
+                    print(reserve_last_yes_button_text)
+
+
+                    if reserve_type == 'real':
+                        driver.find_element(By.XPATH,xpath_reservation_last_yes_button).click()
+                        # 이렇게 하면 바로 예약 됨
+                        reservation_info = '[예약 완료, macro 정상 동작]\n한원컨트리클럽\n ' +  reservation_info
+                        telegram_message(reservation_info)
+
+                    elif reserve_type == 'test' and reserve_last_yes_button_text == '예약하기':
+                        # Telegram 문자 보내기
+                        driver.find_element(By.XPATH,xpath_reservation_last_no_button).click()
+                        # 이렇게 하면 cancel
+
+                        reservation_info = '[예약 macro 정상 동작]\n' + '[예약이 된것은 아님]\n한원컨트리클럽\n' + reservation_info
+                        telegram_message(reservation_info)
+
+                    else:
+                        print('Check reserve count')
+
+                    run_cnt =0
+                else:
+                    pass
         else:
             pass
 
@@ -954,57 +974,7 @@ def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_t
     xpath_reservation_open = '/html/body/div/div[2]/div[2]/div[1]/div[1]/ul/li[1]/a/img'
     reservation_open = driver.find_element(By.XPATH, xpath_reservation_open )
     driver.execute_script("arguments[0].click();", reservation_open)
-    # 아래 블럭 처리한 내용은 element에서 click을 하고 시행되지 않으면 execute_script를 쓰라는 문구인데 시간을 아끼기 위해 바로 excecute_sript를 사용하였다.
-    #  """   try:
-    #         print("Element is visible? " + str(reservation_open.is_displayed()))  # elemnet visible check
-    #         reservation_open.click()
-    #         # 에러메시지가 아래와 같이 나오면 엘리먼트가 보이지 않은것이다.
-    #         # " selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable   (Session info: chrome=94.0.4606.61) "
-    #
-    #         print("Element is visible? " + str(reservation_open.is_displayed())) # elemnet visible check
-    #         except:
-    #
-    #              # 그러면 아래와 같이 명령을 쓰면 해결이 된다.
-    #             driver.execute_script("arguments[0].click();",reservation_open)
-    # """
 
-
-    # driver.close()
-    # 실시간 예약
-    "this task is done upper block 230709 01:44"
-    """ <div id='container'>
-           <div id='content'>
-               <div class ='board_info_wrap'>
-                  <div class = 'inner'>
-                      < div class = 'page_tap_wrap'>  # 신안 계열 골프장 리스트
-                      < div class = 'month_wrap'> #달력
-                       < button type ='button' class= 'prev'> 지난달 버튼
-                       < span class ='year'>   올해 년도
-                       < span class = 'month'> 이번 달
-                       < button type = 'button' class 'next'> 다음달 버튼
-                       < div class = 'reservation_table calender_table> 예약 날짜 목록
-                         <table>
-                          <tbody> 이아래에 날짜별로 목록이 존재
-                           <tr> tr이 주간 묶음이고 하위에 <td>가 날짜를 뜻한다
-                            <td> 공란이면 해당 월에 날이 없는것을 말함(예약 가능일이 아니고 달력 기준 날짜)
-                              < div class ='day'>1 </div>  날짜
-                              < div class ='white'> 이면 예약 가능한 날이 없다는 것이다
-                              or 
-                              <div class ='day'>12 </div> 예약이 가능한 경우는
-                              <a class='open' id='20211012'> 1팀/<a>  날짜와 예약 가능 팀수를 알수 있다. 클릭하면 상세 날짜가 나온다 
-                        <div id ='reservationSelect'> 예약 상세 page 위에 날짜를 선택해야 상세 page가 열림
-                          <div class ='date_wrap' > 해당 날짜
-                            < div class = 'reservation_table time_table>
-                               <table>
-                                 <thread> 
-                                    <tr> 예약 상세화면의 컬럼 정보, [코스, 시간, 그린피, 예약]
-                                 <tbody> 
-                                     <tr> 예약 상세정보 이게 중요한 예약 가능 정보임, 
-                                        <th rowspan =2> LAKES </th>  코스 정보 및 해당 코스(LAKES) 에 몇개 예약(rowspn)이 가능한지 숫자 나옴
-                                        <td> 18:52 </td> 시간
-                                        <td> 130,000 </td> 금액
-                                        <td> 
-                                           <button conclick> 예약 선택 버튼 """
     wish_date_cnt = len(wish_date_lst)
     book_try_cnt = 0
     if wish_date_cnt > 0:
@@ -1025,7 +995,7 @@ def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_t
 
                 wish_year, wish_month, wish_day = wish_date[0:4], wish_date[4:6],wish_date[6:8]
                 week_of_month = Week_of_month(wish_year, wish_month, wish_day)
-                td_id = 'td'+ '_'+  str(wish_date[4:6]) + '_' + str(week_of_month) + '_' +str(wish_date[6:8])
+                td_id = 'td'+ '_'+  str(wish_date[4:6]) + '_' + str(week_of_month) + '_' +str(int(wish_date[6:8]))
 
                 date_selected_1 = "//tr/td[@class='open'  and @id =" + "'" + td_id + "']"
                 date_selected_2 = "//tr/td[@class='res'  and @id =" + "'" + td_id + "']"
@@ -1033,7 +1003,7 @@ def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_t
                 # temp_date = calendar.find_element(By.XPATH, "//tr/td/a[@class='open active'  and @id ='20211028']")
                 # calendar.find_element(By.XPATH, date_selected).text 에 예약이 가능하면 팀수가 나옴 없으면 예약 불가능하므로 예약 시도 cancel
 
-                "??????? 230709 17:55"
+
                 try:
                     calendar_selected = calendar.find_element(By.XPATH, date_selected_1)
                 except Exception as e:
@@ -1051,7 +1021,10 @@ def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_t
                 # calendar.find_element(By.XPATH, date_selected).text
 
                 # making reservable time table
+                "??????? 230713 17:55"
+
                 timeTable ,reservation_time_list = Make_reservable_time_table(driver, cc=cc)
+                len(reservation_time_list)
                 # pick wish time table
                 timeTable_masked = Pick_wish_hours_from_timetable(timeTable,wish_hour_lst, cc=cc)
             except Exception as e:
@@ -1061,7 +1034,8 @@ def reserve_hanwon(info_login, info_date,cc = 'hanwon', reserve_cnt=1, reserve_t
             "reservation real or test"
             try:
                 if reserve_cnt > 0 and wish_date_cnt > 0:
-
+                    # len(reservation_time_list)
+                    # len(timeTable_masked)
                     driver,timeTable_masked, reservation_time_list =  Reserve_by_hour_option(driver, timeTable_masked, reservation_time_list, hour_option,
                                            reserve_type=reserve_type)
 
@@ -1304,11 +1278,6 @@ if __name__ == '__main__':
     # info_login = info_login_rivera
     # info_date = Make_info_date()
 
-    info_date_test = {'wish_date': ['20230622','20230630'],
-                      'wish_hour': ['05~23'],
-                      'hour_option': 'first'
-                      }
-
     info_login_rivera = {'url'        : 'https://www.shinangolf.com/',
                    'loginPage'   : 'https://www.shinangolf.com/member/login',
                    'id'          : 'ohkili',
@@ -1340,14 +1309,8 @@ if __name__ == '__main__':
                                           }
                          }
 
-    # 날짜 고르기
-    info_date = {'wish_date': ['20211023', '20211028'],
-                 'wish_hour': ['14~16', '18~19'],
-                 'hour_option': 'first'
-                 }
-
     info_date = Make_info_date(fromdate_delta =12)
-    info_login = info_login_rivera
+    # info_login = info_login_rivera
     info_login = info_login_hanwon
 
     info_date_test = info_date
