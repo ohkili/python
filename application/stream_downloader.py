@@ -26,12 +26,15 @@ with requests.session() as s:
     with open("F:/stream_download/file.mp4", "wb") as f:
         f.write(s.get(link, verify=False).content)
 """
+import glob
 
 import requests
 import time
-from moviepy.editor import *
 import os
 from natsort import natsorted
+
+from moviepy.editor import VideoFileClip ,concatenate_videoclips
+
 
 #
 
@@ -43,46 +46,56 @@ from natsort import natsorted
 # # https://cdn15-ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af/Video/360p/360p_014.aaa
 # # https://cdn12-ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af/Video/720p/720p_131.aaa
 
-"https://cdn1-catcdn.top/cdn/down/981b73978972e7699529b167e838a557/Video/720p/720p_015.aaa"
-# num = 131
-# num_pad = str(num).zfill(3)
-# orbit = num % 15 +1
-# https_form = "https://cdn" + str(orbit) + "-ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af/Video/720p/720p_" + num_pad + ".aaa"
-"https://ndoodle.xyz/subtitles/2021-4/반요야샤2기22ns.srt"
+# "https://cdn1-catcdn.top/cdn/down/981b73978972e7699529b167e838a557/Video/720p/720p_015.aaa"
+# # num = 131
+# # num_pad = str(num).zfill(3)
+# # orbit = num % 15 +1
+# # https_form = "https://cdn" + str(orbit) + "-ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af/Video/720p/720p_" + num_pad + ".aaa"
+# "https://ndoodle.xyz/subtitles/2021-4/반요야샤2기22ns.srt"
+# middle_form = 'piggy.xyz/cdn/down/5cb3d92c6e991fa134676572ea7d03ea'
+# num=1000
+# orbit_num = 15
+# init_num = 16
 
-
-
-
-def make_download_url(num, middle_form):
+def make_download_url(num, middle_form,orbit_num = 15 ,init_num = 3):
     download_url = []
+    head_dict = {'xdoodle': "cdn",
+                 'nydoodle': "cdn",
+                 'ndoodle' :"cdn",
+                 'piggy'  : "cloud"
+                 }
     for i in range(num):
         num_pad = str(i).zfill(3)
-        orbit = i % 15 + 1
-        https_form = "https://cdn" + str(
-            orbit) + "-"   +middle_form + "/Video/720p/720p_" + num_pad + ".aaa"
+        orbit = str(i % orbit_num + init_num)
+        https_form = "https://" + head_dict[middle_form.split('.')[0]]  +  str(orbit) + "-" + middle_form + "/Video/720p/720p_" + num_pad + ".aaa"
         download_url.append(https_form)
     return download_url
+# path = path_root
+# url = srt_file_dict[key]
+def download_file(path,url,manual_file_name = ''):
 
-def download_file(path,url):
     if url.split('.')[-1] == 'srt':
-        local_filename = path + '/' + url.split('/')[-1]
+        if len(manual_file_name) == 0:
+            fpath_downlaod = path + '/' + url.split('/')[-1]
+        else:
+            fpath_downlaod = path + '/'  + manual_file_name + '.srt'
     else:
-        local_filename = path + '/' + url.split('/')[-1].replace('.','') + '.mp4'
+        fpath_downlaod = path + '/' + url.split('/')[-1].replace('.','') + '.mp4'
 
     # NOTE the stream=True parameter
     r = requests.get(url, stream=True)
     print(r)
-    with open(local_filename, 'wb') as f:
+    with open(fpath_downlaod, 'wb') as f:
         for chunk in r.iter_content(chunk_size=256):
             if chunk: # filter out keep-alive new chunks
                 f.write(chunk)
                 #f.flush() commented by recommendation from J.F.Sebastian
     time.sleep(0.5)
 
-    return local_filename
+    return fpath_downlaod
 
 #
-path = 'F:/stream_download'
+# path = 'F:/stream_download'
 # download_url = make_download_url(338)
 # for url in download_url:
 #     download_file(path,url)
@@ -119,7 +132,7 @@ ex) filename is  'banyo_yashahime_201'
                     
 """
 
-file_dict = { #'banyo_yashahime_201': 'ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af',
+file_dict_bk = { #'banyo_yashahime_201': 'ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af',
               #'banyo_yashahime_202': 'catcdn.top/cdn/down/981b73978972e7699529b167e838a557',
               #'banyo_yashahime_203': 'ndoodle.xyz/cdn/down/92af8189e113a54cc43301d2af8dae48',
               'banyo_yashahime_204': 'ndoodle.xyz/cdn/down/280a93ca3444aac0c3f84ffbd3ba5890',
@@ -145,6 +158,47 @@ file_dict = { #'banyo_yashahime_201': 'ndoodle.xyz/cdn/down/5d548a1b558d5036878a
               'banyo_yashahime_224' : 'ndoodle.xyz/cdn/down/e5cbb9df2cf7c6277b0c12f1e07743bd'
               }
 
+mp4_file_dict = { #'banyo_yashahime_201': 'ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af',
+              #'banyo_yashahime_202': 'catcdn.top/cdn/down/981b73978972e7699529b167e838a557',
+              #'banyo_yashahime_203': 'ndoodle.xyz/cdn/down/92af8189e113a54cc43301d2af8dae48',
+              # 'party_people_kongmyeong_001': [13,3,'xdoodle.xyz/cdn/down/ead9853a64c5e34f323f5a0c6a51571e'],
+              # 'party_people_kongmyeong_002': [13,3,'xdoodle.xyz/cdn/down/e83bb7b0da390abc1e2fcba261a7b787'],
+              # 'party_people_kongmyeong_003-1': [15,1,'nydoodle.xyz/cdn/down/5cb3d92c6e991fa134676572ea7d03ea'],
+              # 'party_people_kongmyeong_003-2': [15,16,'piggy.xyz/cdn/down/5cb3d92c6e991fa134676572ea7d03ea'],
+              # 'party_people_kongmyeong_004-1': [15,1,'nydoodle.xyz/cdn/down/3159e87ec8a9d575e026471393f1d5b1'],
+              # 'party_people_kongmyeong_004-2': [15,16,'piggy.xyz/cdn/down/3159e87ec8a9d575e026471393f1d5b1'],
+              # 'party_people_kongmyeong_005': [13,3,'xdoodle.xyz/cdn/down/256fea8d6668715b850295fc1d04c200'],
+              # 'party_people_kongmyeong_006': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
+              # 'party_people_kongmyeong_007-1': [15,1,'nydoodle.xyz/cdn/down/bccb652ed2cdd4e5b3aa202861b585f2'],
+              'party_people_kongmyeong_007-2': [15,16,'piggy.xyz/cdn/down/bccb652ed2cdd4e5b3aa202861b585f2'],
+              'party_people_kongmyeong_008-1': [15,1,'nydoodle.xyz/cdn/down/6109d1f50dbb4d6bb876e62b4f460fbe'],
+              'party_people_kongmyeong_008-2': [15,16,'piggy.xyz/cdn/down/6109d1f50dbb4d6bb876e62b4f460fbe'],
+              'party_people_kongmyeong_009': [13,3,'xdoodle.xyz/cdn/down/4347cefc2bcfd20ef094e506924c85af'],
+              'party_people_kongmyeong_010-1': [15,1,'nydoodle.xyz/cdn/down/f31753d1f499bec931e785402a1f4b9a'],
+              'party_people_kongmyeong_010-2': [15,16,'piggy.xyz/cdn/down/f31753d1f499bec931e785402a1f4b9a'],
+              'party_people_kongmyeong_011': [15,1,'ndoodle.xyz/cdn/down/82f4a521864268f9999bf387b7eff9a9'],
+              'party_people_kongmyeong_012': [13,3,'xdoodle.xyz/cdn/down/0a31bd429bfcfb29922cc3e6f54a5cdb'],
+
+              }
+srt_file_dict = { #'banyo_yashahime_201': 'ndoodle.xyz/cdn/down/5d548a1b558d5036878a3523ae9326af',
+              #'banyo_yashahime_202': 'catcdn.top/cdn/down/981b73978972e7699529b167e838a557',
+              #'banyo_yashahime_203': 'ndoodle.xyz/cdn/down/92af8189e113a54cc43301d2af8dae48',
+              'party_people_kongmyeong_001': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8501.srt',
+              'party_people_kongmyeong_002': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8502.srt',
+              'party_people_kongmyeong_003': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8503.srt',
+              'party_people_kongmyeong_004': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8504.srt',
+              'party_people_kongmyeong_005': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8505.srt',
+              'party_people_kongmyeong_006': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8506.srt',
+              'party_people_kongmyeong_007': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8507.srt',
+              'party_people_kongmyeong_008': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8508.srt',
+              'party_people_kongmyeong_009': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8509.srt',
+              'party_people_kongmyeong_010': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8510.srt',
+              'party_people_kongmyeong_011': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8511.srt',
+              'party_people_kongmyeong_012': 'https://crazypatutu.com/subtitles/2022-2/%ED%8C%8C%EB%A6%AC%ED%94%BC%EA%B3%B5%EB%AA%8512.srt'
+              }
+
+
+
 # path = 'F:/stream_download'
 # download_url = make_download_url(338)
 # for url in download_url:
@@ -153,38 +207,129 @@ file_dict = { #'banyo_yashahime_201': 'ndoodle.xyz/cdn/down/5d548a1b558d5036878a
 
 # url = "https://ndoodle.xyz/subtitles/2021-4/반요야샤2기22ns.srt"
 # download_file(path,url)
+def main ():
+    path_root = 'F:/stream_download'
+    # path =  'F:/stream_download'
+    "Download script files"
+    for i, key in enumerate(srt_file_dict.keys()):
+        # key = list(mp4_file_dict.keys())[0]
+        path_root_download = os.path.join(path_root, key)
+        os.makedirs(path_root_download, exist_ok=True)
+        fpath_download = download_file(path_root_download, srt_file_dict[key], manual_file_name=key)
+        print('srt',i, '/', len(srt_file_dict.keys()) ,fpath_download)
+    "Download video files"
+    for key in mp4_file_dict.keys():
+        # key = list(mp4_file_dict.keys())[1]
+        # print(key)
+        # print(key, mp4_file_dict[key])
 
-for key in file_dict.keys():
-    # key = list(file_dict.keys())[0]
-    # print(key)
-    # print(key, file_dict[key])
+        path_root_download = os.path.join(path_root ,key)
+        os.makedirs(path_root_download, exist_ok=True)
 
-    path = 'F:/stream_download' + '/' + key
-    if os.path.exists(path):
-        pass
-    else:
-        os.makedirs(path)
+        download_url = make_download_url(1000, mp4_file_dict[key][2],orbit_num= mp4_file_dict[key][0], init_num = mp4_file_dict[key][1])
+        # for url in download_url:
+        #     print(key,url)
+        #     file_name = download_file(path, url)
+        down_flag = True
+        i = 0
+        while (i <= len(download_url)):
+            try:
 
-    download_url = make_download_url(1000, file_dict[key])
-    # for url in download_url:
-    #     print(key,url)
-    #     file_name = download_file(path, url)
-    down_flag = True
-    i = 0
-    while (down_flag):
-        url = download_url[i]
-        file_name = download_file(path, url)
-        if os.path.getsize(file_name) <1000:
-            down_flag = False
-            os.remove(file_name)
-        else:
-            pass
-        i +=1
-        print(key,file_dict[key],i, file_name)
+                url = download_url[i]
+                fpath_download = download_file(path_root_download, url)
+                time.sleep(0.1)
+                try:
+                    if os.path.getsize(fpath_download) < 10000:
 
-# os.path.getsize('F:/stream_download/720p_000.aaa.mp4')
-# import glob
-# file_ls =glob.glob('F:/stream_download/' +'*.srt')
-#
-# for file in file_ls:
-#     os.rename(file, file.replace('반요야샤2기','banyo_yashahime_2'))
+                        print('Fail to donwlaod', key, mp4_file_dict[key], i, fpath_download)
+                        os.remove(fpath_download)
+                    else:
+                        print('Success to donwlaod',key,mp4_file_dict[key],i, fpath_download)
+                except:
+                    print('Fail to donwlaod', key, mp4_file_dict[key], i, fpath_download)
+
+            except Exception as e:
+                print(e)
+                print('Fail to donwlaod',key, mp4_file_dict[key], i ,'/', len(download_url))
+            i += 1
+
+
+def main2 ():
+    path_root = 'F:/stream_download'
+    "Download script files"
+
+    "Download video files"
+    for key in mp4_file_dict.keys():
+
+        path_root_download = os.path.join(path_root ,key)
+        os.makedirs(path_root_download, exist_ok=True)
+
+        combine_videos_folder_to_one(path_root_download, key)
+def main3 ():
+    path_root = 'F:/stream_download'
+    for key in mp4_file_dict.keys():
+        # key = list(mp4_file_dict.keys())[0]
+        # print(key)
+        # print(key, mp4_file_dict[key])
+
+        path_root_download = os.path.join(path_root, key)
+        os.makedirs(path_root_download, exist_ok=True)
+
+        download_url = make_download_url(1000, mp4_file_dict[key][1], init_num=mp4_file_dict[key][0])
+
+        target_video_fpath_lst = [ f.split('/')[-1].replace('\\','/') for f in download_url]
+        # target_video_fpath_lst[0]
+        downloaded_video_fpath_lst = glob.glob(os.path.join(path_root_download) + '/*.mp4')
+        downloaded_video_fpath_lst = [f.replace('\\','/').replace('aaa.mp4','.aaa').split('/')[-1]         for f in  downloaded_video_fpath_lst]
+        # downloaded_video_fpath_lst[0]
+        redownload_video_fpath_lst = download_url.copy()
+        redownload_video_fpath_lst[0]
+        downloaded_video_fpath_lst[0]
+        for i ,fpath_down in enumerate(downloaded_video_fpath_lst):
+            for j, fpath_redown in enumerate(downloaded_video_fpath_lst):
+                try:
+                    if redownload_video_fpath_lst[j].find(downloaded_video_fpath_lst[i])>=0:
+                       redownload_video_fpath_lst.remove(redownload_video_fpath_lst[j])
+                    else:
+                        pass
+                except:
+                    pass
+        redownload_video_fpath_lst
+        down_flag = True
+        i = 0
+        while (down_flag):
+            try:
+
+                url = redownload_video_fpath_lst[i]
+                fpath_download = download_file(path_root_download, url)
+                time.sleep(0.1)
+                if os.path.getsize(fpath_download) < 1000:
+                    down_flag = False
+                    os.remove(fpath_download)
+                else:
+                    pass
+
+                print('Success to downlaod', key, mp4_file_dict[key], i, fpath_download)
+            except Exception as e:
+                print(e)
+                print('Fail to downlaod', key, mp4_file_dict[key], i)
+            i += 1
+
+def Check_download(path_root = 'F:/stream_download',folder_name = 'party_people_kongmyeong_007'):
+    try:
+
+        file_lst = glob.glob(path_root + '/' + folder_name +'/*.mp4')
+        file_lst.sort()
+        check_flag =   ( len(file_lst) == (int(file_lst[-1].replace('\\','/').split('/')[-1].split('.')[0].split('_')[-1][:3])+1))
+        print(check_flag, folder_name)
+    except Exception as e:
+        check_flag = 'error'
+        print(e)
+
+    return check_flag
+
+
+if __name__ == '__main__':
+    # 007,008,009,10,12 fail
+    main()
+    Check_download(path_root='F:/stream_download', folder_name='party_people_kongmyeong_012')

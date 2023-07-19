@@ -242,6 +242,6 @@ def youtube_downloader(url, download_path='',mp3=True, cnt = 100, use_oauth = Tr
 if __name__ == '__main__':
 
     download_path = 'Y:/youtube_ext'
-    url ='https://www.youtube.com/watch?v=-NvqMPnatig'
+    url ='https://ohli24.org/e/%ED%8C%8C%ED%8B%B0%ED%94%BC%ED%94%8C%20%EA%B3%B5%EB%AA%85%201%ED%99%94'
 
     youtube_downloader(url, download_path , mp3 = True, cnt=1000, use_oauth = True, allow_oauth_cache = True)
