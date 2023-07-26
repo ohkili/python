@@ -41,7 +41,7 @@ def driverAct(url):
         print('Check your OS type')
         telegram_message('Check your chrome driver path or version.')
 
-    driver.set_window_size(1400, 1000)  # (가로, 세로)음
+    driver.set_window_size(1600, 1000)  # (가로, 세로)음
     driver.get(url)
     return driver
 

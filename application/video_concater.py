@@ -125,13 +125,13 @@ def main():
          # 'party_people_kongmyeong_002': [13,3,'xdoodle.xyz/cdn/down/e83bb7b0da390abc1e2fcba261a7b787'],
          # 'party_people_kongmyeong_003': [13,3,''],
          # 'party_people_kongmyeong_004': [13,3,''],
-         'party_people_kongmyeong_005': [13,3,'xdoodle.xyz/cdn/down/256fea8d6668715b850295fc1d04c200'],
-         'party_people_kongmyeong_006': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
-         'party_people_kongmyeong_007': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
-         'party_people_kongmyeong_008': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
-         'party_people_kongmyeong_009': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
-         'party_people_kongmyeong_010': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
-         'party_people_kongmyeong_011': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
+         # 'party_people_kongmyeong_005': [13,3,'xdoodle.xyz/cdn/down/256fea8d6668715b850295fc1d04c200'],
+         # 'party_people_kongmyeong_006': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
+         # 'party_people_kongmyeong_007': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
+         # 'party_people_kongmyeong_008': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
+         # 'party_people_kongmyeong_009': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
+         # 'party_people_kongmyeong_010': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
+         # 'party_people_kongmyeong_011': [15,1,'ndoodle.xyz/cdn/down/21dbba6f80379130d90c09fd5933af15'],
          'party_people_kongmyeong_012': [15,1,'ndoodle.xyz/cdn/down/82f4a521864268f9999bf387b7eff9a9']
     }
 

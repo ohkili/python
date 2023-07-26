@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d6db7a6a-0e4d-4897-80d8-17603bb375bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/YouTube_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/YouTube_extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/stream_downloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/stream_downloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/reservation_golf.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/reservation_golf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/video_concater.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/video_concater.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_crawling/Set_chromedriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_crawling/Set_chromedriver.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +294,7 @@
       <recent name="E:\python\web_crawling" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.video_concater">
+  <component name="RunManager" selected="Python.reservation_golf">
     <configuration name="Close_all_pop_up_return_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -316,28 +316,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Login_excite_driver" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="work" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_crawling" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="E:\python\golf_reservation\Login_excite_driver.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="lotto_auto_purchasing (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lotto_auto_purchasing (" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -350,6 +329,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/application/lotto_auto_purchasing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="reservation_golf" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/application" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/application/reservation_golf.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -401,19 +401,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.video_concater" />
+      <item itemvalue="Python.reservation_golf" />
       <item itemvalue="Python.Close_all_pop_up_return_main" />
-      <item itemvalue="Python.Login_excite_driver" />
-      <item itemvalue="Python.lotto_auto_purchasing (1)" />
+      <item itemvalue="Python.lotto_auto_purchasing (" />
       <item itemvalue="Python.stream_downloader" />
+      <item itemvalue="Python.video_concater" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.reservation_golf" />
+        <item itemvalue="Python.lotto_auto_purchasing (" />
+        <item itemvalue="Python.Close_all_pop_up_return_main" />
         <item itemvalue="Python.video_concater" />
         <item itemvalue="Python.stream_downloader" />
-        <item itemvalue="Python.Close_all_pop_up_return_main" />
-        <item itemvalue="Python.lotto_auto_purchasing (1)" />
-        <item itemvalue="Python.Login_excite_driver" />
       </list>
     </recent_temporary>
   </component>
@@ -428,13 +428,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627889143966</updated>
-    </task>
-    <task id="LOCAL-00012" summary="골프 자동 예약 메크로">
-      <created>1633970481296</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1633970481296</updated>
     </task>
     <task id="LOCAL-00013" summary="골프 자동 예약 메크로">
       <created>1633970592285</created>
@@ -772,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689263603430</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="streamer down loader">
+      <created>1689774242717</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1689774242718</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TodoView">
@@ -858,7 +858,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/github/test" />
     </ignored-roots>
-    <MESSAGE value="site 변경 여부 test 기능 추가" />
     <MESSAGE value="macpro macmini 구분 개선" />
     <MESSAGE value="macpro macmini 구분 개선 osopt에 macpro or macmini 구분" />
     <MESSAGE value="bug fix" />
@@ -883,16 +882,12 @@
     <MESSAGE value="YouTube_extractor.py update from age restriciton error" />
     <MESSAGE value="reserve golf update" />
     <MESSAGE value="reserve golf update hanwon" />
-    <option name="LAST_COMMIT_MESSAGE" value="reserve golf update hanwon" />
+    <MESSAGE value="streamer down loader" />
+    <option name="LAST_COMMIT_MESSAGE" value="streamer down loader" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/application/lotto_auto_purchasing.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/application/YouTube_extractor.py</url>
           <line>81</line>
@@ -902,6 +897,11 @@
           <url>file://$PROJECT_DIR$/application/stream_downloader.py</url>
           <line>59</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/application/reservation_golf.py</url>
+          <line>949</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
